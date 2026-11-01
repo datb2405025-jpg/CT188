@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/image.png">
+    <!-- Remixicon: Thư viện icon dạng CDN, dùng để hiển thị các icon như mail, lock, eye... -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+          <!-- Toastify CSS: Thư viện hiển thị thông báo popup (toast) siêu tiện lợi ở góc màn hình -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <title>Dang nhap dang ky</title>
+</head>
+<body class="login-page">
+     <!-- ================= HEADER: PHẦN ĐẦU TRANG ================= -->
+<header class="auth-header">
+    <a href="./index.html" class="header-logo-link">
+        <img src="./assets/images/Bookshelf.png" alt="logo">
+    </a>
+<div class="header-right">
+<a href="./cart.html" class="header-cart" title="Giỏ hàng">
+    <i class="ri-shopping-cart-2-line"></i>
+</a>
+<img class="linhvat" src="./assets/images/linh-vat.png" alt="linhvat">
+<div class="header-greeting" id="greeting"></div>
+</div>
+</header>
+<!-- ================= MAIN: NỘI DUNG CHÍNH CỦA TRANG ================= -->
+<main class="auth-page">
+    <section class="auth-branding">
+        <div class="logo-wrapper">
+            <img src="./assets/images/bookshelf-white.png" alt="logo" class="logo">
+        </div>
+        <p class="content">Lan tỏa tri thức <br />nuôi dưỡng đam mê</p>
+    </section>
+    <section class="auth-login">
+        <div class="wrapper">
+            <div class="form-header">
+                <div class="title">Đăng nhập</div>
+            </div>
+        <!-- ================= FORM ĐĂNG NHẬP ================= -->
+ <form class="login-form">
+    <div class="input-box">
+        <i class="ri-mail-line"></i>
+        <input type="email" class="input-field" id="login-email" placeholder="Email" autocomplete="off" />
+    </div>
+    <div class="input-box">
+        <i class="ri-lock-line"></i>
+        <input type="password" class="input-field password-input" id="log-pass" placeholder="Mật khẩu" />
+        <i class="ri-eye-off-fill toggle"></i>
+    </div>
+    <div class="forgot-pass">
+        <div><a href="#">Quên mật khẩu</a></div>
+    </div>
+    <button class="submit-btn" id="logBtn">
+        Đăng nhập
+        <i class="ri-login-box-line"></i>
+    </button>
+    <div class="switch-form">
+        <span>Bạn chưa có tài khoản ?
+            <a href="#" id="swicth-reg">Đăng ký ngay</a>
+        </span>
+    </div>
+ </form>
+           <!-- ================= FORM ĐĂNG KÝ ================= -->
+            <form action="#" class="register-form hidden-form">
+                <div class="input-box">
+                    <i class="ri-user-line"></i>
+                    <input type="text" class="input-field" id="name-reg" placeholder="Họ và tên" autocomplete="off"></div>
+                <div class="input-box">
+                    <i class="ri-mail-line"></i>
+                    <input type="email" class="input-field" id="mail-reg" placeholder="Email" autocomplete="off"></div>
+                <div class="input-box">
+                    <i class="ri-phone-line"></i>
+                    <input type="tel" class="input-field" id="phone-reg" placeholder="Số điện thoại" autocomplete="off"></div>
+                <div class="input-box">
+                    <i class="ri-lock-line"></i>
+                    <input type="password" class="input-field password-input" id="pass-reg" placeholder="Mật khẩu" autocomplete="off"><i class="ri-eye-off-fill toggle"></i></div>
+                <div class="input-box">
+                    <i class="ri-user-line"></i>
+                    <input type="password" class="input-field password-input" id="confirmPass" placeholder="Nhập lại mật khẩu" autocomplete="off"><i class="ri-eye-off-fill toggle"></i></div>
+                  <button class="submit-btn" id="regBtn">Đăng ký<i class="ri-user-add-line"></i></button>
+                  <div class="switch-form">
+                    <span>Bạn đã có tài khoản?
+                        <a href="#" id="switch-log">Đăng nhập ngay</a>
+                    </span>
+                  </div>  
+            </form>
+        </div>
+    </section>
+</main>
+                <!-- ================= FOOTER ================= -->
+<footer class="footer" id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-content">
+        <div class="footer-item footer-bookshelf">
+            <div class="footer-brand">
+                <img src="./assets/images/logo-footer.png" alt="logo">
+                <span class="footter-brand-text">Bookshelf</span>
+            </div>
+            <p class="footer-text">Lan tỏa tri thức <br /> nuôi dưỡng đam mê.</p>
+            <p class="footer-slogan">Mỗi trang sách, một chân trời mới.</p>
+            <div class="footer-title-underline">
+                <h4 class="footer-title">Tìm hiểu nhiều hơn</h4>
+                <div class="footer-underline"></div>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="ri-facebook-fill"></i></a>
+                <a href="#"><i class="ri-instagram-fill"></i></a>
+                <a href="#"><i class="ri-tiktok-fill"></i></a>
+                <a href="#"><i class="ri-twitter-fill"></i></a>
+            </div>
+        </div>
+        <div class="footer-item footer-about">
+        <div class="footer-title-underline">
+            <h4 class="footer-title">BOOKSHELF VIỆT NAM</h4>
+            <div class="footer-underline"></div>
+        </div>
+        <ul class="footer-links">
+            <li>
+                <a href="#"> <i class="ri-arrow-right-s-line"></i>BOOKSHELF</a>
+            </li>
+            <li>
+                <a href="#"> <i class="ri-arrow-right-s-line"></i>Tuyển dụng</a>
+            </li>
+             <li>
+                <a href="#"> <i class="ri-arrow-right-s-line"></i>Điều khoản</a>
+            </li>
+             <li>
+                <a href="#"> <i class="ri-arrow-right-s-line"></i>Chính sách bảo mật</a>
+            </li>
+             <li>
+                <a href="#"> <i class="ri-arrow-right-s-line"></i>Flash Sale</a>
+            </li>
+        </ul>
+    </div>
+    <div class="footer-item footer-contact">
+        <div class="footer-title-underline">
+            <h4 class="footer-title">LIÊN HỆ BOOKSHELF</h4>
+            <div class="footer-underline"></div>
+        </div>
+        <ul class="footer-links">
+            <li>
+                <a href="#"><i class="ri-map-pin-fill"></i>
+                <span>97 Đường 3/2, P.Xuân Khánh, Q.Ninh Kiều, TP.Cần Thơ</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="ri-phone-fill"></i>
+                <span>0979 797 970</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="ri-mail-line"></i>
+                <span>cskh@bookshelf.com.vn</span></a>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <div class="footer-bottom"><p>&copy;2026
+        <img src="./assets/images/logo-footer.png" alt="logo">
+        Bookshelf. Make with by Group 6 CT188 <i class="ri-bard-line"></i>
+    </p></div>
+</footer>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
+<script src="./assets/js/login.js"></script>
+</body>
+</html>
