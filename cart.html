@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/image.png">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrepolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/cart.css">
+    <title>Giỏ hàng | Bookshelf</title>
+</head>
+<body class="cart-page">
+    <main>
+        <div class="cart__main">
+            <!-- TIÊU ĐỀ GIỎ HÀNG -->
+            <h1 class="cart__title">GIỎ HÀNG</h1>
+            <!-- CÓ SẢN PHẨM TRONG GIỎ HÀNG: BỐ CỤC 2 CỘT -->
+            <div class="cart__content">
+                <!-- CỘT TRÁI: BẢNG SẢN PHẨM -->
+                <div class="cart__container">
+                    <!-- Tiêu đề 5 cột -->
+                    <div class="cart__header">
+                        <div class="cart__col cart__col--product">Sản Phẩm</div>
+                        <div class="cart__col cart__col--price">Giá Tiền</div>
+                        <div class="cart__col cart__col--quantity">Số Lượng</div>
+                        <div class="cart__col cart__col--total">Thành Tiền</div>
+                    </div>
+                    <!-- Nơi JavaScript render danh sách sản phẩm -->
+                    <div class="cart__body" id="cart__table--body">
+                        <!-- Ví dụ 1 dòng sản phẩm do JS chèn vào -->
+                    </div>
+                </div>
+                <!-- CỘT PHẢI: HÓA ĐƠN / CỘNG GIỎ HÀNG -->
+                <div class="cart__sum">
+                    <h2 class="cart__sum-title">Cộng giỏ hàng</h2>
+                    <div class="cart__row">
+                        <span>Tạm tính:</span>
+                        <span class="sum-price"> đ</span>
+                    </div>
+                    <div class="cart__row">
+                        <span>Giảm giá:</span>
+                        <span>0 đ</span>
+                    </div>
+                    <div class="cart__row">
+                        <span>Giao hàng:</span>
+                        <span>KTX Đại học Cần thơ</span>
+                    </div>
+                    <div class="cart__row cart__row--total">
+                        <span>Tổng cộng:</span>
+                        <span class="summary-total"> đ</span>
+                    </div>
+                    <button class="cart__btn-checkout" type="button">Tiến Hành Thanh Toán</button>
+                </div>
+
+            </div>
+
+            <!-- NÚT NẰM DƯỚI BẢNG -->
+            <div class="cart__backProduct">
+                <a href="/html/product.html">Tiếp tục mua hàng</a>
+            </div>
+
+            <!-- NẾU GIỎ HÀNG TRỐNG -->
+            <div class="cart__empty" style="display: none;">
+                <h2>Giỏ hàng của bạn đang trống</h2>
+                <p>Hãy thêm sản phẩm để tiếp tục mua sắm.</p>
+                <a href="/html/product.html">Tiếp tục mua hàng</a>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
