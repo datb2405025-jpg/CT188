@@ -9,72 +9,143 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
       integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
       crossorigin="anonymous"
-      referrepolicy="no-referrer"
+      referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/login.css">
     <link rel="stylesheet" href="./assets/css/cart.css">
     <title>Giỏ hàng | Bookshelf</title>
 </head>
 <body class="cart-page">
     <main>
-        <div class="cart__main">
+        <section class="cart__main" aria-labelledby="cart-page-title">
             <!-- TIÊU ĐỀ GIỎ HÀNG -->
-            <h1 class="cart__title">GIỎ HÀNG</h1>
-            <!-- CÓ SẢN PHẨM TRONG GIỎ HÀNG: BỐ CỤC 2 CỘT -->
-            <div class="cart__content">
-                <!-- CỘT TRÁI: BẢNG SẢN PHẨM -->
-                <div class="cart__container">
-                    <!-- Tiêu đề 5 cột -->
-                    <div class="cart__header">
-                        <div class="cart__col cart__col--product">Sản Phẩm</div>
-                        <div class="cart__col cart__col--price">Giá Tiền</div>
-                        <div class="cart__col cart__col--quantity">Số Lượng</div>
-                        <div class="cart__col cart__col--total">Thành Tiền</div>
-                    </div>
-                    <!-- Nơi JavaScript render danh sách sản phẩm -->
-                    <div class="cart__body" id="cart__table--body">
-                        <!-- Ví dụ 1 dòng sản phẩm do JS chèn vào -->
-                    </div>
-                </div>
-                <!-- CỘT PHẢI: HÓA ĐƠN / CỘNG GIỎ HÀNG -->
-                <div class="cart__sum">
-                    <h2 class="cart__sum-title">Cộng giỏ hàng</h2>
-                    <div class="cart__row">
-                        <span>Tạm tính:</span>
-                        <span class="sum-price"> đ</span>
-                    </div>
-                    <div class="cart__row">
-                        <span>Giảm giá:</span>
-                        <span>0 đ</span>
-                    </div>
-                    <div class="cart__row">
-                        <span>Giao hàng:</span>
-                        <span>KTX Đại học Cần thơ</span>
-                    </div>
-                    <div class="cart__row cart__row--total">
-                        <span>Tổng cộng:</span>
-                        <span class="summary-total"> đ</span>
-                    </div>
-                    <button class="cart__btn-checkout" type="button">Tiến Hành Thanh Toán</button>
-                </div>
-
+            <div class="cart__heading">
+                <h1 class="cart__title" id="cart-page-title">Giỏ hàng</h1>
+                <span class="cart__count" id="cart__count">4 sản phẩm</span>
             </div>
 
-            <!-- NÚT NẰM DƯỚI BẢNG -->
-            <div class="cart__backProduct">
-                <a href="/html/product.html">Tiếp tục mua hàng</a>
+            <!-- GIỎ HÀNG CÓ SẢN PHẨM: DANH SÁCH VÀ THANH TOÁN -->
+            <div class="cart__content" id="cart__content">
+                <!-- CỘT TRÁI: DANH SÁCH SẢN PHẨM VÀ TỔNG TIỀN -->
+                <div class="cart__left">
+                    <section class="cart__container" role="table" aria-label="Sản phẩm trong giỏ hàng">
+                        <div class="cart__header" role="row">
+                            <div class="cart__col cart__col--product" role="columnheader">Sản phẩm</div>
+                            <div class="cart__col cart__col--price" role="columnheader">Giá tiền</div>
+                            <div class="cart__col cart__col--quantity" role="columnheader">Số lượng</div>
+                            <div class="cart__col cart__col--total" role="columnheader">Thành tiền</div>
+                            <span class="cart__col--remove" aria-hidden="true"></span>
+                        </div>
+                        <div class="cart__body" id="cart__table--body" role="rowgroup">
+                            <div class="cart__item" role="row">
+                                <div class="cart__col cart__col--product" role="cell">
+                                    <span class="cart__book-cover cart__book-cover--atomic" aria-hidden="true"><i class="ri-book-2-line"></i></span>
+                                    <span class="cart__product-info"><strong>Atomic Habits</strong><small>James Clear</small></span>
+                                </div>
+                                <div class="cart__col cart__col--price" role="cell">125.000 đ</div>
+                                <div class="cart__col cart__col--quantity" role="cell"><span class="cart__quantity">1</span></div>
+                                <div class="cart__col cart__col--total" role="cell">125.000 đ</div>
+                                <span class="cart__remove" aria-label="Xóa Atomic Habits">×</span>
+                            </div>
+                            <div class="cart__item" role="row">
+                                <div class="cart__col cart__col--product" role="cell">
+                                    <span class="cart__book-cover cart__book-cover--dacnhantam" aria-hidden="true"><i class="ri-book-2-line"></i></span>
+                                    <span class="cart__product-info"><strong>Đắc Nhân Tâm</strong><small>Dale Carnegie</small></span>
+                                </div>
+                                <div class="cart__col cart__col--price" role="cell">86.000 đ</div>
+                                <div class="cart__col cart__col--quantity" role="cell"><span class="cart__quantity">2</span></div>
+                                <div class="cart__col cart__col--total" role="cell">172.000 đ</div>
+                                <span class="cart__remove" aria-label="Xóa Đắc Nhân Tâm">×</span>
+                            </div>
+                            <div class="cart__item" role="row">
+                                <div class="cart__col cart__col--product" role="cell">
+                                    <span class="cart__book-cover cart__book-cover--nhagiakim" aria-hidden="true"><i class="ri-book-2-line"></i></span>
+                                    <span class="cart__product-info"><strong>Nhà Giả Kim</strong><small>Paulo Coelho</small></span>
+                                </div>
+                                <div class="cart__col cart__col--price" role="cell">79.000 đ</div>
+                                <div class="cart__col cart__col--quantity" role="cell"><span class="cart__quantity">1</span></div>
+                                <div class="cart__col cart__col--total" role="cell">79.000 đ</div>
+                                <span class="cart__remove" aria-label="Xóa Nhà Giả Kim">×</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- TỔNG KẾT ĐƠN HÀNG -->
+                    <div class="cart__totals">
+                        <a class="cart__continue" href="./profuctlist.html">
+                            <i class="ri-arrow-left-line" aria-hidden="true"></i>
+                            Tiếp tục mua hàng
+                        </a>
+                        <div class="cart__totals-info">
+                            <div class="cart__row">
+                                <span>Tạm tính</span>
+                                <span class="sum-price">376.000 đ</span>
+                            </div>
+                            <div class="cart__row">
+                                <span>Giao hàng</span>
+                                <span>Miễn phí</span>
+                            </div>
+                            <p class="cart__delivery-address">Giao đến: KTX Đại học Cần Thơ</p>
+                            <div class="cart__row cart__row--total">
+                                <span>Tổng cộng</span>
+                                <span class="summary-total">376.000 đ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CỘT PHẢI: THÔNG TIN THANH TOÁN -->
+                <aside class="cart__payment" aria-labelledby="cart__payment-title">
+                    <h2 id="cart__payment-title">Thông tin thanh toán</h2>
+                    <form class="cart__payment-form">
+                        <fieldset class="cart__payment-methods">
+                            <legend>Phương thức thanh toán</legend>
+                            <label class="cart__payment-method">
+                                <input type="radio" name="payment-method" value="card" checked>
+                                <i class="ri-bank-card-line" aria-hidden="true"></i>
+                                Thẻ ngân hàng
+                            </label>
+                            <label class="cart__payment-method">
+                                <input type="radio" name="payment-method" value="paypal">
+                                <i class="ri-paypal-line" aria-hidden="true"></i>
+                                PayPal
+                            </label>
+                        </fieldset>
+
+                        <!-- THÔNG TIN THẺ DEMO: KHÔNG GỬI ĐI ĐÂU -->
+                        <label class="cart__field">
+                            <span>Tên trên thẻ</span>
+                            <input type="text" autocomplete="cc-name" placeholder="Nguyễn Văn A">
+                        </label>
+                        <label class="cart__field">
+                            <span>Số thẻ</span>
+                            <input type="text" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000">
+                        </label>
+                        <div class="cart__field-row">
+                            <label class="cart__field">
+                                <span>Ngày hết hạn</span>
+                                <input type="text" autocomplete="cc-exp" placeholder="MM / YY">
+                            </label>
+                            <label class="cart__field">
+                                <span>Mã bảo mật</span>
+                                <input type="password" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV">
+                            </label>
+                        </div>
+                        <button class="cart__btn-checkout" type="button">
+                            Thanh toán 376.000 đ
+                        </button>
+                    </form>
+                </aside>
             </div>
 
-            <!-- NẾU GIỎ HÀNG TRỐNG -->
-            <div class="cart__empty" style="display: none;">
+            <!-- TRẠNG THÁI GIỎ HÀNG TRỐNG -->
+            <div class="cart__empty" id="cart__empty" role="status" hidden>
+                <i class="ri-shopping-bag-3-line" aria-hidden="true"></i>
                 <h2>Giỏ hàng của bạn đang trống</h2>
                 <p>Hãy thêm sản phẩm để tiếp tục mua sắm.</p>
-                <a href="/html/product.html">Tiếp tục mua hàng</a>
+                <a href="./profuctlist.html">Tiếp tục mua hàng</a>
             </div>
-
-        </div>
+        </section>
     </main>
-
 </body>
 </html>
