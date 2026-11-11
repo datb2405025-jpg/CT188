@@ -1,3 +1,4 @@
+//Người thực hiện: Lê Tiến Đạt//
 // ====================================
 // THÔNG BÁO TOASTIFY
 // ====================================
@@ -322,66 +323,41 @@ if (registerForm) {
 
         // Kiểm tra số điện thoại
         if (!phoneRegex.test(phone)) {
-
             showError("Số điện thoại không hợp lệ.");
-
             phoneInput.parentElement.classList.add("error-input");
-
             return;
         }
-
-
         // Kiểm tra độ dài mật khẩu
         if (password.length < 8) {
-
             showError("Mật khẩu phải có ít nhất 8 ký tự.");
-
             passwordInput.parentElement.classList.add("error-input");
-
             return;
         }
-
-
         // Kiểm tra xác nhận mật khẩu
         if (password !== confirmPassword) {
-
             showError("Mật khẩu xác nhận không chính xác.");
-
             confirmPasswordInput.parentElement.classList.add("error-input");
-
             return;
         }
-
-
         // Lấy danh sách tài khoản
         let users = [];
-
         try {
             users = JSON.parse(localStorage.getItem("users")) || [];
         } catch (error) {
             users = [];
         }
-
-
         // Kiểm tra email đã tồn tại
         const isExist = users.some((user) => user.email === email);
 
         if (isExist || email === "test@gmail.com") {
-
             showError("Email này đã được sử dụng.");
-
             emailInput.parentElement.classList.add("error-input");
-
             return;
         }
-
-
         // Tạo ID mới
         const id = users.length > 0
             ? Math.max(...users.map(user => Number(user.id) || 0)) + 1
             : 1;
-
-
         // Tạo tài khoản mới
         const user = {
             id: id,
@@ -390,14 +366,9 @@ if (registerForm) {
             phone: phone,
             password: password
         };
-
-
         // Lưu tài khoản vào localStorage
         users.push(user);
-
         localStorage.setItem("users", JSON.stringify(users));
-
-
         // Thông báo thành công
         showSuccess("Đăng ký tài khoản thành công!");
 
