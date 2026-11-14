@@ -1,63 +1,163 @@
-const cartContent = document.querySelector('#cart__content');
-const cartItems = document.querySelector('#cart__table--body');
-const cartCount = document.querySelector('#cart__count');
-const cartEmpty = document.querySelector('#cart__empty');
-const subtotal = cartContent.querySelector('.sum-price');
-const grandTotal = cartContent.querySelector('.summary-total');
-const currency = new Intl.NumberFormat('vi-VN');
+// Đọc các sản phẩm được chọn từ trang danh sách sản phẩm.
+let cartProducts = [];
 
+const cartBody = document.getElementById('cart-body');
+const cartContent = document.getElementById('cart-content');
+const cartEmpty = document.getElementById('cart-empty');
+const cartCount = document.getElementById('cart-count');
+const cartSubtotal = document.getElementById('cart-subtotal');
+const cartTotal = document.getElementById('cart-total');
+const checkoutButton = document.getElementById('cart-checkout');
+const addressInput = document.getElementById('cart-address');
+
+// Định dạng tiền theo ví dụ giỏ hàng trong chương 4.
 function formatPrice(amount) {
-    return `${currency.format(amount)} đ`;
+    return amount.toLocaleString('vi-VN') + ' đ';
 }
 
-function updateCart() {
-    let itemCount = 0;
+// Tạo ô trong bảng bằng createElement, textContent và appendChild.
+function createCell(row, text, className) {
+    const cell = document.createElement('td');
+    cell.textContent = text;
+    cell.className = className;
+    row.appendChild(cell);
+    return cell;
+}
+
+function createButton(parent, text, label) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = text;
+    button.setAttribute('aria-label', label);
+    parent.appendChild(button);
+    return button;
+}
+
+function updateTotals() {
+    let quantity = 0;
     let total = 0;
 
-    for (const item of cartItems.children) {
-        const quantity = Number(item.querySelector('.cart__quantity').textContent);
-        const lineTotal = Number(item.dataset.price) * quantity;
-
-        item.querySelector('.cart__col--total-value').textContent = formatPrice(lineTotal);
-        item.querySelector('[data-action="decrease"]').disabled = quantity <= 1;
-        itemCount += quantity;
-        total += lineTotal;
+    for (let i = 0; i < cartProducts.length; i++) {
+        quantity += cartProducts[i].quantity;
+        total += cartProducts[i].price * cartProducts[i].quantity;
     }
 
-    cartCount.textContent = `${itemCount} sản phẩm`;
-    subtotal.textContent = formatPrice(total);
-    grandTotal.textContent = formatPrice(total);
-    cartContent.hidden = itemCount === 0;
-    cartEmpty.hidden = itemCount > 0;
+    cartCount.textContent = quantity + ' sản phẩm';
+    cartSubtotal.textContent = formatPrice(total);
+    cartTotal.textContent = formatPrice(total);
+
+    if (cartProducts.length === 0) {
+        cartContent.style.display = 'none';
+        cartEmpty.style.display = 'block';
+    } else {
+        cartContent.style.display = 'block';
+        cartEmpty.style.display = 'none';
+    }
 }
 
-cartItems.addEventListener('click', (event) => {
-    const button = event.target.closest('button[data-action]');
-    if (!button || button.disabled) return;
+function addProductRow(product) {
+    const row = document.createElement('tr');
+    const productCell = createCell(row, '', 'cart__product');
 
-    const item = button.closest('.cart__item');
-    const action = button.dataset.action;
+    const name = document.createElement('strong');
+    name.className = 'cart__product-name';
+    name.textContent = product.name;
+    productCell.appendChild(name);
 
-    if (action === 'remove') {
-        const nextItem = item.nextElementSibling || item.previousElementSibling;
-        item.remove();
-        updateCart();
+    const author = document.createElement('small');
+    author.className = 'cart__author';
+    author.textContent = product.author;
+    productCell.appendChild(author);
 
-        const nextFocus = nextItem
-            ? nextItem.querySelector('[data-action="remove"]')
-            : cartEmpty.querySelector('a');
-        nextFocus.focus();
-        return;
+    createCell(row, formatPrice(product.price), 'cart__price');
+
+    const quantityCell = createCell(row, '', 'cart__quantity-cell');
+    const controls = document.createElement('div');
+    controls.className = 'cart__quantity-controls';
+    quantityCell.appendChild(controls);
+
+    const decrease = createButton(controls, '−', 'Giảm số lượng ' + product.name);
+    const quantity = document.createElement('span');
+    quantity.className = 'cart__quantity';
+    controls.appendChild(quantity);
+    const increase = createButton(controls, '+', 'Tăng số lượng ' + product.name);
+
+    const lineTotal = createCell(row, '', 'cart__line-total');
+    const removeCell = createCell(row, '', 'cart__action');
+    const remove = createButton(removeCell, 'Xóa', 'Xóa ' + product.name);
+    remove.className = 'cart__remove';
+
+    function updateRow() {
+        quantity.textContent = product.quantity;
+        lineTotal.textContent = formatPrice(product.price * product.quantity);
+        decrease.disabled = product.quantity <= 1;
+        updateTotals();
     }
 
-    const quantity = item.querySelector('.cart__quantity');
-    const change = action === 'increase' ? 1 : -1;
-    quantity.textContent = Number(quantity.textContent) + change;
-    updateCart();
+    decrease.addEventListener('click', function () {
+        if (product.quantity > 1) {
+            product.quantity--;
+            saveCartProducts(cartProducts);
+            updateRow();
+            if (decrease.disabled) {
+                increase.focus();
+            }
+        }
+    });
 
-    if (button.disabled) {
-        item.querySelector('[data-action="increase"]').focus();
+    increase.addEventListener('click', function () {
+        product.quantity++;
+        saveCartProducts(cartProducts);
+        updateRow();
+    });
+
+    remove.addEventListener('click', function () {
+        const nextRow = row.nextElementSibling || row.previousElementSibling;
+        for (let i = 0; i < cartProducts.length; i++) {
+            if (cartProducts[i] === product) {
+                cartProducts.splice(i, 1);
+                break;
+            }
+        }
+        cartBody.removeChild(row);
+        saveCartProducts(cartProducts);
+        updateTotals();
+
+        if (nextRow) {
+            nextRow.querySelector('.cart__remove').focus();
+        } else {
+            document.getElementById('cart-continue').focus();
+        }
+    });
+
+    cartBody.appendChild(row);
+    updateRow();
+}
+
+// Nút thanh toán chỉ thông báo tổng tiền của đơn hàng mẫu.
+checkoutButton.addEventListener('click', function () {
+    if (cartProducts.length > 0) {
+        addressInput.value = addressInput.value.trim();
+        if (!addressInput.reportValidity()) {
+            return;
+        }
+        alert('Tổng tiền: ' + cartTotal.textContent +
+            '\nGiao đến: ' + addressInput.value +
+            '\nĐây là đơn hàng mẫu, chức năng thanh toán trực tuyến chưa được triển khai.');
     }
 });
 
-updateCart();
+function showCart() {
+    cartProducts = getCartProducts();
+    while (cartBody.firstChild) {
+        cartBody.removeChild(cartBody.firstChild);
+    }
+    for (let i = 0; i < cartProducts.length; i++) {
+        addProductRow(cartProducts[i]);
+    }
+    updateTotals();
+}
+
+// pageshow cập nhật cả khi quay lại trang bằng nút Back của trình duyệt.
+window.addEventListener('pageshow', showCart);
+showCart();

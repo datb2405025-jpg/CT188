@@ -4,142 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/images/Bookshelf.png">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
-      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/cart.css">
-    <script src="./assets/js/cart.js" defer></script>
     <title>Giỏ hàng | Bookshelf</title>
 </head>
 <body class="cart-page">
-    <main>
-        <section class="cart__main" aria-labelledby="cart-page-title">
-            <!-- TIÊU ĐỀ GIỎ HÀNG -->
-            <div class="cart__heading">
-                <h1 class="cart__title" id="cart-page-title">Giỏ hàng</h1>
-                <span class="cart__count" id="cart__count" aria-live="polite">4 sản phẩm</span>
+    <main class="cart">
+        <nav class="cart__navigation" aria-label="Điều hướng giỏ hàng">
+            <a class="cart__logo" href="./index.html">Bookshelf</a>
+            <a href="./productlist.html">Danh sách sản phẩm</a>
+        </nav>
+        <header class="cart__heading">
+            <h1>Giỏ hàng</h1>
+            <p id="cart-count" aria-live="polite">0 sản phẩm</p>
+        </header>
+
+        <div id="cart-content">
+            <div class="cart__table-wrapper">
+                <table class="cart__table" aria-label="Sản phẩm trong giỏ hàng">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sản phẩm</th>
+                            <th scope="col">Đơn giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Thành tiền</th>
+                            <th scope="col">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body"></tbody>
+                </table>
             </div>
 
-            <!-- DANH SÁCH SẢN PHẨM VÀ TỔNG TIỀN -->
-            <div class="cart__content" id="cart__content">
-                <div class="cart__container" role="table" aria-label="Sản phẩm trong giỏ hàng">
-                    <div class="cart__header" role="row">
-                        <div class="cart__col cart__col--product" role="columnheader">Sản phẩm</div>
-                        <div class="cart__col cart__col--price" role="columnheader">Giá tiền</div>
-                        <div class="cart__col cart__col--quantity" role="columnheader">Số lượng</div>
-                        <div class="cart__col cart__col--total" role="columnheader">Thành tiền</div>
-                    </div>
-                    <div class="cart__body" id="cart__table--body" role="rowgroup">
-                        <div class="cart__item" role="row" data-price="125000">
-                            <div class="cart__col cart__col--product" role="cell">
-                                <span class="cart__book-cover cart__book-cover--atomic" aria-hidden="true"><i class="ri-book-2-line"></i></span>
-                                <span class="cart__product-info"><strong>Atomic Habits</strong><small>James Clear</small></span>
-                                <button class="cart__remove" type="button" data-action="remove" aria-label="Xóa Atomic Habits">Xóa</button>
-                            </div>
-                            <div class="cart__col cart__col--price" role="cell">
-                                <span class="cart__mobile-label" aria-hidden="true">Giá tiền</span>
-                                125.000 đ
-                            </div>
-                            <div class="cart__col cart__col--quantity" role="cell">
-                                <span class="cart__mobile-label" aria-hidden="true">Số lượng</span>
-                                <div class="cart__quantity-controls">
-                                    <button type="button" data-action="decrease" aria-label="Giảm số lượng Atomic Habits" disabled>−</button>
-                                    <span class="cart__quantity">1</span>
-                                    <button type="button" data-action="increase" aria-label="Tăng số lượng Atomic Habits">+</button>
-                                </div>
-                            </div>
-                            <div class="cart__col cart__col--total" role="cell">
-                                <span class="cart__mobile-label" aria-hidden="true">Thành tiền</span>
-                                <span class="cart__col--total-value">125.000 đ</span>
-                            </div>
-                        </div>
-                        <div class="cart__item" role="row" data-price="86000">
-                            <div class="cart__col cart__col--product" role="cell">
-                                <span class="cart__book-cover cart__book-cover--dacnhantam" aria-hidden="true"><i class="ri-book-2-line"></i></span>
-                                <span class="cart__product-info"><strong>Đắc Nhân Tâm</strong><small>Dale Carnegie</small></span>
-                                <button class="cart__remove" type="button" data-action="remove" aria-label="Xóa Đắc Nhân Tâm">Xóa</button>
-                            </div>
-                            <div class="cart__col cart__col--price" role="cell">
-                                <span class="cart__mobile-label" aria-hidden="true">Giá tiền</span>
-                                86.000 đ
-                            </div>
-                            <div class="cart__col cart__col--quantity" role="cell">
-                                <span class="cart__mobile-label" aria-hidden="true">Số lượng</span>
-                                <div class="cart__quantity-controls">
-                                    <button type="button" data-action="decrease" aria-label="Giảm số lượng Đắc Nhân Tâm">−</button>
-                                    <span class="cart__quantity">2</span>
-                                    <button type="button" data-action="increase" aria-label="Tăng số lượng Đắc Nhân Tâm">+</button>
-                                </div>
-                            </div>
-                            <div class="cart__col cart__col--total" role="cell">
-                                <span class="cart__mobile-label" aria-hidden="true">Thành tiền</span>
-                                <span class="cart__col--total-value">172.000 đ</span>
-                            </div>
-                        </div>
-                        <div class="cart__item" role="row" data-price="79000">
-                            <div class="cart__col cart__col--product" role="cell">
-                                <span class="cart__book-cover cart__book-cover--nhagiakim" aria-hidden="true"><i class="ri-book-2-line"></i></span>
-                                <span class="cart__product-info"><strong>Nhà Giả Kim</strong><small>Paulo Coelho</small></span>
-                                <button class="cart__remove" type="button" data-action="remove" aria-label="Xóa Nhà Giả Kim">Xóa</button>
-                            </div>
-                            <div class="cart__col cart__col--price" role="cell">
-                                <span class="cart__mobile-label" aria-hidden="true">Giá tiền</span>
-                                79.000 đ
-                            </div>
-                            <div class="cart__col cart__col--quantity" role="cell">
-                                <span class="cart__mobile-label" aria-hidden="true">Số lượng</span>
-                                <div class="cart__quantity-controls">
-                                    <button type="button" data-action="decrease" aria-label="Giảm số lượng Nhà Giả Kim" disabled>−</button>
-                                    <span class="cart__quantity">1</span>
-                                    <button type="button" data-action="increase" aria-label="Tăng số lượng Nhà Giả Kim">+</button>
-                                </div>
-                            </div>
-                            <div class="cart__col cart__col--total" role="cell">
-                                <span class="cart__mobile-label" aria-hidden="true">Thành tiền</span>
-                                <span class="cart__col--total-value">79.000 đ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <section class="cart__summary">
+                <h2>Tóm tắt đơn hàng</h2>
+                <p>Tạm tính <span id="cart-subtotal">0 đ</span></p>
+                <p>Giao hàng <span>Miễn phí</span></p>
+                <label class="cart__address" for="cart-address">
+                    Giao đến
+                    <input id="cart-address" type="text" name="address" autocomplete="street-address"
+                        placeholder="Nhập địa chỉ nhận hàng" required>
+                </label>
+                <p class="cart__total">Tổng cộng <strong id="cart-total">0 đ</strong></p>
+                <button class="cart__checkout" id="cart-checkout" type="button">Thanh toán</button>
+            </section>
+        </div>
 
-                <!-- TỔNG KẾT ĐƠN HÀNG -->
-                <section class="cart__totals" aria-labelledby="cart-summary-title">
-                    <div class="cart__totals-info">
-                        <h2 id="cart-summary-title">Tóm tắt đơn hàng</h2>
-                        <div class="cart__row">
-                            <span>Tạm tính</span>
-                            <span class="sum-price">376.000 đ</span>
-                        </div>
-                        <div class="cart__row">
-                            <span>Giao hàng</span>
-                            <span>Miễn phí</span>
-                        </div>
-                        <p class="cart__delivery-address">Giao đến: KTX Đại học Cần Thơ</p>
-                        <div class="cart__row cart__row--total">
-                            <span>Tổng cộng</span>
-                            <span class="summary-total">376.000 đ</span>
-                        </div>
-                    </div>
-                    <a class="cart__continue" href="./productlist.html">
-                        <i class="ri-arrow-left-line" aria-hidden="true"></i>
-                        Tiếp tục mua hàng
-                    </a>
-                </section>
-            </div>
-
-            <!-- TRẠNG THÁI GIỎ HÀNG TRỐNG -->
-            <div class="cart__empty" id="cart__empty" hidden>
-                <i class="ri-shopping-bag-3-line" aria-hidden="true"></i>
-                <h2>Giỏ hàng của bạn đang trống</h2>
-                <p>Hãy thêm sản phẩm để tiếp tục mua sắm.</p>
-                <a href="./productlist.html">Tiếp tục mua hàng</a>
-            </div>
+        <section class="cart__empty" id="cart-empty">
+            <h2>Giỏ hàng của bạn đang trống</h2>
+            <p>Hãy thêm sản phẩm để tiếp tục mua sắm.</p>
         </section>
+
+        <a class="cart__continue" id="cart-continue" href="./productlist.html">← Tiếp tục mua hàng</a>
+        <noscript><p>Vui lòng bật JavaScript để xem và cập nhật giỏ hàng.</p></noscript>
     </main>
+    <script src="./assets/js/cart-storage.js"></script>
+    <script src="./assets/js/cart.js"></script>
 </body>
 </html>
