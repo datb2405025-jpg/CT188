@@ -152,6 +152,7 @@
     height: 48px;
   }
 }
+
 /* =========================================
    MAIN - BOOKSHELF
 ========================================= */
@@ -169,7 +170,8 @@
 .product-list__banner-image {
   width: 100%;
   height: 350px;
-  object-fit: cover; /* Để canh ảnh fit với khung mà giữ nguyên tỷ lệ gốc, phần vượt quá khung sẽ bị cắt*/
+  object-fit: cover;
+  /* Để canh ảnh fit với khung mà giữ nguyên tỷ lệ gốc, phần vượt quá khung sẽ bị cắt*/
   border-radius: 16px;
 }
 
@@ -186,6 +188,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
 .product-list__sort {
   display: flex;
   align-items: center;
@@ -221,6 +224,7 @@
   outline: 2px solid var(--color-green);
   outline-offset: 2px;
 }
+
 /* =========================================
    HIỂN THỊ SẢN PHẨM
 ========================================= */
@@ -266,22 +270,30 @@
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: contain; /* giữ nguyên tỷ lệ gốc nhưng co lại đến khi nằm trọn vẹn trong khung, nếu tỷ lệ không khớp sẽ có khoảng trống */
+  object-fit: contain;
+  /* giữ nguyên tỷ lệ gốc nhưng co lại đến khi nằm trọn vẹn trong khung, nếu tỷ lệ không khớp sẽ có khoảng trống */
   object-position: center;
+}
+
+.product-card__details {
+  width: 100%;
 }
 
 .product-card__title {
   text-align: center;
   font-size: large;
 }
+
 .product-card__author {
   font-size: medium;
   text-align: center;
 }
+
 .product-card__pricing {
   text-align: center;
   margin-bottom: 10px;
 }
+
 .product-card__discount {
   padding: 2px;
   background-color: orange;
@@ -298,6 +310,53 @@
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast);
+}
+
+.product-card__Quanity {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+}
+
+.quantity {
+  width: 48px;
+  height: 32px;
+  padding: 4px 8px;
+  border: 1px solid var(--color-green);
+  border-radius: 4px;
+  margin: 8px;
+  text-align: center;
+}
+
+.plusButton,
+.minusButton {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-green);
+  border-radius: 4px;
+  padding: 0px 8px
+}
+
+.plusButton:hover,
+.minusButton:hover {
+  background-color: var(--color-green-light);
+
+  color: var(--color-white);
+  border: 2px solid var(--color-green-light);
+}
+
+/* ẩn mũi tên lên xuống của input trên firefox */
+.quantity::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ẩn mũi tên lên xuống của input trên Chrome, Safari, Edge, Opera */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .product-card__add-button:focus-visible {
@@ -322,6 +381,7 @@
   .product-list__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
   .product-list__banner-image {
     height: 250px;
   }
@@ -345,6 +405,7 @@
     height: 200px;
     padding: 8px;
   }
+
   .product-list__banner-image {
     height: 100px;
   }
@@ -649,6 +710,7 @@
     font-size: 11px;
   }
 }
+
 /* ================================
    CHUYỂN ĐỔI FORM ĐĂNG NHẬP / ĐĂNG KÝ
 ================================ */
