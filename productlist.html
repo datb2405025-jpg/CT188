@@ -14,21 +14,39 @@
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="stylesheet" href="./assets/css/productList.css" />
   <link rel="stylesheet" href="./assets/css/login.css" />
+  <link rel="stylesheet" href="./assets/css/home.css">
   <title>Danh sách sản phẩm</title>
 </head>
 
 <body class="login-page">
   <!-- ================= HEADER: PHẦN ĐẦU TRANG ================= -->
-  <header class="auth-header">
-    <a href="./index.html" class="header-logo-link">
-      <img src="./assets/images/Bookshelf.png" alt="logo" />
-    </a>
-    <div class="header-right">
-      <a href="./cart.html" class="header-cart" title="Giỏ hàng">
-        <i class="ri-shopping-cart-2-line"></i>
+  <header class="home-header">
+    <div class="home-container header-inner">
+      <a class="brand" href="index.html" aria-label="Bookshelf - Trang chủ">
+        <img src="assets/images/Bookshelf.png" alt="Logo Bookshelf" class="brand-logo" />
       </a>
-      <img class="linhvat" src="./assets/images/linh-vat.png" alt="linhvat" />
-      <div class="header-greeting" id="greeting"></div>
+
+      <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false"
+        aria-controls="main-navigation">
+        <i class="ri-menu-line" aria-hidden="true"></i>
+      </button>
+
+      <nav class="main-navigation" id="main-navigation" aria-label="Điều hướng chính">
+        <a class="nav-link" href="index.html" aria-current="page">Trang chủ</a>
+        <a class="nav-link active" href="productlist.html">Sản phẩm</a>
+        <a class="nav-link" href="about.html">Giới thiệu</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-action" href="login.html" aria-label="Đăng nhập">
+          <i class="ri-user-line" aria-hidden="true"></i>
+          <span>Đăng nhập</span>
+        </a>
+        <a class="cart-action" href="cart.html" aria-label="Mở giỏ hàng">
+          <i class="ri-shopping-bag-3-line" aria-hidden="true"></i>
+          <span>Giỏ hàng</span>
+        </a>
+      </div>
     </div>
   </header>
 
