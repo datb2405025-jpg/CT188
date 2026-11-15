@@ -1,7 +1,5 @@
 /* =========================================================
-   BOOKSHELF - JAVASCRIPT RIÊNG CHO TRANG CHỦ
-   Không tạo HTML sản phẩm bằng JavaScript.
-   Nội dung các thẻ sách đã được viết trực tiếp trong index.html.
+
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
