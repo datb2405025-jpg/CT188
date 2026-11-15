@@ -1,0 +1,573 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap");
+:root {
+  --color-white: #ffffff;
+  --color-black: #111111;
+  --color-green: #166534;
+  --color-green-dark: #15803d ;
+  --color-green-light:#4ade80 ;
+
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #0f172a;
+
+  --color-bg: var(--color-white);
+  --color-surface: var(--color-white);
+  --color-surface-soft: var(--color-gray-50);
+  --color-text: var(--color-black);
+  --color-text-muted: var(--color-gray-600);
+  --color-border: var(--color-gray-200);
+  --color-primary: var(--color-blue);
+  --color-primary-hover: var(--color-blue-dark);
+  --color-primary-soft: var(--color-blue-light);
+
+  --color-gradient: linear-gradient(135deg, #2563eb 0%, #dbeafe 100%);
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(17, 17, 17, 0.08);
+  --shadow-md: 0 8px 24px rgba(17, 17, 17, 0.1);
+  --shadow-lg: 0 18px 45px rgba(17, 17, 17, 0.14);
+  --shadow-blue: 0 12px 30px rgba(37, 99, 235, 0.22);
+
+  --container-width: 1200px;
+  --container-padding: 16px;
+  --section-padding: 64px;
+
+  --transition-fast: 160ms ease;
+  --transition-base: 220ms ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body
+{
+    margin: 0;
+    font-family: "Be Vietnam Pro", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: rgb(189, 184, 158);
+}
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+  
+  
+    background-color: #4ade80;
+    border-bottom: 10px dashed #15803d;  
+    border-top: 10px dotted #15803d;
+    
+  
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.ri-home-9-fill
+{
+  cursor: pointer;
+  transition: background 2.0s ease;
+}
+
+.ri-home-9-fill:hover
+{
+  background: white;
+}
+
+/* ================================
+   HEADER BOOKSHELF
+================================ */
+
+.auth-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 85px;
+    padding: 0 5%;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e8edf2;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+
+    z-index: 100;
+}
+
+/* LOGO */
+
+.header-logo-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 180px;
+    height: 100%;
+}
+
+.header-logo-link img {
+    width: 100%;
+    height: auto;
+    max-height: 70px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.header-logo-link:hover img {
+    transform: scale(1.05);
+}
+
+/* KHU VỰC BÊN PHẢI */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    height: 100%;
+    position: relative;
+    margin-right: 80px;
+}
+
+/* LINH VẬT */
+
+.header-right .linhvat {
+    position: relative;
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+    transform: none;
+    top: auto;
+
+    transition: transform 0.3s ease;
+}
+
+.header-right .linhvat:hover {
+    transform: translateY(-5px);
+}
+
+/* LỜI CHÀO */
+
+.header-greeting {
+    color: #ffffff;
+    padding: 9px 18px;
+
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+
+    text-align: center;
+    white-space: nowrap;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease;
+}
+
+.header-greeting:hover {
+    transform: translateY(-2px);
+}
+
+.swap__banner
+{
+  position: relative;
+  width: 100%; 
+  height: 0 auto;
+  
+}
+
+.about__title,
+.about__title2{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  background-color: #4ade80;
+  border-radius: 30%;
+  border: 15px double #166534 ;
+  box-shadow: 5px 10px 3px rgb(11, 104, 11);
+  transition: transform 1.5s ease-in-out;
+}
+
+.about__title
+{
+  position:  absolute;
+}
+
+
+.about__title:hover{
+  transform: translateY(70px) rotateX(360deg);
+}
+
+.about__container_img
+{
+  
+  width: 100%;
+  max-width: 768px;
+  height: auto;
+  position: relative;
+  margin: 50px auto;
+}
+.about__img1,
+.about__img2
+{
+  width: 100%;
+  max-width: 768px;
+  transition: 1s ease-in-out;
+}
+
+.about__img1
+{
+  position: absolute
+}
+
+.about__img1:hover
+{
+  opacity: 0.0;
+}
+
+.about__img2:hover
+{
+  opacity: 1.0;
+}
+
+.about-grid
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 50px;
+  margin: 0 auto;
+  padding: 0 120px;
+}
+
+.about-grid__article
+{
+  background-color: #4ade80 ;
+  border: 10px solid rgb(194, 178, 89);
+  border-top-right-radius: 20%;
+  border-bottom-left-radius: 20%;
+  padding: 50px;
+  box-shadow: 10px 20px 5px gold;
+  transition: transform 1.5s ease-out, box-shadow 1.5s ease-in, scale 1.5s ease-in-out;
+}
+
+.about-grid__article:hover{
+  transform: translateY(-10px);
+  box-shadow: 10px 30px 10px rgb(255, 215, 0.24);
+  scale: 1.05;
+}
+
+.about-grid__article__title
+{
+  font-size: 30px;
+  text-align: center;
+  color: #166534;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.about-grid__article__2sides
+{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+.about-grid__article__img
+{
+  width: 100%;
+  height: auto;
+  border: 10px solid rgb(194, 178, 89);
+  border-top-right-radius: 20%;
+  border-bottom-left-radius: 20%;
+}
+
+.about-grid__article p
+{
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.9;
+  width: 100%;
+}
+
+/* =========================================
+   FOOTER - BOOKSHELF
+========================================= */
+
+.footer {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(
+        135deg,
+        #202b50,
+        #303e70,
+        #202b50
+    );
+
+    color: #ffffff;
+    padding: 55px 8% 0;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+/* ĐƯỜNG PHÂN CÁCH */
+
+.footer-line {
+    position: absolute;
+    top: 0;
+    left: 8%;
+
+    width: 84%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #8295ed,
+        #ffffff,
+        #8295ed,
+        transparent
+    );
+
+    border-radius: 10px;
+}
+
+/* =========================================
+   BỐ CỤC FOOTER
+========================================= */
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.3fr;
+    gap: 55px;
+
+    max-width: 1250px;
+    margin: 0 auto;
+    padding-bottom: 45px;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* =========================================
+   LOGO VÀ THƯƠNG HIỆU
+========================================= */
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.footer-brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+
+    transition: transform 0.3s ease;
+}
+
+.footer-brand img:hover {
+    transform: rotate(-8deg) scale(1.08);
+}
+
+.footter-brand-text {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.footer-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #d7def5;
+    margin-bottom: 10px;
+}
+
+.footer-slogan {
+    color: #aebcf5;
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   TIÊU ĐỀ CÁC CỘT
+========================================= */
+
+.footer-title-underline {
+    margin-bottom: 25px;
+}
+
+.footer-title {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+
+    margin-bottom: 10px;
+}
+
+.footer-underline {
+    width: 45px;
+    height: 3px;
+
+    background: #8295ed;
+    border-radius: 10px;
+
+    transition: width 0.3s ease;
+}
+
+.footer-item:hover .footer-underline {
+    width: 75px;
+}
+
+/* =========================================
+   DANH SÁCH LIÊN KẾT
+========================================= */
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-links li {
+    width: 100%;
+}
+
+.footer-links a {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+
+    color: #d7def5;
+    font-size: 14px;
+    line-height: 1.7;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.footer-links a i {
+    color: #91a5ff;
+    font-size: 18px;
+    margin-top: 1px;
+
+    transition: transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+.footer-links a:hover i {
+    color: #ffffff;
+}
+
+/* =========================================
+   MẠNG XÃ HỘI
+========================================= */
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    color: #ffffff;
+    font-size: 19px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 50%;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background: #8295ed;
+    border-color: #8295ed;
+
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(130, 149, 237, 0.3);
+}
+
+/* =========================================
+   FOOTER BOTTOM
+========================================= */
+
+.footer-bottom {
+    width: 100%;
+    padding: 20px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    text-align: center;
+}
+
+.footer-bottom p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    color: #cbd3ef;
+    font-size: 13px;
+    line-height: 1.8;
+
+    margin: 0;
+}
+
+.footer-bottom img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.footer-bottom i {
+    color: #aebcf5;
+}
