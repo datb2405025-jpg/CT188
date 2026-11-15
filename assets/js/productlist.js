@@ -1,68 +1,73 @@
 // AUTHOR: NGUYEN TRAN GIA HUY B2509664
 
-// Thao tác lấy dữ liệu từ cây DOM
+// Thao tác lấy phần tử trên DOM
 const sortSelect = document.querySelector("#sort");
 const productGrid = document.querySelector(".product-list__grid");
+const oldPriceElements = document.querySelectorAll(".product-card__old-price");
+const currentPriceElements = document.querySelectorAll(".product-card__current-price");
+const plusButtons = document.querySelectorAll(".plusButton");
+const minusButtons = document.querySelectorAll(".minusButton");
+const productCardElements = document.querySelectorAll(".product-card");
 
-// khởi tạo mảng chứa sản phầm trong giỏ hàng
-let updatedCartItems = [];
+// Trạng thái của trang web
+let cartItems = [];
+const productCards = Array.from(productCardElements);
+let currentSortType = sortSelect.value;
 
-// Lấy tất cả phần từ có class là product-card
-const productCards = Array.from(document.querySelectorAll(".product-card"));
+// Lưu danh sách sản phẩm theo thứ tự ban đầu
+const defaultProductCards = [...productCards];
 
-// Lưu thứ tự ban đầu
-const originalCards = [...productCards];
-
-// Thức hiện sort theo tiêu chí
+// Thực hiện sắp xếp theo tiêu chí
 sortSelect.addEventListener("change", function () {
-  const sortType = this.value;
-  let sortCards = [...productCards];
+  currentSortType = this.value;
+  let sortedCards = [...productCards];
 
-  switch (sortType) {
+  switch (currentSortType) {
     case "price-asc":
-      sortCards.sort((a, b) => {
-        const priceA = parseFloat(a.querySelector(".card-price").textContent);
-        const priceB = parseFloat(b.querySelector(".card-price").textContent);
+      sortedCards.sort((cardA, cardB) => {
+        const priceA = parseFloat(cardA.querySelector(".card-price").textContent);
+        const priceB = parseFloat(cardB.querySelector(".card-price").textContent);
         return priceA - priceB;
       });
       break;
     case "price-desc":
-      sortCards.sort((a, b) => {
-        const priceA = parseFloat(a.querySelector(".card-price").textContent);
-        const priceB = parseFloat(b.querySelector(".card-price").textContent);
+      sortedCards.sort((cardA, cardB) => {
+        const priceA = parseFloat(cardA.querySelector(".card-price").textContent);
+        const priceB = parseFloat(cardB.querySelector(".card-price").textContent);
         return priceB - priceA;
       });
       break;
     case "name-asc":
-      sortCards.sort((a, b) => {
-        const nameA = a.querySelector(".product-card__title").textContent.trim().toLowerCase();
-        const nameB = b.querySelector(".product-card__title").textContent.trim().toLowerCase();
+      sortedCards.sort((cardA, cardB) => {
+        const nameA = cardA.querySelector(".product-card__title").textContent.trim().toLowerCase();
+        const nameB = cardB.querySelector(".product-card__title").textContent.trim().toLowerCase();
         return nameA.localeCompare(nameB);
       });
       break;
     case "name-desc":
-      sortCards.sort((a, b) => {
-        const nameA = a.querySelector(".product-card__title").textContent.trim().toLowerCase();
-        const nameB = b.querySelector(".product-card__title").textContent.trim().toLowerCase();
+      sortedCards.sort((cardA, cardB) => {
+        const nameA = cardA.querySelector(".product-card__title").textContent.trim().toLowerCase();
+        const nameB = cardB.querySelector(".product-card__title").textContent.trim().toLowerCase();
         return nameB.localeCompare(nameA);
       });
       break;
     default:
-      sortCards = [...originalCards];
+      sortedCards = [...defaultProductCards];
       break;
   }
 
-  sortCards.forEach((card) => {
-    productGrid.appendChild(card); // Thêm vào mỗi phần tử của sortCards vào cuối productGrid nếu phần từ đã tồn tại thì sẽ di chuyển đến vị trí mới và không tạo bản sao
+  sortedCards.forEach((card) => {
+    productGrid.appendChild(card); // Thêm mỗi phần tử vào cuối productGrid (nếu đã tồn tại sẽ di chuyển vị trí, không tạo bản sao)
   });
 });
+
 // Nghiệp vụ giỏ hàng
 
-// Hàm kiểm tra item có trong giỏ chưa
-function isExistedInCart(item, cartItemArr) {
+// Hàm kiểm tra item đã có trong giỏ hàng chưa (trả về index hoặc -1)
+function findCartItemIndex(item, cartList) {
   let itemIndex = -1;
-  for (let i = 0; i < cartItemArr.length; i++) {
-    if (item.id === cartItemArr[i].id) {
+  for (let i = 0; i < cartList.length; i++) {
+    if (item.id === cartList[i].id) {
       itemIndex = i;
       break;
     }
@@ -70,123 +75,103 @@ function isExistedInCart(item, cartItemArr) {
   return itemIndex;
 }
 
+const addProductToCart = (e) => {
+  const buyButton = e.currentTarget;
 
-
-const orderSelectedProduct = (e) => {
-
-  const buyClicked = e.target;
-
-  if (typeof Storage !== undefined) {
-
-    let newItem = {
-      id: buyClicked.previousElementSibling.children[0].textContent,
-      price: buyClicked.previousElementSibling.children[1].textContent,
-      title: buyClicked.previousElementSibling.children[2].textContent,
-      quantity: buyClicked.previousElementSibling.children[5].children[1].value,
+  if (typeof Storage !== "undefined") {
+    const productInfoEl = buyButton.previousElementSibling;
+    const newItem = {
+      id: productInfoEl.children[0].textContent,
+      price: productInfoEl.children[1].textContent,
+      title: productInfoEl.children[2].textContent,
+      quantity: productInfoEl.children[5].children[1].value,
     };
 
-
-    if (JSON.parse(localStorage.getItem("cartItems")) === null) {
-      updatedCartItems.push(newItem);
-      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    const storedCart = JSON.parse(localStorage.getItem("cartItems"));
+    if (storedCart === null) {
+      cartItems.push(newItem);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
       location.reload();
-    }
+    } else {
+      cartItems = storedCart;
+      const existingIndex = findCartItemIndex(newItem, cartItems);
 
-    else {
-      updatedCartItems = JSON.parse(localStorage.getItem("cartItems"));
-
-      if (isExistedInCart(newItem, updatedCartItems) !== -1 /* (index = isExistedInCart(newItem, updatedCartItem)) !==-1 */) {
-        updatedCartItems[isExistedInCart(newItem, updatedCartItems)].quantity++;
+      if (existingIndex !== -1) {
+        const addedQuantity = parseInt(newItem.quantity, 10);
+        const currentQuantity = parseInt(cartItems[existingIndex].quantity, 10);
+        cartItems[existingIndex].quantity = JSON.stringify(addedQuantity + currentQuantity);
+      } else {
+        cartItems.push(newItem);
+        console.log(cartItems);
       }
-
-
-      else {
-        updatedCartItems.push(newItem);
-        console.log(updatedCartItems)
-      }
-      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
       alert("thêm vào giỏ hàng thành công");
       location.reload();
     }
-  }
-
-  else {
+  } else {
     alert("local storage is not working in your browser");
-
   }
 };
 
-function addEvent2AllCartButtons() {
-  const add2CartList = document.querySelectorAll(".product-card__add-button");
-  for (let item = 0; item < add2CartList.length; item++) {
-    add2CartList[item].addEventListener("click", orderSelectedProduct, false);
-  }
+function addEventToCartButtons() {
+  const addToCartButtons = document.querySelectorAll(".product-card__add-button");
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", addProductToCart, false);
+  });
 }
 
-// thay đổi số lượng sản phẩm cho vào giỏ hàng
-const changeQuanity = (e) => {
-  const changeButton = e.target
-  const quantityInput = changeButton.parentElement.querySelector(".quantity");
-  let quanityNumber = parseInt(quantityInput.value, 10)
-  if (changeButton.textContent === "+") {
-    quanityNumber++;
+// Thay đổi số lượng sản phẩm cho vào giỏ hàng
+const changeQuantity = (e) => {
+  const changeButton = e.target;
+  const quantityInput = changeButton.parentElement.children[1];
+
+  let quantity = parseInt(quantityInput.value, 10);
+  const typeOfChange = changeButton.textContent.trim();
+  if (typeOfChange === "-" && quantity > 1) {
+    quantity--;
   }
-  if (changeButton.textContent === "-") {
-    if (quanityNumber > 1)
-      quanityNumber--;
+  if (typeOfChange === "+") {
+    quantity++;
   }
+  quantityInput.value = quantity;
+};
 
-  quantityInput.value = quanityNumber;
-}
-
-
-// thêm sự kiện cho hai button tăng và giảm 
-function addEvent2QuanityButtons() {
-  const plusButtons = document.querySelectorAll(".plusButton");
-  const minusButtons = document.querySelectorAll(".minusButton");
-
+// Thêm sự kiện cho hai button tăng và giảm số lượng
+function addEventToQuantityButtons() {
   plusButtons.forEach((button) => {
-    button.addEventListener("click", changeQuanity, false)
-  })
+    button.addEventListener("click", changeQuantity, false);
+  });
   minusButtons.forEach((button) => {
-    button.addEventListener("click", changeQuanity, false)
-  })
+    button.addEventListener("click", changeQuantity, false);
+  });
 }
 
+function formatPrices() {
+  oldPriceElements.forEach((priceEl) => {
+    priceEl.innerText = Number(priceEl.innerText).toLocaleString("vi-VN", { style: "currency", currency: "VND" });
+  });
 
-
-
-
-function setPrice() {
-  const oldPrices = document.querySelectorAll(".product-card__old-price")
-  const currPrices = document.querySelectorAll(".product-card__current-price")
-
-  oldPrices.forEach(item => {
-    item.innerText = Number(item.innerText).toLocaleString("vi-VN", { style: "currency", currency: "VND" }, false)
-  })
-
-  currPrices.forEach(item => {
-    item.innerText = Number(item.innerText).toLocaleString("vi-VN", { style: "currency", currency: "VND" }, false)
-  })
+  currentPriceElements.forEach((priceEl) => {
+    priceEl.innerText = Number(priceEl.innerText).toLocaleString("vi-VN", { style: "currency", currency: "VND" });
+  });
 }
 
-function redirect2ShowCartPage() {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems"))
-  let displayNumber = document.querySelector(".ri-shopping-cart-2-line");
-  let numberOfItems = cartItems.length;
+function updateCartBadge() {
+  const cartData = JSON.parse(localStorage.getItem("cartItems"));
+  const cartBadge = document.querySelector(".ri-shopping-cart-2-line");
+  if (cartData === null || !cartBadge) return;
+  const numberOfItems = cartData.length;
   if (numberOfItems !== 0) {
-    displayNumber.textContent = numberOfItems;
+    cartBadge.textContent = numberOfItems;
   }
 }
-
-
 
 function setup() {
-  addEvent2AllCartButtons();
-  addEvent2QuanityButtons();
-  redirect2ShowCartPage();
-  setPrice()
+  addEventToCartButtons();
+  addEventToQuantityButtons();
+  updateCartBadge();
+  formatPrices();
 }
 
-
 window.addEventListener("load", setup, false);
+
