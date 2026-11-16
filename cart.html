@@ -4,15 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/images/Bookshelf.png">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
     <link rel="stylesheet" href="./assets/css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+    <script src="./assets/js/home.js" defer></script>
     <title>Giỏ hàng | Bookshelf</title>
 </head>
 <body class="cart-page">
+  <header class="home-header">
+    <div class="home-container header-inner">
+      <a class="brand" href="index.html" aria-label="Bookshelf - Trang chủ">
+        <img src="assets/images/Bookshelf.png" alt="Logo Bookshelf" class="brand-logo" />
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false"
+        aria-controls="main-navigation">
+        <i class="ri-menu-line" aria-hidden="true"></i>
+      </button>
+
+      <nav class="main-navigation" id="main-navigation" aria-label="Điều hướng chính">
+        <a class="nav-link" href="index.html">Trang chủ</a>
+        <a class="nav-link" href="productlist.html">Sản phẩm</a>
+        <a class="nav-link" href="about.html">Giới thiệu</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="cart-action" href="cart.html" aria-current="page" aria-label="Mở giỏ hàng">
+          <i class="ri-shopping-bag-3-line" aria-hidden="true"></i>
+          <span>Giỏ hàng</span>
+        </a>
+      </div>
+    </div>
+  </header>
     <main class="cart">
-        <nav class="cart__navigation" aria-label="Điều hướng giỏ hàng">
-            <a class="cart__logo" href="./index.html">Bookshelf</a>
-            <a href="./productlist.html">Danh sách sản phẩm</a>
-        </nav>
         <header class="cart__heading">
             <h1>Giỏ hàng</h1>
             <p id="cart-count" aria-live="polite">0 sản phẩm</p>
@@ -65,6 +90,91 @@
         <a class="cart__continue" id="cart-continue" href="./productlist.html">← Tiếp tục mua hàng</a>
         <noscript><p>Vui lòng bật JavaScript để xem và cập nhật giỏ hàng.</p></noscript>
     </main>
+  <footer class="home-footer" id="footer">
+    <div class="footer-line" aria-hidden="true"></div>
+    <div class="home-container footer-content">
+      <div class="footer-item footer-bookshelf">
+        <div class="footer-brand">
+          <img src="assets/images/logo-footer.png" alt="Logo Bookshelf" />
+        </div>
+        <p class="footer-text">
+          Lan tỏa tri thức <br />
+          nuôi dưỡng đam mê.
+        </p>
+        <p class="footer-slogan">Mỗi trang sách, một chân trời mới.</p>
+        <div class="footer-title-underline">
+          <h2 class="footer-title">Tìm hiểu nhiều hơn</h2>
+          <span class="footer-underline" aria-hidden="true"></span>
+        </div>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook (chưa cập nhật liên kết)" title="Facebook (chưa cập nhật liên kết)"><i
+              class="ri-facebook-fill" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram (chưa cập nhật liên kết)" title="Instagram (chưa cập nhật liên kết)"><i
+              class="ri-instagram-fill" aria-hidden="true"></i></a>
+          <a href="#" aria-label="TikTok (chưa cập nhật liên kết)" title="TikTok (chưa cập nhật liên kết)"><i
+              class="ri-tiktok-fill" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter (chưa cập nhật liên kết)" title="Twitter (chưa cập nhật liên kết)"><i
+              class="ri-twitter-fill" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-item footer-about">
+        <div class="footer-title-underline">
+          <h2 class="footer-title">BOOKSHELF VIỆT NAM</h2>
+          <span class="footer-underline" aria-hidden="true"></span>
+        </div>
+        <ul class="footer-links">
+          <li>
+            <a href="index.html"><i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+              BOOKSHELF</a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Tuyển
+              dụng</a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Điều
+              khoản</a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Chính
+              sách bảo mật</a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Flash
+              Sale</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-item footer-contact">
+        <div class="footer-title-underline">
+          <h2 class="footer-title">LIÊN HỆ BOOKSHELF</h2>
+          <span class="footer-underline" aria-hidden="true"></span>
+        </div>
+        <ul class="footer-links">
+          <li>
+            <span class="footer-detail"><i class="ri-map-pin-fill" aria-hidden="true"></i><span>97 Đường 3/2, P. Xuân
+                Khánh, Q. Ninh Kiều, TP. Cần Thơ</span></span>
+          </li>
+          <li>
+            <a href="tel:0979797970"><i class="ri-phone-fill" aria-hidden="true"></i><span>0979 797 970</span></a>
+          </li>
+          <li>
+            <a href="mailto:cskh@bookshelf.com.vn"><i class="ri-mail-line"
+                aria-hidden="true"></i><span>cskh@bookshelf.com.vn</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>
+        © 2026
+        <img src="assets/images/logo-footer.png" alt="" aria-hidden="true" />
+        Bookshelf · Thực hiện bởi Nhóm 6 – CT188.
+      </p>
+    </div>
+  </footer>
     <div class="cart__success" id="cart-success">
         <div class="cart__success-box" role="dialog" aria-modal="true" aria-labelledby="cart-success-title">
             <span class="cart__success-icon" aria-hidden="true">✓</span>
