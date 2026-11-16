@@ -18,32 +18,45 @@
             <p id="cart-count" aria-live="polite">0 sản phẩm</p>
         </header>
         <div id="cart-content">
-            <div class="cart__table-wrapper">
-                <table class="cart__table" aria-label="Sản phẩm trong giỏ hàng">
-                    <thead>
-                        <tr>
-                            <th scope="col">Sản phẩm</th>
-                            <th scope="col">Đơn giá</th>
-                            <th scope="col">Số lượng</th>
-                            <th scope="col">Thành tiền</th>
-                            <th scope="col">Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cart-body"></tbody>
-                </table>
+            <div class="cart__layout">
+                <div class="cart__table-wrapper">
+                    <table class="cart__table" aria-label="Sản phẩm trong giỏ hàng">
+                        <thead>
+                            <tr>
+                                <th scope="col">Sản phẩm</th>
+                                <th scope="col">Đơn giá</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Thành tiền</th>
+                                <th scope="col">Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-body"></tbody>
+                    </table>
+                </div>
+                <form class="cart__summary" id="cart-checkout-form" aria-labelledby="cart-summary-title">
+                    <h2 id="cart-summary-title">Thông tin đặt hàng</h2>
+                    <label class="cart__field" for="cart-fullname">
+                        Họ và tên
+                        <input id="cart-fullname" type="text" name="fullname" autocomplete="name"
+                            placeholder="Nhập họ và tên" required>
+                    </label>
+                    <label class="cart__field" for="cart-phone">
+                        Số điện thoại
+                        <input id="cart-phone" type="tel" name="phone" autocomplete="tel"
+                            pattern="[+]?[0-9]{9,15}" title="Nhập từ 9 đến 15 chữ số, có thể bắt đầu bằng dấu +."
+                            placeholder="Ví dụ: 0901234567" required>
+                    </label>
+                    <label class="cart__field" for="cart-address">
+                        Địa chỉ nhận hàng
+                        <input id="cart-address" type="text" name="address" autocomplete="street-address"
+                            placeholder="Số nhà, đường, phường/xã, tỉnh/thành" required>
+                    </label>
+                    <p>Tạm tính <span id="cart-subtotal">0 đ</span></p>
+                    <p>Giao hàng <span>Miễn phí</span></p>
+                    <p class="cart__total">Tổng cộng <strong id="cart-total">0 đ</strong></p>
+                    <button class="cart__checkout" id="cart-checkout" type="submit">Thanh toán</button>
+                </form>
             </div>
-            <section class="cart__summary">
-                <h2>Tóm tắt đơn hàng</h2>
-                <p>Tạm tính <span id="cart-subtotal">0 đ</span></p>
-                <p>Giao hàng <span>Miễn phí</span></p>
-                <label class="cart__address" for="cart-address">
-                    Giao đến
-                    <input id="cart-address" type="text" name="address" autocomplete="street-address"
-                        placeholder="Nhập địa chỉ nhận hàng" required>
-                </label>
-                <p class="cart__total">Tổng cộng <strong id="cart-total">0 đ</strong></p>
-                <button class="cart__checkout" id="cart-checkout" type="button">Thanh toán</button>
-            </section>
         </div>
         <section class="cart__empty" id="cart-empty">
             <h2>Giỏ hàng của bạn đang trống</h2>
@@ -52,6 +65,13 @@
         <a class="cart__continue" id="cart-continue" href="./productlist.html">← Tiếp tục mua hàng</a>
         <noscript><p>Vui lòng bật JavaScript để xem và cập nhật giỏ hàng.</p></noscript>
     </main>
+    <div class="cart__success" id="cart-success">
+        <div class="cart__success-box" role="dialog" aria-modal="true" aria-labelledby="cart-success-title">
+            <span class="cart__success-icon" aria-hidden="true">✓</span>
+            <h2 id="cart-success-title">Đã thanh toán thành công!</h2>
+            <button id="cart-success-close" type="button">Đóng</button>
+        </div>
+    </div>
     <script src="./assets/js/cart-storage.js"></script>
     <script src="./assets/js/cart.js"></script>
 </body>

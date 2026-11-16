@@ -1,4 +1,4 @@
-// Chương 4: lưu và đọc mảng sản phẩm bằng Web Storage và JSON.
+
 function getCartProducts() {
     const savedCart = localStorage.getItem('cartItems');
     if (savedCart === null) {

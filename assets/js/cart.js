@@ -7,8 +7,32 @@ const cartEmpty = document.getElementById('cart-empty');
 const cartCount = document.getElementById('cart-count');
 const cartSubtotal = document.getElementById('cart-subtotal');
 const cartTotal = document.getElementById('cart-total');
-const checkoutButton = document.getElementById('cart-checkout');
+const checkoutForm = document.getElementById('cart-checkout-form');
+const fullNameInput = document.getElementById('cart-fullname');
+const phoneInput = document.getElementById('cart-phone');
 const addressInput = document.getElementById('cart-address');
+const successMessage = document.getElementById('cart-success');
+const closeSuccessButton = document.getElementById('cart-success-close');
+
+function clearCheckoutMessage() {
+    const wasOpen = successMessage.style.display === 'flex';
+    successMessage.style.display = 'none';
+    document.body.style.overflow = '';
+    if (wasOpen) {
+        document.getElementById('cart-checkout').focus();
+    }
+}
+
+closeSuccessButton.addEventListener('click', clearCheckoutMessage);
+successMessage.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        clearCheckoutMessage();
+    }
+    if (event.key === 'Tab') {
+        event.preventDefault();
+        closeSuccessButton.focus();
+    }
+});
 
 // Định dạng tiền theo ví dụ giỏ hàng trong chương 4.
 function formatPrice(amount) {
@@ -34,6 +58,7 @@ function createButton(parent, text, label) {
 }
 
 function updateTotals() {
+    clearCheckoutMessage();
     let quantity = 0;
     let total = 0;
 
@@ -134,18 +159,23 @@ function addProductRow(product) {
     updateRow();
 }
 
-// Nút thanh toán chỉ thông báo tổng tiền của đơn hàng mẫu.
-checkoutButton.addEventListener('click', function () {
+// Thông báo thành công cho thao tác thanh toán mẫu sau khi kiểm tra form.
+checkoutForm.addEventListener('submit', function (event) {
+    event.preventDefault();
     if (cartProducts.length > 0) {
+        fullNameInput.value = fullNameInput.value.trim();
+        phoneInput.value = phoneInput.value.trim();
         addressInput.value = addressInput.value.trim();
-        if (!addressInput.reportValidity()) {
+        if (!checkoutForm.reportValidity()) {
             return;
         }
-        alert('Tổng tiền: ' + cartTotal.textContent +
-            '\nGiao đến: ' + addressInput.value +
-            '\nĐây là đơn hàng mẫu, chức năng thanh toán trực tuyến chưa được triển khai.');
+        successMessage.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        closeSuccessButton.focus();
     }
 });
+
+checkoutForm.addEventListener('input', clearCheckoutMessage);
 
 function showCart() {
     cartProducts = getCartProducts();
