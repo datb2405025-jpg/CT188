@@ -8,6 +8,13 @@ const currentPriceElements = document.querySelectorAll(".product-card__current-p
 const plusButtons = document.querySelectorAll(".plusButton");
 const minusButtons = document.querySelectorAll(".minusButton");
 const productCardElements = document.querySelectorAll(".product-card");
+const categoryPill = document.querySelectorAll(".category-pill")
+
+
+
+
+
+
 
 // Trạng thái của trang web
 let cartItems = [];
@@ -81,9 +88,9 @@ const addProductToCart = (e) => {
   if (typeof Storage !== "undefined") {
     const productInfoEl = buyButton.previousElementSibling;
     const newItem = {
-      id: productInfoEl.children[0].textContent,
-      price: productInfoEl.children[1].textContent,
-      title: productInfoEl.children[2].textContent,
+      id: productInfoEl.children[0].textContent.trim(),
+      price: productInfoEl.children[1].textContent.trim(),
+      title: productInfoEl.children[2].textContent.trim(),
       quantity: productInfoEl.children[5].children[1].value,
     };
 
@@ -165,6 +172,8 @@ function updateCartBadge() {
     cartBadge.textContent = numberOfItems;
   }
 }
+
+
 
 function setup() {
   addEventToCartButtons();

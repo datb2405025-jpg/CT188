@@ -61,8 +61,27 @@
       <img class="product-list__banner-image" src="./assets/images/productList_images/banner.png" alt="header_img" />
     </section>
 
-    <!-- SẮP XẾP THỨ TỰ -->
     <section class="product-list__toolbar">
+      
+      <!--CHỌN THỂ LOẠI  -->
+      <div class="product-list__categories" role="group" aria-label="Chọn thể loại sách">
+        <button type="button" class="category-pill active" data-category="all">
+          Tất cả
+        </button>
+        <button type="button" class="category-pill" data-category="van-hoc">
+          Văn học
+        </button>
+        <button type="button" class="category-pill" data-category="ky-nang">
+          Kỹ năng sống
+        </button>
+        <button type="button" class="category-pill" data-category="kinh-te">
+          Kinh tế
+        </button>
+        <button type="button" class="category-pill" data-category="tam-ly">
+          Tâm lý
+        </button>
+      </div>
+      <!-- SẮP XẾP THỨ TỰ -->
       <div class="product-list__sort">
         <label for="sort">Sắp xếp theo: </label>
         <select class="product-list__sort-select" id="sort">
@@ -78,7 +97,7 @@
 
     <!-- LƯỚI SẢN PHẨM -->
     <section class="product-list__grid">
-      <article class="product-card">
+      <article class="product-card" data-category="van-hoc">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/goc-nho-co-nang.webp" alt="Góc Nhỏ Có Nắng" />
@@ -87,6 +106,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>1</span>
           <span class="card-price" hidden>47000</span>
+          <p class="product-card__category">Văn học</p>
           <h2 class="product-card__title">
             <a href="#"> Góc Nhỏ Có Nắng</a>
           </h2>
@@ -105,7 +125,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="van-hoc">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/nha-gia-kim.jpg" alt="Nhà Giả Kim" />
@@ -114,6 +134,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>2</span>
           <span class="card-price" hidden>79000</span>
+          <p class="product-card__category">Văn học</p>
           <h2 class="product-card__title">
             <a href="#">Nhà Giả Kim</a>
           </h2>
@@ -133,7 +154,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="ky-nang">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/tuoi-tre-dang-gia-bao-nhieu.jpg"
@@ -143,6 +164,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>3</span>
           <span class="card-price" hidden>68000</span>
+          <p class="product-card__category">Kỹ năng sống</p>
           <h2 class="product-card__title">
             <a href="#">Tuổi Trẻ Đáng Giá Bao Nhiêu</a>
           </h2>
@@ -162,7 +184,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="ky-nang">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/dac-nhan-tam.jpg" alt="Đắc Nhân Tâm" />
@@ -171,6 +193,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>4</span>
           <span class="card-price" hidden>75000</span>
+          <p class="product-card__category">Kỹ năng sống</p>
           <h2 class="product-card__title">
             <a href="#">Đắc Nhân Tâm</a>
           </h2>
@@ -190,7 +213,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="tam-ly">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/di-tim-le-song.jpeg" alt="Đi Tìm Lẽ Sống" />
@@ -199,6 +222,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>5</span>
           <span class="card-price" hidden>81000</span>
+          <p class="product-card__category">Tâm lý</p>
           <h2 class="product-card__title">
             <a href="#">Đi Tìm Lẽ Sống</a>
           </h2>
@@ -218,7 +242,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="van-hoc">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/cay-cam-ngot-cua-toi.jpeg" alt="Cây Cam Ngọt Của Tôi" />
@@ -227,6 +251,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>6</span>
           <span class="card-price" hidden>84000</span>
+          <p class="product-card__category">Văn học</p>
           <h2 class="product-card__title">
             <a href="#">Cây Cam Ngọt Của Tôi</a>
           </h2>
@@ -246,7 +271,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="tam-ly">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/muon_kiep_nhan_sinh.jpeg" alt="Muôn Kiếp Nhân Sinh" />
@@ -255,6 +280,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>7</span>
           <span class="card-price" hidden>109000</span>
+          <p class="product-card__category">Tâm lý</p>
           <h2 class="product-card__title">
             <a href="#">Muôn Kiếp Nhân Sinh</a>
           </h2>
@@ -274,7 +300,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="van-hoc">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/bo-gia.jpeg" alt="Bố Già" />
@@ -283,6 +309,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>8</span>
           <span class="card-price" hidden>101000</span>
+          <p class="product-card__category">Văn học</p>
           <h2 class="product-card__title">
             <a href="#">Bố Già</a>
           </h2>
@@ -301,7 +328,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="van-hoc">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/mat-biec.jpg" alt="Mắt Biếc" />
@@ -310,6 +337,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>9</span>
           <span class="card-price" hidden>72000</span>
+          <p class="product-card__category">Văn học</p>
           <h2 class="product-card__title">
             <a href="#">Mắt Biếc</a>
           </h2>
@@ -329,7 +357,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="van-hoc">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/de-men-phieu-luu-ky.jpg" alt="Dế Mèn Phiêu Lưu Ký" />
@@ -338,6 +366,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>10</span>
           <span class="card-price" hidden>49000</span>
+          <p class="product-card__category">Văn học</p>
           <h2 class="product-card__title">
             <a href="#">Dế Mèn Phiêu Lưu Ký</a>
           </h2>
@@ -357,7 +386,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="kinh-te">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/sapiens-luoc-su-loai-nguoi.png"
@@ -367,6 +396,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>11</span>
           <span class="card-price" hidden>152000</span>
+          <p class="product-card__category">Kinh tế</p>
           <h2 class="product-card__title">
             <a href="#">Sapiens: Lược Sử Loài Người</a>
           </h2>
@@ -386,7 +416,7 @@
         <button class="product-card__add-button">Thêm vào giỏ hàng</button>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-category="kinh-te">
         <div class="product-card__image">
           <a href="#">
             <img src="./assets/images/productList_images/rung-xanh.webp" alt="Sapiens: Lược Sử Loài Người" />
@@ -395,6 +425,7 @@
         <div class="product-card__details">
           <span class="card-id" hidden>12</span>
           <span class="card-price" hidden>196200</span>
+          <p class="product-card__category">Kinh tế</p>
           <h2 class="product-card__title">
             <a href="#">Rừng xanh nước bạc</a>
           </h2>
