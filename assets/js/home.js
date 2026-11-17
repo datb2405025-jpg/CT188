@@ -10,11 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (menuButton && navigation) {
     menuButton.addEventListener("click", function () {
       const isOpen = navigation.classList.toggle("is-open");
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Đóng menu" : "Mở menu");
       menuButton.innerHTML = isOpen
-        ? '<i class="ri-close-line" aria-hidden="true"></i>'
-        : '<i class="ri-menu-line" aria-hidden="true"></i>';
+        ? '<i class="ri-close-line"></i>'
+        : '<i class="ri-menu-line"></i>';
     });
   }
 
@@ -31,7 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
-      .replace(/đ/g, "d");
+      .replace(/đ/g, "d")
+      .replace(/\s+/g, " ")
+      .trim();
   }
 
   if (searchInput && bookCards.length > 0) {
