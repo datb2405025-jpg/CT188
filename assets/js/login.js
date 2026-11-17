@@ -79,33 +79,6 @@ if (switchLogin) {
     });
 }
 // ====================================
-// LỜI CHÀO THEO THỜI GIAN
-// ====================================
-const setGreeting = () => {
-    const greetingElement = document.getElementById("greeting");
-    if (!greetingElement) return;
-    const hour = new Date().getHours();
-    let greeting = "";
-    let gradient = "";
-    if (hour >= 5 && hour < 12) {
-        greeting = "Bookshelf chúc bạn có một buổi sáng vui vẻ ☀️";
-        gradient = "linear-gradient(135deg, #f97316, #fbbf24)";
-    } else if (hour >= 12 && hour < 18) {
-        greeting = "Bookshelf chúc bạn có một buổi chiều vui vẻ 🌤️";
-        gradient = "linear-gradient(135deg, #f97316, #ef4444)";
-    } else if (hour >= 18 && hour < 23) {
-        greeting = "Bookshelf chúc bạn có một buổi tối vui vẻ 🌙";
-        gradient = "linear-gradient(135deg, #3b82f6, #60a5fa)";
-    } else {
-        greeting = "Bookshelf chúc bạn ngủ ngon 💤";
-        gradient = "linear-gradient(135deg, #6366f1, #111827)";
-    }
-    greetingElement.textContent = greeting;
-    greetingElement.style.background = gradient;
-};
-setGreeting();
-setInterval(setGreeting, 60000);
-// ====================================
 // HIỂN THỊ / ẨN MẬT KHẨU
 // ====================================
 const passwordInputs = document.querySelectorAll(".password-input");
