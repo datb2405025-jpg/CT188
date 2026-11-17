@@ -1,16 +1,25 @@
+[hidden] {
+  display: none !important;
+  /* Tránh để bộ trọn hidden của trình duyệt bị ghi đè */
+}
+
 /* =========================================
    MAIN - BOOKSHELF
 ========================================= */
 
 .product-list {
   display: block;
-  width: 95%;
-  margin: 0px1;
+  width: 100%;
+  padding: 16px 32px;
 }
 
 /* =========================================
    BANNER
 ========================================= */
+
+.product-list__banner {
+  margin-top: 250px;
+}
 
 .product-list__banner-image {
   width: 100%;
@@ -198,7 +207,7 @@
 
 .product-card__add-button {
   width: 45%;
-  min-width: 165px;
+  min-width: 180px;
   padding: 8px 12px;
   background-color: var(--color-white);
   border: var(--color-green-light) solid 2px;
