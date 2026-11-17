@@ -1,3 +1,19 @@
+// Ảnh bìa sách có sẵn, đối chiếu theo mã sản phẩm.
+const cartBookImages = [
+    {"image": "./assets/images/productList_images/goc-nho-co-nang.webp", "id": "1"},
+    {"image": "./assets/images/productList_images/nha-gia-kim.jpg", "id": "2"},
+    {"image": "./assets/images/productList_images/tuoi-tre-dang-gia-bao-nhieu.jpg", "id": "3"},
+    {"image": "./assets/images/productList_images/dac-nhan-tam.jpg", "id": "4"},
+    {"image": "./assets/images/productList_images/di-tim-le-song.jpeg", "id": "5"},
+    {"image": "./assets/images/productList_images/cay-cam-ngot-cua-toi.jpeg", "id": "6"},
+    {"image": "./assets/images/productList_images/muon_kiep_nhan_sinh.jpeg", "id": "7"},
+    {"image": "./assets/images/productList_images/bo-gia.jpeg", "id": "8"},
+    {"image": "./assets/images/productList_images/mat-biec.jpg", "id": "9"},
+    {"image": "./assets/images/productList_images/de-men-phieu-luu-ky.jpg", "id": "10"},
+    {"image": "./assets/images/productList_images/sapiens-luoc-su-loai-nguoi.png", "id": "11"},
+    {"image": "./assets/images/productList_images/rung-xanh.webp", "id": "12"}
+];
+
 // Đọc các sản phẩm được chọn từ trang danh sách sản phẩm.
 let cartProducts = [];
 
@@ -13,6 +29,45 @@ const phoneInput = document.getElementById('cart-phone');
 const addressInput = document.getElementById('cart-address');
 const successMessage = document.getElementById('cart-success');
 const closeSuccessButton = document.getElementById('cart-success-close');
+const formError = document.getElementById('cart-form-error');
+const dataError = document.getElementById('cart-data-error');
+const repairButton = document.getElementById('cart-repair');
+const menuButton = document.querySelector('.menu-toggle');
+const navigation = document.getElementById('main-navigation');
+
+function showStorageMessage() {
+    repairButton.style.display = cartHasInvalidProducts ? 'inline-block' : 'none';
+    dataError.textContent = cartStorageMessage;
+    if (cartStorageMessage === '') {
+        dataError.style.display = 'none';
+    } else {
+        dataError.style.display = 'block';
+    }
+}
+
+// Giữ lại các sản phẩm hợp lệ, bỏ các bản ghi cũ thiếu dữ liệu.
+repairButton.addEventListener('click', function () {
+    if (saveCartProducts(cartProducts)) {
+        showCart();
+    } else {
+        showStorageMessage();
+    }
+});
+
+// Chương 4: sự kiện click và đổi lớp CSS.
+menuButton.addEventListener('click', function () {
+    if (navigation.classList.contains('is-open')) {
+        navigation.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Mở menu');
+        menuButton.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
+    } else {
+        navigation.classList.add('is-open');
+        menuButton.setAttribute('aria-expanded', 'true');
+        menuButton.setAttribute('aria-label', 'Đóng menu');
+        menuButton.innerHTML = '<i class="ri-close-line" aria-hidden="true"></i>';
+    }
+});
 
 function clearCheckoutMessage() {
     const wasOpen = successMessage.style.display === 'flex';
@@ -83,6 +138,17 @@ function updateTotals() {
 function addProductRow(product) {
     const row = document.createElement('tr');
     const productCell = createCell(row, '', 'cart__product');
+    for (let i = 0; i < cartBookImages.length; i++) {
+        if (cartBookImages[i].id === String(product.id)) {
+            const cover = document.createElement('img');
+            cover.className = 'cart__book-image';
+            cover.src = cartBookImages[i].image;
+            cover.alt = 'Bìa sách ' + product.name;
+            productCell.appendChild(cover);
+            break;
+        }
+    }
+
 
     const name = document.createElement('strong');
     name.className = 'cart__product-name';
@@ -122,7 +188,12 @@ function addProductRow(product) {
     decrease.addEventListener('click', function () {
         if (product.quantity > 1) {
             product.quantity--;
-            saveCartProducts(cartProducts);
+            if (!saveCartProducts(cartProducts)) {
+                product.quantity++;
+                showStorageMessage();
+                return;
+            }
+            showStorageMessage();
             updateRow();
             if (decrease.disabled) {
                 increase.focus();
@@ -132,7 +203,12 @@ function addProductRow(product) {
 
     increase.addEventListener('click', function () {
         product.quantity++;
-        saveCartProducts(cartProducts);
+        if (!saveCartProducts(cartProducts)) {
+            product.quantity--;
+            showStorageMessage();
+            return;
+        }
+        showStorageMessage();
         updateRow();
     });
 
@@ -141,11 +217,16 @@ function addProductRow(product) {
         for (let i = 0; i < cartProducts.length; i++) {
             if (cartProducts[i] === product) {
                 cartProducts.splice(i, 1);
+                if (!saveCartProducts(cartProducts)) {
+                    cartProducts.splice(i, 0, product);
+                    showStorageMessage();
+                    return;
+                }
+                showStorageMessage();
                 break;
             }
         }
         cartBody.removeChild(row);
-        saveCartProducts(cartProducts);
         updateTotals();
 
         if (nextRow) {
@@ -160,25 +241,50 @@ function addProductRow(product) {
 }
 
 // Thông báo thành công cho thao tác thanh toán mẫu sau khi kiểm tra form.
+function showFormError(input, message) {
+    formError.textContent = message;
+    formError.style.display = 'block';
+    input.focus();
+}
+
 checkoutForm.addEventListener('submit', function (event) {
     event.preventDefault();
     if (cartProducts.length > 0) {
         fullNameInput.value = fullNameInput.value.trim();
         phoneInput.value = phoneInput.value.trim();
         addressInput.value = addressInput.value.trim();
-        if (!checkoutForm.reportValidity()) {
+        if (fullNameInput.value === '') {
+            showFormError(fullNameInput, 'Vui lòng nhập họ và tên.');
             return;
         }
+        // Kiểm tra chuỗi và biểu thức chính quy theo ví dụ form chương 4.
+        const phone = phoneInput.value.replace(/\s/g, '');
+        if (!/^[+]?[0-9]{9,15}$/.test(phone)) {
+            showFormError(phoneInput, 'Số điện thoại cần từ 9 đến 15 chữ số, có thể bắt đầu bằng dấu +.');
+            return;
+        }
+        if (addressInput.value === '') {
+            showFormError(addressInput, 'Vui lòng nhập địa chỉ nhận hàng.');
+            return;
+        }
+        phoneInput.value = phone;
+        formError.textContent = '';
+        formError.style.display = 'none';
         successMessage.style.display = 'flex';
         document.body.style.overflow = 'hidden';
         closeSuccessButton.focus();
     }
 });
 
-checkoutForm.addEventListener('input', clearCheckoutMessage);
+checkoutForm.addEventListener('input', function () {
+    clearCheckoutMessage();
+    formError.textContent = '';
+    formError.style.display = 'none';
+});
 
 function showCart() {
     cartProducts = getCartProducts();
+    showStorageMessage();
     while (cartBody.firstChild) {
         cartBody.removeChild(cartBody.firstChild);
     }

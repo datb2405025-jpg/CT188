@@ -87,8 +87,8 @@ const addProductToCart = (e) => {
     const newItem = {
       id: productInfoEl.children[0].textContent.trim(),
       price: productInfoEl.children[1].textContent.trim(),
-      title: productInfoEl.children[2].textContent.trim(),
-      quantity: productInfoEl.children[5].children[1].value,
+      title: productInfoEl.querySelector(".product-card__title").textContent.trim(),
+      quantity: productInfoEl.querySelector(".quantity").value,
     };
 
     const storedCart = JSON.parse(localStorage.getItem("cartItems"));
