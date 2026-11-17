@@ -9,11 +9,7 @@ const plusButtons = document.querySelectorAll(".plusButton");
 const minusButtons = document.querySelectorAll(".minusButton");
 const productCardElements = document.querySelectorAll(".product-card");
 const categoryPill = document.querySelectorAll(".category-pill")
-
-
-
-
-
+const addToCartButtons = document.querySelectorAll(".product-card__add-button");
 
 
 // Trạng thái của trang web
@@ -24,9 +20,10 @@ let currentSortType = sortSelect.value;
 // Lưu danh sách sản phẩm theo thứ tự ban đầu
 const defaultProductCards = [...productCards];
 
-// Thực hiện sắp xếp theo tiêu chí
-sortSelect.addEventListener("change", function () {
-  currentSortType = this.value;
+const sortItems = () => {
+
+  const sortType = document.querySelector(".product-list__sort-select")
+  currentSortType = sortType.value;
   let sortedCards = [...productCards];
 
   switch (currentSortType) {
@@ -66,7 +63,7 @@ sortSelect.addEventListener("change", function () {
   sortedCards.forEach((card) => {
     productGrid.appendChild(card); // Thêm mỗi phần tử vào cuối productGrid (nếu đã tồn tại sẽ di chuyển vị trí, không tạo bản sao)
   });
-});
+}
 
 // Nghiệp vụ giỏ hàng
 
@@ -121,7 +118,6 @@ const addProductToCart = (e) => {
 };
 
 function addEventToCartButtons() {
-  const addToCartButtons = document.querySelectorAll(".product-card__add-button");
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", addProductToCart, false);
   });
@@ -173,6 +169,8 @@ function updateCartBadge() {
   }
 }
 
+// Thực hiện sắp xếp theo tiêu chí
+sortSelect.addEventListener("change", sortItems, false);
 
 
 function setup() {
@@ -180,6 +178,7 @@ function setup() {
   addEventToQuantityButtons();
   updateCartBadge();
   formatPrices();
+  updateCartBadge();
 }
 
 window.addEventListener("load", setup, false);

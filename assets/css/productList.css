@@ -5,7 +5,7 @@
 .product-list {
   display: block;
   width: 95%;
-  margin: 24px auto;
+  margin: 0px1;
 }
 
 /* =========================================
@@ -42,7 +42,7 @@
   background-color: var(--color-white);
   padding: 8px;
   border-radius: 16px;
-  min-width: 0;
+  height: 50%;
 }
 
 .product-list__sort-select {
@@ -280,6 +280,21 @@ input[type="number"] {
 
   .product-list__banner-image {
     height: 250px;
+  }
+
+  .product-list__toolbar {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+
+  .product-list__categories {
+    flex-direction: row;
+    justify-content: baseline;
+  }
+
+  .product-list__sort {
+    margin-bottom: 10px;
+    width: 100%;
   }
 }
 

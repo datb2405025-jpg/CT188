@@ -16,13 +16,16 @@
   color: var(--home-ink);
   background: #fff;
 }
+
 .home-page a {
   text-decoration: none;
 }
+
 .home-container {
   width: min(1160px, calc(100% - 40px));
   margin: 0 auto;
 }
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -37,11 +40,13 @@
 
 /* Header and navigation */
 .home-header {
-  position: relative;
+  position: fixed;
   z-index: 10;
   background: #fff;
   border-bottom: 1px solid var(--home-line);
+  width: 100%;
 }
+
 .header-inner {
   min-height: 86px;
   display: flex;
@@ -49,16 +54,19 @@
   justify-content: space-between;
   gap: 28px;
 }
+
 .brand {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
 }
+
 .brand-logo {
   width: 160px;
   height: 64px;
   object-fit: contain;
 }
+
 .main-navigation {
   display: flex;
   align-items: center;
@@ -66,19 +74,23 @@
   gap: 34px;
   margin-left: auto;
 }
+
 .nav-link {
   color: #56645b;
   font-size: 14px;
   font-weight: 600;
   transition: color 0.2s ease;
 }
+
 .nav-link:hover,
 .nav-link.active {
   color: var(--home-green);
 }
+
 .nav-link.active {
   position: relative;
 }
+
 .nav-link.active::after {
   content: "";
   position: absolute;
@@ -89,11 +101,13 @@
   background: #6e9c70;
   border-radius: 2px;
 }
+
 .header-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
+
 .header-action,
 .cart-action {
   min-height: 42px;
@@ -107,18 +121,22 @@
   font-weight: 600;
   white-space: nowrap;
 }
+
 .header-action {
   color: var(--home-green);
   border: 1px solid var(--home-line);
 }
+
 .cart-action {
   color: #fff;
   background: var(--home-green);
 }
+
 .header-action i,
 .cart-action i {
   font-size: 17px;
 }
+
 .menu-toggle {
   display: none;
   border: 0;
@@ -132,6 +150,7 @@
   overflow: hidden;
   background: linear-gradient(115deg, #f5f8f3 0%, #eef5ed 56%, #e6f0e6 100%);
 }
+
 .hero-layout {
   min-height: 510px;
   display: grid;
@@ -141,6 +160,7 @@
   padding-top: 42px;
   padding-bottom: 42px;
 }
+
 .eyebrow {
   margin: 0 0 15px;
   color: #6a8c6d;
@@ -148,6 +168,7 @@
   font-weight: 800;
   letter-spacing: 1.6px;
 }
+
 .eyebrow span {
   display: inline-block;
   width: 24px;
@@ -155,6 +176,7 @@
   margin: 0 8px 3px 0;
   background: #78a27b;
 }
+
 .hero-copy h1 {
   margin: 0 0 20px;
   color: var(--home-green-dark);
@@ -163,10 +185,12 @@
   line-height: 1.12;
   letter-spacing: -1.8px;
 }
+
 .hero-copy h1 em {
   color: #729675;
   font-weight: 500;
 }
+
 .hero-description {
   max-width: 510px;
   margin-bottom: 27px;
@@ -174,11 +198,13 @@
   font-size: 15px;
   line-height: 1.9;
 }
+
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
+
 .button {
   min-height: 47px;
   display: inline-flex;
@@ -195,23 +221,28 @@
     box-shadow 0.2s ease,
     background 0.2s ease;
 }
+
 .button:hover {
   transform: translateY(-2px);
 }
+
 .button-primary {
   color: #fff;
   background: var(--home-green);
   box-shadow: 0 8px 18px rgba(23, 75, 53, 0.15);
 }
+
 .button-primary:hover {
   background: var(--home-green-dark);
 }
+
 .button-secondary,
 .button-outline {
   color: var(--home-green);
   background: transparent;
   border-color: #b8c9b9;
 }
+
 .hero-note {
   display: flex;
   align-items: center;
@@ -220,16 +251,19 @@
   color: #77847a;
   font-size: 12px;
 }
+
 .hero-note i {
   color: #719775;
   font-size: 17px;
 }
+
 .hero-visual {
   position: relative;
   min-height: 360px;
   display: grid;
   place-items: center;
 }
+
 .hero-image-frame {
   width: min(100%, 450px);
   padding: 22px;
@@ -239,12 +273,14 @@
   box-shadow: 0 24px 65px rgba(35, 77, 48, 0.12);
   transform: rotate(2deg);
 }
+
 .hero-image-frame img {
   width: 100%;
   max-height: 310px;
   object-fit: contain;
   mix-blend-mode: multiply;
 }
+
 .hero-sticker {
   position: absolute;
   right: -3px;
@@ -261,10 +297,12 @@
   font-weight: 700;
   line-height: 1.5;
 }
+
 .hero-sticker i {
   color: #d58d70;
   font-size: 23px;
 }
+
 .hero-dot {
   position: absolute;
   display: block;
@@ -272,12 +310,14 @@
   background: #9db99b;
   opacity: 0.55;
 }
+
 .hero-dot-one {
   width: 15px;
   height: 15px;
   top: 22px;
   right: 45px;
 }
+
 .hero-dot-two {
   width: 9px;
   height: 9px;
@@ -290,6 +330,7 @@
   border-bottom: 1px solid var(--home-line);
   background: #fff;
 }
+
 .benefit-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -297,11 +338,13 @@
   padding-top: 25px;
   padding-bottom: 25px;
 }
+
 .benefit-item {
   display: flex;
   align-items: center;
   gap: 13px;
 }
+
 .benefit-icon {
   width: 43px;
   height: 43px;
@@ -313,11 +356,13 @@
   background: var(--home-green-soft);
   font-size: 21px;
 }
+
 .benefit-item h2 {
   margin: 0 0 3px;
   color: #2d3c32;
   font-size: 13px;
 }
+
 .benefit-item p {
   margin: 0;
   color: #879188;
@@ -329,6 +374,7 @@
   padding-top: 76px;
   padding-bottom: 76px;
 }
+
 .section-heading {
   display: flex;
   align-items: end;
@@ -336,9 +382,11 @@
   gap: 24px;
   margin-bottom: 30px;
 }
+
 .section-heading .eyebrow {
   margin-bottom: 8px;
 }
+
 .section-heading h2 {
   margin: 0 0 8px;
   color: var(--home-green-dark);
@@ -346,11 +394,13 @@
   font-size: clamp(29px, 3vw, 38px);
   line-height: 1.2;
 }
+
 .section-description {
   margin: 0;
   color: var(--home-muted);
   font-size: 13px;
 }
+
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -361,13 +411,16 @@
   font-weight: 700;
   white-space: nowrap;
 }
+
 .text-link:hover {
   color: #6c956f;
 }
+
 /* Featured books */
 .featured-section {
   background: #f8faf7;
 }
+
 .book-toolbar {
   display: flex;
   align-items: center;
@@ -375,6 +428,7 @@
   gap: 16px;
   margin: 0 0 22px;
 }
+
 .search-box {
   width: min(100%, 390px);
   min-height: 44px;
@@ -386,10 +440,12 @@
   border-radius: 8px;
   background: #fff;
 }
+
 .search-box i {
   color: #7c9380;
   font-size: 18px;
 }
+
 .search-box input {
   width: 100%;
   min-width: 0;
@@ -399,19 +455,23 @@
   background: transparent;
   font-size: 12px;
 }
+
 .search-box input::placeholder {
   color: #a0aaa2;
 }
+
 .search-hint {
   margin: 0;
   color: #879188;
   font-size: 11px;
 }
+
 .book-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
 }
+
 .book-card {
   overflow: hidden;
   padding: 13px;
@@ -422,10 +482,12 @@
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
+
 .book-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--home-shadow);
 }
+
 .book-cover {
   min-height: 205px;
   display: flex;
@@ -435,28 +497,34 @@
   padding: 12px;
   background: #f1f5ef;
 }
+
 .book-info {
   padding: 15px 3px 3px;
 }
+
 .book-category {
   margin: 0 0 5px;
   color: #78927b;
   font-size: 10px;
   font-weight: 700;
 }
+
 .book-info h3 {
   margin: 0 0 4px;
   color: #2d3c32;
   font-size: 14px;
 }
+
 .book-info h3 a:hover {
   color: #719675;
 }
+
 .book-author {
   margin: 0 0 13px;
   color: #89938b;
   font-size: 11px;
 }
+
 .book-bottom {
   display: flex;
   align-items: center;
@@ -465,10 +533,12 @@
   padding-top: 11px;
   border-top: 1px solid #edf0ed;
 }
-.book-bottom > strong {
+
+.book-bottom>strong {
   color: var(--home-green);
   font-size: 14px;
 }
+
 .book-detail-link {
   display: inline-flex;
   align-items: center;
@@ -477,14 +547,17 @@
   font-size: 11px;
   font-weight: 700;
 }
+
 .book-detail-link:hover {
   color: var(--home-green);
 }
+
 .empty-search {
   padding: 28px;
   color: var(--home-muted);
   text-align: center;
 }
+
 .center-action {
   display: flex;
   justify-content: center;
@@ -509,14 +582,12 @@
   width: 84%;
   height: 3px;
   border-radius: 10px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #79af85,
-    #deeddf,
-    #79af85,
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      #79af85,
+      #deeddf,
+      #79af85,
+      transparent);
 }
 
 .home-footer .footer-content {
@@ -741,6 +812,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .home-footer .footer-brand img,
   .home-footer .footer-underline,
   .home-footer .footer-links a,
@@ -754,12 +826,15 @@
   .header-inner {
     gap: 16px;
   }
+
   .main-navigation {
     gap: 18px;
   }
+
   .header-action span {
     display: none;
   }
+
   .hero-layout {
     gap: 25px;
   }
@@ -769,21 +844,25 @@
   .home-container {
     width: min(100% - 30px, 540px);
   }
+
   .header-inner {
     min-height: 72px;
     flex-wrap: wrap;
     gap: 10px;
   }
+
   .brand-logo {
     width: 132px;
     height: 56px;
   }
+
   .menu-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-left: auto;
   }
+
   .main-navigation {
     order: 4;
     width: 100%;
@@ -793,90 +872,113 @@
     gap: 0;
     padding: 4px 0 12px;
   }
+
   .main-navigation.is-open {
     display: flex;
   }
+
   .nav-link {
     padding: 10px 4px;
   }
+
   .nav-link.active::after {
     display: none;
   }
+
   .header-actions {
     gap: 7px;
   }
+
   .header-action,
   .cart-action {
     width: 38px;
     min-height: 38px;
     padding: 0;
   }
+
   .header-action span,
   .cart-action span {
     display: none;
   }
+
   .hero-layout {
     grid-template-columns: 1fr;
     gap: 18px;
     padding-top: 48px;
     padding-bottom: 35px;
   }
+
   .hero-copy h1 {
     font-size: clamp(39px, 11vw, 52px);
   }
+
   .hero-description {
     font-size: 13px;
   }
+
   .hero-visual {
     min-height: 250px;
   }
+
   .hero-image-frame {
     width: min(80%, 330px);
     padding: 13px;
   }
+
   .hero-image-frame img {
     max-height: 210px;
   }
+
   .hero-sticker {
     right: 0;
     bottom: 5px;
   }
+
   .benefit-grid {
     grid-template-columns: 1fr;
     gap: 16px;
     padding-top: 20px;
     padding-bottom: 20px;
   }
+
   .section-space {
     padding-top: 52px;
     padding-bottom: 52px;
   }
+
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
   }
+
   .book-toolbar {
     align-items: flex-start;
     flex-direction: column;
   }
+
   .search-box {
     width: 100%;
   }
+
   .book-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
+
   .book-card {
     padding: 8px;
   }
+
   .book-cover {
     min-height: 165px;
     padding: 15px 8px;
   }
+
   .book-info h3 {
     font-size: 12px;
   }
+
   .book-bottom {
     align-items: flex-start;
     flex-direction: column;
@@ -887,6 +989,7 @@
   .book-grid {
     grid-template-columns: 1fr;
   }
+
   .book-cover {
     min-height: 205px;
   }
@@ -911,6 +1014,7 @@
   .book-cover {
     padding: 8px;
   }
+
   .book-cover img {
     height: 165px;
   }
