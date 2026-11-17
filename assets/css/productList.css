@@ -332,329 +332,459 @@ input[type="number"] {
 }
 
 /* =========================================
-   FOOTER - BOOKSHELF
+  FOOTER
 ========================================= */
 
-.footer {
+.home-footer {
   position: relative;
-  width: 100%;
-  background: linear-gradient(135deg, #202b50, #303e70, #202b50);
-
-  color: #ffffff;
-  padding: 55px 8% 0;
   overflow: hidden;
+  width: 100%;
+  padding-top: 55px;
+  color: #f1f7f1;
+  background: linear-gradient(135deg, #103a29, #174b35 54%, #0b2c1e);
 }
 
-/* ĐƯỜNG PHÂN CÁCH */
-
-.footer-line {
+.home-footer .footer-line {
   position: absolute;
   top: 0;
   left: 8%;
-
   width: 84%;
   height: 3px;
-
-  background: linear-gradient(90deg, transparent, #8295ed, #ffffff, #8295ed, transparent);
-
   border-radius: 10px;
+  background: linear-gradient(90deg,
+      transparent,
+      #79af85,
+      #deeddf,
+      #79af85,
+      transparent);
 }
 
-/* =========================================
-   BỐ CỤC FOOTER
-========================================= */
-
-.footer-content {
+.home-footer .footer-content {
   display: grid;
   grid-template-columns: 1.3fr 1fr 1.3fr;
   gap: 55px;
-
-  max-width: 1250px;
-  margin: 0 auto;
   padding-bottom: 45px;
 }
 
-.footer-item {
+.home-footer .footer-item {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 0;
 }
 
-/* =========================================
-   LOGO VÀ THƯƠNG HIỆU
-========================================= */
-
-.footer-brand {
+.home-footer .footer-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-
   margin-bottom: 18px;
 }
 
-.footer-brand img {
-  width: 48px;
-  height: 48px;
+.home-footer .footer-brand img {
+  width: 205px;
+  height: 68px;
   object-fit: contain;
-
+  object-position: left center;
   transition: transform 0.3s ease;
 }
 
-.footer-brand img:hover {
-  transform: rotate(-8deg) scale(1.08);
+.home-footer .footer-brand img:hover {
+  transform: rotate(-3deg) scale(1.03);
 }
 
-.footter-brand-text {
-  font-size: 25px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #ffffff;
-}
-
-.footer-text {
+.home-footer .footer-text {
+  margin: 0 0 10px;
+  color: #deeadf;
   font-size: 15px;
   line-height: 1.8;
-  color: #d7def5;
-  margin-bottom: 10px;
 }
 
-.footer-slogan {
-  color: #aebcf5;
+.home-footer .footer-slogan {
+  margin: 0 0 25px;
+  color: #a9d0ae;
   font-size: 13px;
   font-style: italic;
+}
+
+.home-footer .footer-title-underline {
   margin-bottom: 25px;
 }
 
-/* =========================================
-   TIÊU ĐỀ CÁC CỘT
-========================================= */
-
-.footer-title-underline {
-  margin-bottom: 25px;
-}
-
-.footer-title {
-  color: #ffffff;
+.home-footer .footer-title {
+  margin: 0 0 10px;
+  color: #fff;
   font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.8px;
-
-  margin-bottom: 10px;
+  letter-spacing: 0.4px;
 }
 
-.footer-underline {
+.home-footer .footer-underline {
+  display: block;
   width: 45px;
   height: 3px;
-
-  background: #8295ed;
   border-radius: 10px;
-
+  background: #88ba90;
   transition: width 0.3s ease;
 }
 
-.footer-item:hover .footer-underline {
+.home-footer .footer-item:hover .footer-underline {
   width: 75px;
 }
 
-/* =========================================
-   DANH SÁCH LIÊN KẾT
-========================================= */
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
+.home-footer .footer-links {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.footer-links li {
+.home-footer .footer-links li {
   width: 100%;
 }
 
-.footer-links a {
+.home-footer .footer-links a,
+.home-footer .footer-detail {
   display: flex;
   align-items: flex-start;
   gap: 9px;
-
-  color: #d7def5;
+  color: #d6e6d8;
   font-size: 14px;
   line-height: 1.7;
-
-  text-decoration: none;
-
-  transition: all 0.3s ease;
+  overflow-wrap: anywhere;
 }
 
-.footer-links a i {
-  color: #91a5ff;
-  font-size: 18px;
+.home-footer .footer-links a {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.home-footer .footer-links i,
+.home-footer .footer-detail i {
+  flex: 0 0 auto;
   margin-top: 1px;
-
-  transition: transform 0.3s ease;
+  color: #9dd4a7;
+  font-size: 18px;
 }
 
-.footer-links a:hover {
-  color: #ffffff;
+.home-footer .footer-links a:hover {
+  color: #fff;
   transform: translateX(5px);
 }
 
-.footer-links a:hover i {
-  color: #ffffff;
+.home-footer .footer-links a:hover i {
+  color: #fff;
 }
 
-/* =========================================
-   MẠNG XÃ HỘI
-========================================= */
-
-.footer-social {
+.home-footer .footer-social {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.footer-social a {
+.home-footer .footer-social a {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 40px;
   height: 40px;
-
-  color: #ffffff;
-  font-size: 19px;
-
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 50%;
-  text-decoration: none;
-
-  transition: all 0.3s ease;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.09);
+  font-size: 19px;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.footer-social a:hover {
-  background: #8295ed;
-  border-color: #8295ed;
-
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(130, 149, 237, 0.3);
+.home-footer .footer-social a:hover {
+  background: #3e8555;
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
 }
 
-/* =========================================
-   FOOTER BOTTOM
-========================================= */
+.home-footer a:focus-visible {
+  outline: 2px solid #d4f0d7;
+  outline-offset: 4px;
+}
 
-.footer-bottom {
+.home-footer .footer-bottom {
   width: 100%;
-  padding: 20px 0;
-
+  padding: 20px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-
   text-align: center;
 }
 
-.footer-bottom p {
+.home-footer .footer-bottom p {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 7px;
-
-  color: #cbd3ef;
+  margin: 0;
+  color: #bdd5c1;
   font-size: 13px;
   line-height: 1.8;
-
-  margin: 0;
 }
 
-.footer-bottom img {
-  width: 20px;
+.home-footer .footer-bottom img {
+  width: 44px;
   height: 20px;
   object-fit: contain;
 }
 
-.footer-bottom i {
-  color: #aebcf5;
-}
-
-/* =========================================
-   RESPONSIVE TABLET
-========================================= */
-
 @media (max-width: 992px) {
-  .footer {
-    padding: 45px 5% 0;
+  .home-footer {
+    padding-top: 45px;
   }
 
-  .footer-content {
-    grid-template-columns: repeat(2, 1fr);
+  .home-footer .footer-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 40px;
   }
 
-  .footer-bookshelf {
+  .home-footer .footer-bookshelf {
     grid-column: 1 / -1;
   }
 }
 
-/* =========================================
-   RESPONSIVE MOBILE
-========================================= */
-
 @media (max-width: 600px) {
-  .footer {
-    padding: 40px 6% 0;
+  .home-footer {
+    padding-top: 40px;
   }
 
-  .footer-content {
+  .home-footer .footer-content {
     grid-template-columns: 1fr;
     gap: 35px;
     padding-bottom: 35px;
   }
 
-  .footer-bookshelf {
+  .home-footer .footer-bookshelf {
     grid-column: auto;
   }
 
-  .footer-title {
+  .home-footer .footer-title {
     font-size: 15px;
   }
 
-  .footer-links a {
+  .home-footer .footer-links a,
+  .home-footer .footer-detail {
     font-size: 13px;
   }
 
-  .footer-bottom p {
+  .home-footer .footer-bottom p {
     font-size: 11px;
   }
 }
 
-/* ================================
-   CHUYỂN ĐỔI FORM ĐĂNG NHẬP / ĐĂNG KÝ
-================================ */
+@media (prefers-reduced-motion: reduce) {
 
-/* Ẩn form */
-.hidden-form {
-  display: none !important;
+  .home-footer .footer-brand img,
+  .home-footer .footer-underline,
+  .home-footer .footer-links a,
+  .home-footer .footer-social a {
+    transition: none;
+  }
 }
 
-/* Hiện form */
-.show-form {
-  display: block;
-  animation: formFadeIn 0.4s ease;
-}
-
-/* Hiệu ứng xuất hiện */
-@keyframes formFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
+/* Responsive */
+@media (max-width: 900px) {
+  .header-inner {
+    gap: 16px;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .main-navigation {
+    gap: 18px;
+  }
+
+  .header-action span {
+    display: none;
+  }
+
+  .hero-layout {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 680px) {
+  .home-container {
+    width: min(100% - 30px, 540px);
+  }
+
+  .header-inner {
+    min-height: 72px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 132px;
+    height: 56px;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .main-navigation {
+    order: 4;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 4px 0 12px;
+  }
+
+  .main-navigation.is-open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 10px 4px;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 7px;
+  }
+
+  .header-action,
+  .cart-action {
+    width: 38px;
+    min-height: 38px;
+    padding: 0;
+  }
+
+  .header-action span,
+  .cart-action span {
+    display: none;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 48px;
+    padding-bottom: 35px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(39px, 11vw, 52px);
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .hero-visual {
+    min-height: 250px;
+  }
+
+  .hero-image-frame {
+    width: min(80%, 330px);
+    padding: 13px;
+  }
+
+  .hero-image-frame img {
+    max-height: 210px;
+  }
+
+  .hero-sticker {
+    right: 0;
+    bottom: 5px;
+  }
+
+  .benefit-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .section-space {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .book-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .book-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .book-card {
+    padding: 8px;
+  }
+
+  .book-cover {
+    min-height: 186px;
+    padding: 10px 8px;
+  }
+
+  .book-info h3 {
+    font-size: 12px;
+  }
+
+  .book-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 380px) {
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .book-cover {
+    min-height: 205px;
+  }
+}
+
+.book-cover img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 205px;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+  transition: transform 0.2s ease;
+}
+
+.book-cover:hover img {
+  transform: scale(1.035);
+}
+
+@media (max-width: 600px) {
+  .book-cover {
+    padding: 8px;
+  }
+
+  .book-cover img {
+    height: 165px;
   }
 }
