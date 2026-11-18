@@ -239,7 +239,6 @@ function addEventToCategoryButton() {
 function setup() {
   addEventToCartButtons();
   addEventToQuantityButtons();
-  updateCartBadge();
   formatPrices();
   addEventToCategoryButton();
 }
