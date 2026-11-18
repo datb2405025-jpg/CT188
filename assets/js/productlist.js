@@ -1,6 +1,8 @@
-// AUTHOR: NGUYEN TRAN GIA HUY B2509664
+// Tác giả: Nguyễn Trần Gia Huy
+// MSSV: B2509664
+// Tài liệu tham khảo: CT188-BGR-phần 2
 
-
+// Thao tác lấu các phần tử trên cây DOM
 const productGrid = document.querySelector(".product-list__grid");
 
 const oldPriceElements = document.querySelectorAll(".product-card__old-price");
@@ -50,6 +52,8 @@ const addProductToCart = (e) => {
       quantity: productInfoEl.children[7].children[1].value,
     };
 
+
+    // Do data được lưu trong localStorage là string nên cần phải parse sang đối tượng
     const storedCart = JSON.parse(localStorage.getItem("cartItems"));
     if (storedCart === null) {
       cartItems.push(newItem);
@@ -78,6 +82,7 @@ const addProductToCart = (e) => {
 
 // Hàm nhận callback
 function addEventToCartButtons() {
+
   // Thêm hàm nhận callback cho từng button add cart
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", addProductToCart, false);
@@ -86,6 +91,7 @@ function addEventToCartButtons() {
 
 // Định dạng giá tiền theo định dạng VND
 function formatPrices() {
+
   oldPriceElements.forEach((priceEl) => {
     priceEl.innerText = Number(priceEl.innerText).toLocaleString("vi-VN", { style: "currency", currency: "VND" });
   });
@@ -104,6 +110,7 @@ const sortItems = () => {
 
   const sortSelected = sortSelect.value;
 
+  // sử dụng switch case để chia các trường hợp sắp xếp
   switch (sortSelected) {
     case "price-asc":
       productCards.sort((cardA, cardB) => {
@@ -139,7 +146,9 @@ const sortItems = () => {
       break;
   }
 
+  // Sau khi sắp xếp thì append ngược lại vào product Grid để áp dụng thứ tự đã sắp xếp
   productCards.forEach((card) => {
+
     productGrid.appendChild(card); // Thêm mỗi phần tử vào cuối productGrid (nếu đã tồn tại sẽ di chuyển vị trí, không tạo bản sao)
   });
 }
@@ -157,10 +166,14 @@ const changeQuantity = (e) => {
   // Do value ccủa quanity là string nên phải parse sang int để thực hiện phép tính
   let quantity = parseInt(quantityInput.value, 10);
 
+
   const typeOfChange = changeButton.textContent.trim();
+
+  // nếu button nhấp vào có content là "-"" thì giảm số lượng nhập, nếu số lượng là 1 thì không trừ tiếp để tránh số lượng âm hoặc bằng 0
   if (typeOfChange === "-" && quantity > 1) {
     quantity--;
   }
+  // nếu button nhấp vào có content là "+"" thì tăng số lượng nhập 
   if (typeOfChange === "+") {
     quantity++;
   }
@@ -178,17 +191,7 @@ function addEventToQuantityButtons() {
 }
 
 
-function updateCartBadge() {
-  const cartData = JSON.parse(localStorage.getItem("cartItems"));
-  const cartBadge = document.querySelector(".ri-shopping-cart-2-line");
-  if (cartData === null || !cartBadge) return;
-  const numberOfItems = cartData.length;
-  if (numberOfItems !== 0) {
-    cartBadge.textContent = numberOfItems;
-  }
-}
-
-
+// Lọc sản phẩm theo thể loại 
 const sortByCategory = (e) => {
   const categoryValue = e.currentTarget.textContent;
   let products = productCardElements;
@@ -212,8 +215,8 @@ const sortByCategory = (e) => {
     }
   })
 
-  // chuyển các buttons về trạng thái unactive 
 
+  // chuyển các buttons về trạng thái unactive 
   categoryBtns.forEach(btn => {
     btn.setAttribute("class", "category-pill")
   })
@@ -223,6 +226,8 @@ const sortByCategory = (e) => {
 
 }
 
+
+// gắn sự kiện vào các nút categories 
 function addEventToCategoryButton() {
   categoryBtns.forEach(categoryBtn => {
     categoryBtn.addEventListener("click", sortByCategory, false)
@@ -236,9 +241,9 @@ function setup() {
   addEventToQuantityButtons();
   updateCartBadge();
   formatPrices();
-  updateCartBadge();
   addEventToCategoryButton();
 }
 
+// thực thi setup sau khi trang web được load
 window.addEventListener("load", setup, false);
 
