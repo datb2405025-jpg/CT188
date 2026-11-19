@@ -141,7 +141,7 @@ const sortItems = () => {
       });
       break;
     default:
-      // Chọn lại mặc định thì reload webpage để trả về giá trị ban đầu, phần này có thể dùng sao chép sâu để lưu trạng thái ban đầu để không cần reload lại page,
+      // Chọn lại mặc định thì reload webpage để trả về giá trị ban đầu, phần này có thể dùng sao chép sâu để lưu trạng thái ban đầu để không cần reload lại page
       location.reload();
       break;
   }
@@ -163,7 +163,7 @@ const changeQuantity = (e) => {
   const quantityInput = changeButton.parentElement.children[1];
 
 
-  // Do value ccủa quanity là string nên phải parse sang int để thực hiện phép tính
+  // Do value của quanity là string nên phải parse sang int để thực hiện phép tính
   let quantity = parseInt(quantityInput.value, 10);
 
 
@@ -206,11 +206,11 @@ const sortByCategory = (e) => {
 
     else {
       if (productCategory === categoryValue) {
-        product.hidden = false;
+        product.classList.remove("hidden");
 
       } else {
         // ẩn các phần tử không thỏa mãn categoryValue 
-        product.hidden = true;
+        product.classList.add("hidden");
       }
     }
   })
