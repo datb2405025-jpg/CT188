@@ -447,6 +447,7 @@ body
 .main-container__img1:hover
 {
   opacity: 0.0;
+  cursor: none;
 }
 
 .main-container__img2:hover
@@ -493,6 +494,7 @@ body
     transform: scale(1.05);
     background-color: goldenrod;
     font-family: fantasy;
+    cursor: none;
 }
 
 .sidebar-text
@@ -571,6 +573,7 @@ body
   box-shadow: 20px 20px 10px rgb(255, 215, 10);
   scale: 1.05;
   text-shadow: 3px 7px 5px gold;
+  cursor: none;
 }
 
 .main-content__article__title
