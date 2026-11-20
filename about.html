@@ -19,194 +19,273 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     </head>
     <body>
-        <header class="home-header">
-            <div class="home-container header-inner">
-              <a class="brand" href="index.html" aria-label="Bookshelf - Trang chủ">
-                <img src="assets/images/Bookshelf.png" alt="Logo Bookshelf" class="brand-logo" />
-              </a>
+         <header class="home-header">
+        <div class="home-container header-inner">
+          <a class="brand" href="index.html">
+            <img
+              alt="Logo Bookshelf"
+              class="brand-logo"
+              src="assets/images/Bookshelf.png"
+            />
+          </a>
+          <button class="menu-toggle" type="button">
+            <i class="ri-menu-line"></i>
+          </button>
+          <nav class="main-navigation" id="main-navigation">
+            <a class="nav-link active" href="index.html">Trang chủ</a>
+            <a class="nav-link" href="productlist.html">Sản phẩm</a>
+            <a class="nav-link" href="about.html">Giới thiệu</a>
+          </nav>
+          <div class="header-actions">
+            <a class="header-action" href="login.html">
+              <i class="ri-user-line"></i>
+              <span>Đăng nhập</span>
+            </a>
+            <a class="cart-action" href="cart.html">
+              <i class="ri-shopping-bag-3-line"></i>
+              <span>Giỏ hàng</span>
+            </a>
+          </div>
+        </div>
+    </header>
         
-              <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false"
-                aria-controls="main-navigation">
-                <i class="ri-menu-line" aria-hidden="true"></i>
-              </button>
-        
-              <nav class="main-navigation" id="main-navigation" aria-label="Điều hướng chính">
-                <a class="nav-link" href="index.html">Trang chủ</a>
-                <a class="nav-link" href="productlist.html">Sản phẩm</a>
-                <a class="nav-link" href="about.html">Giới thiệu</a>
-              </nav>
-        
-              <div class="header-actions">
-                <a class="cart-action" href="cart.html" aria-current="page" aria-label="Mở giỏ hàng">
-                  <i class="ri-shopping-bag-3-line" aria-hidden="true"></i>
-                  <span>Giỏ hàng</span>
-                </a>
-              </div>
-            </div>
-        </header>
         <main>
             <section>
-                <div class="swap_banner">
-                <h1 class="about__title">Về Chúng Tôi và Liên Hệ</h1>
-                <h1 class="about__title2">Bất ngờ chưa?🐸🐸🐸🐸🐸</h1>
-                </div>
-                <div class="about__container_img">
-                    <img class="about__img1" src="assets/images/bookshelf-white.png" alt="anh Logo">
-                    <img class="about__img2" src="assets/images/logo-footer.png" alt="anh Logo">
+                <h1 class="main-title">Về Chúng Tôi và Liên Hệ</h1>
+                <div class="main-container_img">
+                    <img class="main-container__img1" src="assets/images/bookshelf-white.png" alt="anh Logo">
+                    <img class="main-container__img2" src="assets/images/logo-footer.png" alt="anh Logo">
                 </div>
             </section>
-            <section class="about-grid">
-                <article class="about-grid__article">
-                    <h2 class="about-grid__article__title">
-                        📚  Lý do nên chọn chúng tôi
-                    </h2>
-                    <div class="about-grid__article__2sides">
-                    <img class="about-grid__article__img" src="assets/images/about_images/images.jfif" alt="anh1">
-                    <p>
-                        <em>"Vì sao chọn BookShelf?"</em>
-                        . BookShelf ra đời với một niềm tin đơn giản: sách hay không cần đắt, và người đọc giỏi không cần chờ lâu. Chúng tôi tuyển chọn từng đầu sách, giao nhanh trong ngày, giá luôn mềm hơn nơi khác. Đơn giản vậy thôi — còn lại để sách tự nói.
+            <div class="main-content-wrapper">
+              
+              <aside class="main-left-side">
+                
+                <div class="sidebar-box">
+                    <h3 class="sidebar-title">Trích dẫn truyền cảm hứng</h3>
+                    <p class="sidebar-text">
+                      "Một cuốn sách hay không chỉ để đọc, mà là để sống cùng. Mỗi trang giấy mở ra là một thế giới khác."
                     </p>
-                    </div>
-                </article>
+                    <p class="sidebar-text">
+                      "Đừng bao giờ đánh giá một cuốn sách qua cái bìa, nhưng hãy nhớ: một cái bìa đẹp thường là khởi đầu của một câu chuyện tuyệt vời."
+                    </p>
+                    <p class="sidebar-text">
+                       Muốn tìm hiểu thêm về các câu chích dẫn hay? <a class="sidebar-link" href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">TRUY CẬP Ở ĐÂY</a>
+                    </p>
+                </div>
 
-                <article class="about-grid__article">
-                    <h2 class="about-grid__article__title">
-                        📖 Lịch sử phát triển
-                    </h2>
-                    <div class="about-grid__article__2sides">
-                    <img class="about-grid__article__img" src="assets/images/about_images/meme-bat-tay-8.jpg" alt="anh2">
-                    <p>
-                        <em>"Hành trình từ kệ sách nhỏ"</em>. BookShelf khởi đầu là một góc kệ khiêm tốn trong phòng trọ, nơi vài người bạn cùng đam mê sách tự gom tiền nhập lô đầu tiên. Từ những đơn hàng đầu tiên run run tay, đến nay BookShelf đã đồng hành cùng hàng nghìn độc giả. Vẫn giữ nguyên tinh thần ban đầu: chọn sách kỹ, bán sách thật.
+                <div class="sidebar-box">
+                    <h3 class="sidebar-title">Góc Độc Giả</h3>
+                    <p class="sidebar-text">
+                        Mỗi tuần, chúng tôi lại chọn ra một câu chuyện của độc giả gửi về. Đơn giản thôi: kể về cuốn sách đã thay đổi cách bạn nhìn cuộc sống.
                     </p>
-                    </div>
-                </article>
+                    <p class="sidebar-text">
+                        Hãy thử ghé qua và xem, biết đâu bạn sẽ tìm thấy một cuốn sách cho riêng mình. Đôi khi, một cuốn sách đến đúng lúc còn hơn cả một lời khuyên.
+                    </p>
+                    <a class="sidebar-link" href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">Gửi câu chuyện của bạn ở đây</a>
+                </div>
 
-                <article class="about-grid__article">
-                    <h2 class="about-grid__article__title">
-                        🏅 Cam kết chất lượng quốc tế
-                    </h2>
-                    <div class="about-grid__article__2sides">
-                    <img class="about-grid__article__img" src="assets/images/about_images/3645d52b294d4b1d585c972eb4c05558.jpg" alt="anh4">
-                    <p>
-                        <em>"Được công nhận — theo cách riêng"</em>. BookShelf tự hào là đơn vị sách online đạt chứng nhận "Đọc giả tin dùng" do chính khách hàng bình chọn, cùng Chứng nhận Sách Chính Hãng từ các nhà xuất bản đối tác. Chưa có giải Nobel nào, nhưng niềm tin của độc giả là giải thưởng chúng tôi trân trọng nhất.
+                <div class="sidebar-box">
+                    <h3 class="sidebar-title">Chuyện chưa kể về sách</h3>
+                    <p class="sidebar-text">
+                        Sách không phải lúc nào cũng bằng giấy. Trước khi có giấy, người Ai Cập cổ đại đã khắc chữ lên đất sét, còn người Ấn Độ thì viết trên lá cọ. Phải đến tận thế kỷ 15, khi ông Johannes Gutenberg phát minh ra máy in, sách mới thực sự "phổ cập" đến mọi người. Thử tưởng tượng xem, một cuốn sách hôm nay bạn cầm trên tay là kết tinh của hàng ngàn năm lịch sử đấy!
                     </p>
-                    </div>
-                </article>
+                </div>
 
-                <article class="about-grid__article">
-                    <h2 class="about-grid__article__title">
-                        ⭐ Đánh giá thực tế từ người dùng
-                    </h2>
-                    <div class="about-grid__article__2sides">
-                    <img class="about-grid__article__img" src="assets/images/about_images/bo-dao-nha-ronaldo-world-cup-2026-rt-9-05241143.jfif" alt="ROANLDO">
-                    <p><em>"Độc giả nói gì về BookShelf"</em></p>
-                    <p>
-                     "Đặt sách buổi sáng, chiều đã cầm trên tay — nhanh hơn cả shipper quen đầu ngõ!" — Nguyễn Văn A, SV năm 3
+                <div class="sidebar-box">
+                    <h3 class="sidebar-title">Giấy sách làm từ gì?</h3>
+                    <p class="sidebar-text">
+                        Đa số sách hiện nay được làm từ bột gỗ (giấy kraft). Nhưng ít ai biết, giấy tốt nhất thường có một tỷ lệ nhỏ sợi vải cotton để tăng độ bền và giúp mực in không bị lem. Một cuốn sách hay không chỉ ở nội dung, mà còn ở cảm giác lật trang — cái cảm giác sần sật của giấy mới chính là thứ khiến người ta mê đọc sách giấy hơn là đọc trên màn hình.
                     </p>
-                    <p> "Giá rẻ đến mức mình tưởng shop rửa tiền. Mua 5 cuốn vẫn rẻ hơn 3 cuốn ngoài nhà sách." — Nguyễn Văn A, trùng tên cậu bạn bên trái nhưng là dân văn phòng</p>
-                    <p>"Ronaldo từng đọc sách Tấm Cám ở đây và khóc vì xúc động." — Một độc giả yêu thích sự thật cho hay!</p>
-                    </div>
-                </article>
+                </div>   
 
-                <article class="about-grid__article">
-                    <h2 class="about-grid__article__title">
-                        🤝 "Đồng hành cùng những tên tuổi lớn"
-                    </h2>
-                    <div class="about-grid__article__2sides">
-                    <img class="about-grid__article__img" src="assets/images/about_images/61-1473562147917.webp" alt="NANG LY THOI">
-                    <p>
-                        <em>"Đồng hành cùng những tên tuổi lớn"</em>. BookShelf tự hào là đối tác phân phối của các nhà xuất bản uy tín: NXB Trẻ, NXB Kim Đồng, NXB Văn Học, Alphabooks, Nhã Nam. Mỗi đầu sách đến tay độc giả đều có nguồn gốc rõ ràng, tem chống hàng giả, và một lời hứa: sách thật, giá thật, chất lượng thật.
+                <div class="sidebar-box">
+                    <h3 class="sidebar-title">Cuốn sách tôi mê nhất: Nhà Giả Kim</h3>
+                    <p class="sidebar-text">
+                        Có một sự thật thú vị về "Nhà Giả Kim" của Paulo Coelho: ban đầu nó bán được rất ít, và nhà xuất bản đã quyết định ngừng in vì nghĩ rằng nó không ai đọc. Thế nhưng, chỉ sau vài năm, cuốn sách này bỗng nổi tiếng toàn cầu và trở thành một trong những cuốn sách bán chạy nhất mọi thời đại. Đôi khi, một cuốn sách hay cũng cần thời gian để chứng minh giá trị của mình.
                     </p>
-                    </div>
-                </article>
-            </section>
+                    <a href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f" class="sidebar-link">Link đặt mua nhà giả kim(tôi thề đây không phải quảng cáo)</a>
+                </div>
+
+                <div class="sidebar-box">
+                    <h3 class="sidebar-title">Kết nối với chúng tôi</h3>
+                    <ul class="sidebar-list">
+                        <li><a  href="tel:0123456789">📞 Hotline: 0123 456 789</a></li>
+                        <li><a  href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">Facebook</a></li>
+                        <li><a  href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">TikTok</a></li>
+                        <li><a href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">YouTube</a></li>
+                        <li><a  href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">Instagram</a></li>
+                    </ul>
+                </div>
+
+              </aside>
+
+              <div class="main-right-side">
+                <section class="main-content">
+                    <article class="main-content__article">
+                        <h2 class="main-content__article__title">
+                            📚  Lý do nên chọn chúng tôi
+                        </h2>
+                        <div class="main-content__article__2sides">
+                        <img class="main-content__article__img" src="assets/images/about_images/images.jfif" alt="anh1">
+                        <p>
+                            <em>"Vì sao chọn BookShelf?"</em>
+                            . BookShelf ra đời với một niềm tin đơn giản: sách hay không cần đắt, và người đọc giỏi không cần chờ lâu. Chúng tôi tuyển chọn từng đầu sách, giao nhanh trong ngày, giá luôn mềm hơn nơi khác. Đơn giản vậy thôi — còn lại để sách tự nói.
+                        </p>
+                        </div>
+                    </article>
+
+                    <article class="main-content__article">
+                        <h2 class="main-content__article__title">
+                            📖 Lịch sử phát triển
+                        </h2>
+                        <div class="main-content__article__2sides">
+                        <img class="main-content__article__img" src="assets/images/about_images/meme-bat-tay-8.jpg" alt="anh2">
+                        <p>
+                            <em>"Hành trình từ kệ sách nhỏ"</em>. BookShelf khởi đầu là một góc kệ khiêm tốn trong phòng trọ, nơi vài người bạn cùng đam mê sách tự gom tiền nhập lô đầu tiên. Từ những đơn hàng đầu tiên run run tay, đến nay BookShelf đã đồng hành cùng hàng nghìn độc giả. Vẫn giữ nguyên tinh thần ban đầu: chọn sách kỹ, bán sách thật.
+                        </p>
+                        </div>
+                    </article>
+
+                    <article class="main-content__article">
+                        <h2 class="main-content__article__title">
+                            🏅 Cam kết chất lượng quốc tế
+                        </h2>
+                        <div class="main-content__article__2sides">
+                        <img class="main-content__article__img" src="assets/images/about_images/3645d52b294d4b1d585c972eb4c05558.jpg" alt="anh4">
+                        <p>
+                            <em>"Được công nhận — theo cách riêng"</em>. BookShelf tự hào là đơn vị sách online đạt chứng nhận "Đọc giả tin dùng" do chính khách hàng bình chọn, cùng Chứng nhận Sách Chính Hãng từ các nhà xuất bản đối tác. Chưa có giải Nobel nào, nhưng niềm tin của độc giả là giải thưởng chúng tôi trân trọng nhất.
+                        </p>
+                        </div>
+                    </article>
+
+                    <article class="main-content__article">
+                        <h2 class="main-content__article__title">
+                            ⭐ Đánh giá thực tế từ người dùng
+                        </h2>
+                        <div class="main-content__article__2sides">
+                        <img class="main-content__article__img" src="assets/images/about_images/bo-dao-nha-ronaldo-world-cup-2026-rt-9-05241143.jfif" alt="ROANLDO">
+                        <p><em>"Độc giả nói gì về BookShelf"</em></p>
+                        <p>
+                        "Đặt sách buổi sáng, chiều đã cầm trên tay — nhanh hơn cả shipper quen đầu ngõ!" — Nguyễn Văn A, SV năm 3
+                        </p>
+                        <p> "Giá rẻ đến mức mình tưởng shop rửa tiền. Mua 5 cuốn vẫn rẻ hơn 3 cuốn ngoài nhà sách." — Nguyễn Văn A, trùng tên cậu bạn bên nhưng là dân văn phòng</p>
+                        <p>"Ronaldo từng đọc sách Tấm Cám ở đây và khóc vì xúc động." — Một độc giả yêu thích sự thật cho hay!</p>
+                        <p>Những ai đến BookShelf mua sách đều là trai xinh gái đẹp, nếu đứng tuổi thì là phú ông đĩnh đạc lịch lãm, phú bà ngọc ngà.(câu nói mang tính kéo khách, được thực hiện bởi chuyên gia, không thử tại nhà)</p>
+                        </div>
+                    </article>
+
+                    <article class="main-content__article">
+                        <h2 class="main-content__article__title">
+                            🤝 "Đồng hành cùng những tên tuổi lớn"
+                        </h2>
+                        <div class="main-content__article__2sides">
+                        <img class="main-content__article__img" src="assets/images/about_images/61-1473562147917.webp" alt="NANG LY THOI">
+                        <p>
+                            <em>"Đồng hành cùng những tên tuổi lớn"</em>. BookShelf tự hào là đối tác phân phối của các nhà xuất bản uy tín: NXB Trẻ, NXB Kim Đồng, NXB Văn Học, Alphabooks, Nhã Nam. Mỗi đầu sách đến tay độc giả đều có nguồn gốc rõ ràng, tem chống hàng giả, và một lời hứa: sách thật, giá thật, chất lượng thật.
+                        </p>
+                        </div>
+                    </article>
+                </section>
+              </div>
+
+            </div>
         </main>
 
-       <footer class="home-footer" id="footer">
-            <div class="footer-line" aria-hidden="true"></div>
-            <div class="home-container footer-content">
-              <div class="footer-item footer-bookshelf">
-                <div class="footer-brand">
-                  <img src="assets/images/logo-footer.png" alt="Logo Bookshelf" />
-                </div>
-                <p class="footer-text">
-                  Lan tỏa tri thức <br />
-                  nuôi dưỡng đam mê.
-                </p>
-                <p class="footer-slogan">Mỗi trang sách, một chân trời mới.</p>
-                <div class="footer-title-underline">
-                  <h2 class="footer-title">Tìm hiểu nhiều hơn</h2>
-                  <span class="footer-underline" aria-hidden="true"></span>
-                </div>
-                <div class="footer-social">
-                  <a href="#" aria-label="Facebook (chưa cập nhật liên kết)" title="Facebook (chưa cập nhật liên kết)"><i
-                      class="ri-facebook-fill" aria-hidden="true"></i></a>
-                  <a href="#" aria-label="Instagram (chưa cập nhật liên kết)" title="Instagram (chưa cập nhật liên kết)"><i
-                      class="ri-instagram-fill" aria-hidden="true"></i></a>
-                  <a href="#" aria-label="TikTok (chưa cập nhật liên kết)" title="TikTok (chưa cập nhật liên kết)"><i
-                      class="ri-tiktok-fill" aria-hidden="true"></i></a>
-                  <a href="#" aria-label="Twitter (chưa cập nhật liên kết)" title="Twitter (chưa cập nhật liên kết)"><i
-                      class="ri-twitter-fill" aria-hidden="true"></i></a>
-                </div>
-              </div>
-        
-              <div class="footer-item footer-about">
-                <div class="footer-title-underline">
-                  <h2 class="footer-title">BOOKSHELF VIỆT NAM</h2>
-                  <span class="footer-underline" aria-hidden="true"></span>
-                </div>
-                <ul class="footer-links">
-                  <li>
-                    <a href="index.html"><i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                      BOOKSHELF</a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Tuyển
-                      dụng</a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Điều
-                      khoản</a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Chính
-                      sách bảo mật</a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Flash
-                      Sale</a>
-                  </li>
-                </ul>
-              </div>
-        
-              <div class="footer-item footer-contact">
-                <div class="footer-title-underline">
-                  <h2 class="footer-title">LIÊN HỆ BOOKSHELF</h2>
-                  <span class="footer-underline" aria-hidden="true"></span>
-                </div>
-                <ul class="footer-links">
-                  <li>
-                    <span class="footer-detail"><i class="ri-map-pin-fill" aria-hidden="true"></i><span>97 Đường 3/2, P. Xuân
-                        Khánh, Q. Ninh Kiều, TP. Cần Thơ</span></span>
-                  </li>
-                  <li>
-                    <a href="tel:0979797970"><i class="ri-phone-fill" aria-hidden="true"></i><span>0979 797 970</span></a>
-                  </li>
-                  <li>
-                    <a href="mailto:cskh@bookshelf.com.vn"><i class="ri-mail-line"
-                        aria-hidden="true"></i><span>cskh@bookshelf.com.vn</span></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="footer-bottom">
-              <p>
-                © 2026
-                <img src="assets/images/logo-footer.png" alt="" aria-hidden="true" />
-                Bookshelf · Thực hiện bởi Nhóm 6 – CT188.
-              </p>
-            </div>
-  </footer>
+      <footer class="home-footer" id="footer">
+      <div class="footer-line"></div>
+      <div class="home-container footer-content">
+        <div class="footer-item footer-bookshelf">
+          <div class="footer-brand">
+            <img alt="Logo Bookshelf" src="assets/images/logo-footer.png" />
+          </div>
+          <p class="footer-text">
+            Lan tỏa tri thức <br />
+            nuôi dưỡng đam mê.
+          </p>
+          <p class="footer-slogan">Mỗi trang sách, một chân trời mới.</p>
+          <div class="footer-title-underline">
+            <h2 class="footer-title">Tìm hiểu nhiều hơn</h2>
+            <span class="footer-underline"></span>
+          </div>
+          <div class="footer-social">
+            <a href="#" title="Facebook (chưa cập nhật liên kết)"
+              ><i class="ri-facebook-fill"></i
+            ></a>
+            <a href="#" title="Instagram (chưa cập nhật liên kết)"
+              ><i class="ri-instagram-fill"></i
+            ></a>
+            <a href="#" title="TikTok (chưa cập nhật liên kết)"
+              ><i class="ri-tiktok-fill"></i
+            ></a>
+            <a href="#" title="Twitter (chưa cập nhật liên kết)"
+              ><i class="ri-twitter-fill"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-item footer-about">
+          <div class="footer-title-underline">
+            <h2 class="footer-title">BOOKSHELF VIỆT NAM</h2>
+            <span class="footer-underline"></span>
+          </div>
+          <ul class="footer-links">
+            <li>
+              <a href="index.html"
+                ><i class="ri-arrow-right-s-line"></i> BOOKSHELF</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="ri-arrow-right-s-line"></i> Tuyển dụng</a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-arrow-right-s-line"></i> Điều khoản</a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="ri-arrow-right-s-line"></i> Chính sách bảo mật</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="ri-arrow-right-s-line"></i> Flash Sale</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-item footer-contact">
+          <div class="footer-title-underline">
+            <h2 class="footer-title">LIÊN HỆ BOOKSHELF</h2>
+            <span class="footer-underline"></span>
+          </div>
+          <ul class="footer-links">
+            <li>
+              <span class="footer-detail"
+                ><i class="ri-map-pin-fill"></i
+                ><span
+                  >97 Đường 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ</span
+                ></span
+              >
+            </li>
+            <li>
+              <a href="tel:0979797970"
+                ><i class="ri-phone-fill"></i><span>0979 797 970</span></a
+              >
+            </li>
+            <li>
+              <a href="mailto:cskh@bookshelf.com.vn"
+                ><i class="ri-mail-line"></i
+                ><span>cskh@bookshelf.com.vn</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2026
+          <img alt="" src="assets/images/logo-footer.png" />
+          Bookshelf · Thực hiện bởi Nhóm 6 – CT188.
+        </p>
+      </div>
+    </footer>
         
     </body>
 </html>
