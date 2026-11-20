@@ -72,7 +72,6 @@ const addProductToCart = (e) => {
       }
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       alert("thêm vào giỏ hàng thành công");
-      location.reload();
     }
   } else {
     alert("local storage is not working in your browser");
@@ -141,8 +140,7 @@ const sortItems = () => {
       });
       break;
     default:
-      // Chọn lại mặc định thì reload webpage để trả về giá trị ban đầu, phần này có thể dùng sao chép sâu để lưu trạng thái ban đầu để không cần reload lại page
-      location.reload();
+      // Chọn lại mặc định thì thứ tự ban đầu từ cây DOM 
       break;
   }
 
