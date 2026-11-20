@@ -19,18 +19,31 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     </head>
     <body>
-        <header class="auth-header">
-            <a href="./index.html" class="header-logo-link">
-                <img src="./assets/images/Bookshelf.png" alt="logo">
-            </a>
-            <div class="header-right">
-                <a href="./cart.html" class="header-cart" title="Giỏ hàng">
-                    <i class="ri-shopping-cart-2-line"></i>
+        <header class="home-header">
+            <div class="home-container header-inner">
+              <a class="brand" href="index.html" aria-label="Bookshelf - Trang chủ">
+                <img src="assets/images/Bookshelf.png" alt="Logo Bookshelf" class="brand-logo" />
+              </a>
+        
+              <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false"
+                aria-controls="main-navigation">
+                <i class="ri-menu-line" aria-hidden="true"></i>
+              </button>
+        
+              <nav class="main-navigation" id="main-navigation" aria-label="Điều hướng chính">
+                <a class="nav-link" href="index.html">Trang chủ</a>
+                <a class="nav-link" href="productlist.html">Sản phẩm</a>
+                <a class="nav-link" href="about.html">Giới thiệu</a>
+              </nav>
+        
+              <div class="header-actions">
+                <a class="cart-action" href="cart.html" aria-current="page" aria-label="Mở giỏ hàng">
+                  <i class="ri-shopping-bag-3-line" aria-hidden="true"></i>
+                  <span>Giỏ hàng</span>
                 </a>
-                <img class="linhvat" src="./assets/images/linh-vat.png" alt="linhvat">
-                <div class="header-greeting" id="greeting"></div>
+              </div>
             </div>
-    </header>
+        </header>
         <main>
             <section>
                 <div class="swap_banner">
