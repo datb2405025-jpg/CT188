@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!--
+    cart.html - Trang giỏ hàng.
+    MSSV: B2408849 - Họ tên: Phan Quốc Hậu.
+    Header/footer dựa trên index.html của dự án.
+    Kiến thức tham khảo: CT188-BGR phần 1 (HTML, form), phần 2 (Project 3).
+-->
+
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +16,7 @@
     <title>Giỏ hàng | Bookshelf</title>
 </head>
 <body class="cart-page">
+  <!-- HEADER: logo, menu và liên kết giỏ hàng -->
   <header class="home-header">
     <div class="home-container header-inner">
       <a class="brand" href="index.html" aria-label="Bookshelf - Trang chủ">
@@ -34,16 +42,20 @@
       </div>
     </div>
   </header>
+    <!-- NỘI DUNG GIỎ HÀNG -->
     <main class="cart">
         <header class="cart__heading">
             <h1>Giỏ hàng</h1>
             <p id="cart-count" aria-live="polite">0 sản phẩm</p>
         </header>
+        <!-- Hiện lỗi dữ liệu cũ và nút bỏ sản phẩm lỗi khi cần. -->
         <p class="cart__data-error" id="cart-data-error" role="alert"></p>
         <button class="cart__repair" id="cart-repair" type="button">Bỏ sản phẩm lỗi để thêm lại</button>
         <div id="cart-content">
             <div class="cart__layout">
-                <div class="cart__table-wrapper">
+                <!-- CỘT DANH SÁCH SẢN PHẨM -->
+                <div class="cart__table-wrapper" tabindex="0" role="region"
+                    aria-label="Danh sách sản phẩm, có thể cuộn ngang để xem đầy đủ">
                     <table class="cart__table" aria-label="Sản phẩm trong giỏ hàng">
                         <thead>
                             <tr>
@@ -54,9 +66,11 @@
                                 <th scope="col">Xóa</th>
                             </tr>
                         </thead>
+                        <!-- Các dòng sản phẩm được tạo bằng JavaScript -->
                         <tbody id="cart-body"></tbody>
                     </table>
                 </div>
+                <!-- FORM ĐẶT HÀNG: JavaScript kiểm tra dữ liệu trước khi hiện kết quả -->
                 <form class="cart__summary" id="cart-checkout-form" aria-labelledby="cart-summary-title" novalidate>
                     <h2 id="cart-summary-title">Thông tin đặt hàng</h2>
                     <label class="cart__field" for="cart-fullname">
@@ -75,6 +89,7 @@
                         <input id="cart-address" type="text" name="address" autocomplete="street-address"
                             placeholder="Số nhà, đường, phường/xã, tỉnh/thành" required>
                     </label>
+                    <!-- Tổng tiền và nút thanh toán -->
                     <p>Tạm tính <span id="cart-subtotal">0 đ</span></p>
                     <p>Giao hàng <span>Miễn phí</span></p>
                     <p class="cart__total">Tổng cộng <strong id="cart-total">0 đ</strong></p>
@@ -83,6 +98,7 @@
                 </form>
             </div>
         </div>
+        <!-- GIỎ HÀNG TRỐNG: cart.js ẩn bảng và hiện khối này khi hết sản phẩm. -->
         <section class="cart__empty" id="cart-empty">
             <h2>Giỏ hàng của bạn đang trống</h2>
             <p>Hãy thêm sản phẩm để tiếp tục mua sắm.</p>
@@ -90,6 +106,7 @@
         <a class="cart__continue" id="cart-continue" href="./productlist.html">← Tiếp tục mua hàng</a>
         <noscript><p>Vui lòng bật JavaScript để xem và cập nhật giỏ hàng.</p></noscript>
     </main>
+  <!-- FOOTER: thương hiệu, liên kết và thông tin liên hệ -->
   <footer class="home-footer" id="footer">
     <div class="footer-line" aria-hidden="true"></div>
     <div class="home-container footer-content">
@@ -170,6 +187,7 @@
       </p>
     </div>
   </footer>
+    <!-- THÔNG BÁO THÀNH CÔNG: hiện sau khi form hợp lệ, thanh toán mô phỏng. -->
     <div class="cart__success" id="cart-success">
         <div class="cart__success-box" role="dialog" aria-modal="true" aria-labelledby="cart-success-title">
             <span class="cart__success-icon" aria-hidden="true">✓</span>
@@ -177,6 +195,7 @@
             <button id="cart-success-close" type="button">Đóng</button>
         </div>
     </div>
+    <!-- Nạp hàm đọc/lưu trước rồi mới xử lý và hiển thị giỏ hàng. -->
     <script src="./assets/js/cart-storage.js"></script>
     <script src="./assets/js/cart.js"></script>
 </body>
