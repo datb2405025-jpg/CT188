@@ -2,7 +2,7 @@
 // MSSV: B2509664
 // Tài liệu tham khảo: CT188-BGR-phần 2
 
-// Thao tác lấu các phần tử trên cây DOM
+// THAO TÁC LẤY CÁC PHẦN TỬ HTML
 const productGrid = document.querySelector(".product-list__grid");
 
 const oldPriceElements = document.querySelectorAll(".product-card__old-price");
@@ -26,7 +26,7 @@ const categoryBtns = document.querySelectorAll(".category-pill")
 let cartItems = [];
 
 
-// Hàm kiểm tra item đã có trong giỏ hàng chưa (trả về index hoặc -1)
+// HÀM KIỂM TRA ITEM ĐÃ CÓ TRONG GIỎ HÀNG CHƯA (TRẢ VỀ INDEX HOẶC -1)
 function findCartItemIndex(item, cartList) {
   let itemIndex = -1;
   for (let i = 0; i < cartList.length; i++) {
@@ -37,7 +37,7 @@ function findCartItemIndex(item, cartList) {
   }
   return itemIndex;
 }
-// Hàm xử lý nghiệp vụ khi ấn vào "thêm vào giỏ hàng"
+// HÀM XỬ LÝ NGHIỆP VỤ KHI ẤN VÀO "THÊM VÀO GIỎ HÀNG"
 const addProductToCart = (e) => {
   const buyButton = e.currentTarget;
 
@@ -79,7 +79,7 @@ const addProductToCart = (e) => {
 };
 
 
-// Hàm nhận callback
+// HÀM NHẬN CALLBACK
 function addEventToCartButtons() {
 
   // Thêm hàm nhận callback cho từng button add cart
@@ -88,7 +88,7 @@ function addEventToCartButtons() {
   });
 }
 
-// Định dạng giá tiền theo định dạng VND
+// ĐỊNH DẠNG GIÁ TIỀN THEO ĐỊNH DẠNG VND
 function formatPrices() {
 
   oldPriceElements.forEach((priceEl) => {
@@ -101,10 +101,10 @@ function formatPrices() {
 }
 
 
-// Hàm sắp xếp thứ tự các phẩm theo tiêu chí 
+// HÀM SẮP XẾP THỨ TỰ CÁC PHẨM THEO TIÊU CHÍ 
 const sortItems = () => {
 
-  // chuyển các collection sang array để sử lý qua sort()
+  // tạo một bản sao dưới dạng array để sử dụng sort() để sắp xếp, đồng thời để lưu trữ bản sao của thứ tự trên cây DOM ban đầu
   let productCards = Array.from(productCardElements);
 
   const sortSelected = sortSelect.value;
@@ -151,11 +151,11 @@ const sortItems = () => {
   });
 }
 
-// Thực hiện sắp xếp theo tiêu chí
+// THỰC HIỆN SẮP XẾP THEO TIÊU CHÍ
 sortSelect.addEventListener("change", sortItems, false);
 
 
-// Thay đổi số lượng sản phẩm cho vào giỏ hàng
+// THAY ĐỔI SỐ LƯỢNG SẢN PHẨM CHO VÀO GIỎ HÀNG
 const changeQuantity = (e) => {
   const changeButton = e.target;
   const quantityInput = changeButton.parentElement.children[1];
@@ -178,7 +178,7 @@ const changeQuantity = (e) => {
   quantityInput.value = quantity;
 };
 
-// Thêm sự kiện cho hai button tăng và giảm số lượng
+// THÊM SỰ KIỆN CHO HAI BUTTON TĂNG VÀ GIẢM SỐ LƯỢNG
 function addEventToQuantityButtons() {
   plusButtons.forEach((button) => {
     button.addEventListener("click", changeQuantity, false);
@@ -189,7 +189,7 @@ function addEventToQuantityButtons() {
 }
 
 
-// Lọc sản phẩm theo thể loại 
+// LỌC SẢN PHẨM THEO THỂ LOẠI 
 const sortByCategory = (e) => {
   const categoryValue = e.currentTarget.textContent;
   let products = productCardElements;
@@ -225,7 +225,7 @@ const sortByCategory = (e) => {
 }
 
 
-// gắn sự kiện vào các nút categories 
+// GẮN SỰ KIỆN VÀO CÁC NÚT CATEGORIES 
 function addEventToCategoryButton() {
   categoryBtns.forEach(categoryBtn => {
     categoryBtn.addEventListener("click", sortByCategory, false)
@@ -233,7 +233,7 @@ function addEventToCategoryButton() {
 }
 
 
-
+// HÀM GỌI CÙNG LÚC CÁC PHƯƠNG THỨC ĐÃ ĐƯỢC ĐỊNH NGHĨA 
 function setup() {
   addEventToCartButtons();
   addEventToQuantityButtons();

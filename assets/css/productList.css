@@ -1,9 +1,19 @@
 /* Tác giả: Nguyễn Trần Gia Huy */
 /* MSSV: B2509664 */
+/* Tài liệu tham khảo: CT188-BGR-phần 1 */
+
+
+/* Header và Footer của trang product list đã được định kiểu theo page home.css để dùng chung */
 
 [hidden] {
   display: none !important;
   /* Tránh để bộ chọn hidden của trình duyệt bị ghi đè */
+}
+
+/* Định dạng position sticky cho header */
+.product-list-page>.home-header {
+  position: sticky;
+  top: 0
 }
 
 /* =========================================
@@ -316,6 +326,10 @@
   border-color: var(--color-green-light);
 }
 
+
+/* ===== ẨN MŨI TÊN LÊN XUỐNG CỦA INPUT =====  */
+/* Tham khảo: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+
 /* ẩn mũi tên lên xuống của input trên firefox */
 .quantity::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -328,6 +342,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+/* =========================================== */
 .product-card__add-button {
   width: 100%;
   max-width: 220px;
