@@ -17,25 +17,11 @@
     line-height: 1.5;
 }
 
-.cart-page a {
-    color: inherit;
-    text-decoration: none;
-}
-
 .cart-page * {
     box-sizing: border-box;
 }
-
-.cart-page .home-header i,
 .cart-page .home-footer i {
     font-style: normal;
-}
-
-/* Header bám đầu màn hình; nằm dưới hộp thông báo có z-index 10. */
-.cart-page > .home-header {
-    position: sticky;
-    top: 0;
-    z-index: 5;
 }
 
 .cart {
@@ -425,85 +411,10 @@
     font-family: inherit;
 }
 
-.cart-page .home-container {
+.cart-page .home-footer .home-container {
     width: 94%;
     max-width: 1160px;
     margin: 0 auto;
-}
-
-.cart-page .home-header {
-    background-color: white;
-    border-bottom: 1px solid #e5ebe6;
-}
-
-.cart-page .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    min-height: 72px;
-    flex-wrap: wrap;
-}
-
-.cart-page .brand-logo {
-    display: block;
-    width: 132px;
-    height: 56px;
-    object-fit: contain;
-}
-
-.cart-page .main-navigation {
-    display: none;
-    order: 4;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    margin-left: 0;
-    padding-bottom: 12px;
-}
-
-/* Sự kiện click trong cart.js thêm lớp này để mở menu điện thoại. */
-.cart-page .main-navigation.is-open {
-    display: flex;
-}
-
-.cart-page .nav-link {
-    padding: 10px 4px;
-    color: #56645b;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.cart-page .nav-link:hover {
-    color: #174b35;
-}
-
-.cart-page .cart-action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-height: 36px;
-    padding: 0 10px;
-    border-radius: 24px;
-    background-color: #174b35;
-    color: white;
-    font-size: 12px;
-}
-
-.cart-page .cart-action i {
-    font-size: 17px;
-}
-
-.cart-page .menu-toggle {
-    display: block;
-    margin-left: auto;
-    padding: 4px 8px;
-    border: 0;
-    background-color: transparent;
-    color: #174b35;
-    font-size: 26px;
 }
 
 .cart-page .home-footer {
@@ -622,9 +533,6 @@
     width: 44px;
     vertical-align: middle;
 }
-
-.cart-page .home-header a:focus,
-.cart-page .menu-toggle:focus,
 .cart-page .home-footer a:focus {
     outline: 2px solid #79af85;
     outline-offset: 3px;
@@ -649,46 +557,6 @@
     }
 }
 
-/* Từ 681px: hiện menu ngang và ẩn nút mở menu điện thoại. */
-@media screen and (min-width: 681px) {
-    .cart-page .header-inner {
-        min-height: 86px;
-        flex-wrap: nowrap;
-        gap: 24px;
-    }
-
-    .cart-page .brand-logo {
-        width: 160px;
-        height: 64px;
-    }
-
-    .cart-page .menu-toggle {
-        display: none;
-    }
-
-    .cart-page .main-navigation,
-    .cart-page .main-navigation.is-open {
-        display: flex;
-        order: 0;
-        width: auto;
-        flex-direction: row;
-        align-items: center;
-        gap: 28px;
-        margin-left: auto;
-        padding-bottom: 0;
-    }
-
-    .cart-page .nav-link {
-        padding: 0;
-    }
-
-    .cart-page .cart-action {
-        min-height: 42px;
-        padding: 0 16px;
-        font-size: 13px;
-    }
-}
-
 /* Từ 801px: các mục footer xếp thành ba cột. */
 @media screen and (min-width: 801px) {
     .cart-page .footer-content {
@@ -710,5 +578,23 @@
     .cart__summary {
         flex: 0 0 320px;
         width: 320px;
+    }
+}
+
+
+/* Header dùng chung home.css như index.html, giữ sticky cho trang cart. */
+.cart-page > .home-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    color: var(--home-ink);
+    font-family: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+@media screen and (min-width: 769px) {
+    .cart-page > .home-header {
+        font-size: 16px;
     }
 }

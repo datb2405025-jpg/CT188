@@ -7,6 +7,25 @@
  * https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css
  */
 
+// Chỉ mở giỏ hàng khi có tài khoản đăng nhập do login.js lưu.
+// Đây là kiểm tra trạng thái trên trình duyệt của bài web tĩnh.
+function requireCartLogin() {
+    let user = null;
+    try {
+        user = JSON.parse(localStorage.getItem('currentUser'));
+    } catch (error) {
+        user = null;
+    }
+    if (!user || typeof user.name !== 'string' || user.name.trim() === '' ||
+        typeof user.email !== 'string' || user.email.trim() === '') {
+        document.querySelector('main.cart').hidden = true;
+        document.getElementById('cart-success').style.display = 'none';
+        window.location.replace('./login.html');
+        return false;
+    }
+    return true;
+}
+
 // DANH SÁCH ẢNH SÁCH
 // Ghép bìa sách với sản phẩm theo id có trong productlist.html.
 const cartBookImages = [
@@ -43,8 +62,6 @@ const closeSuccessButton = document.getElementById('cart-success-close');
 const formError = document.getElementById('cart-form-error');
 const dataError = document.getElementById('cart-data-error');
 const repairButton = document.getElementById('cart-repair');
-const menuButton = document.querySelector('.menu-toggle');
-const navigation = document.getElementById('main-navigation');
 
 // HÀM HIỂN THỊ LỖI DỮ LIỆU
 // Chỉ hiện nút bỏ sản phẩm lỗi khi dữ liệu có bản ghi không hợp lệ.
@@ -67,21 +84,7 @@ repairButton.addEventListener('click', function () {
     }
 });
 
-// MỞ / ĐÓNG MENU TRÊN ĐIỆN THOẠI
-// Lớp is-open trong CSS quyết định trạng thái hiện menu.
-menuButton.addEventListener('click', function () {
-    if (navigation.classList.contains('is-open')) {
-        navigation.classList.remove('is-open');
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', 'Mở menu');
-        menuButton.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
-    } else {
-        navigation.classList.add('is-open');
-        menuButton.setAttribute('aria-expanded', 'true');
-        menuButton.setAttribute('aria-label', 'Đóng menu');
-        menuButton.innerHTML = '<i class="ri-close-line" aria-hidden="true"></i>';
-    }
-});
+// Menu và trạng thái đăng nhập trong header dùng chung assets/js/home.js.
 
 // ĐÓNG THÔNG BÁO THANH TOÁN
 // Cho cuộn trang trở lại và trả focus về nút Thanh toán nếu hộp đang mở.
@@ -294,6 +297,9 @@ function showFormError(input, message) {
 checkoutForm.addEventListener('submit', function (event) {
     // Chặn gửi form để kiểm tra dữ liệu và hiện kết quả ngay trên trang.
     event.preventDefault();
+    if (!requireCartLogin()) {
+        return;
+    }
     if (cartProducts.length > 0) {
         // Bỏ khoảng trắng thừa ở đầu và cuối các ô nhập
         fullNameInput.value = fullNameInput.value.trim();
@@ -337,6 +343,10 @@ checkoutForm.addEventListener('input', function () {
 // HÀM HIỂN THỊ GIỎ HÀNG
 // Đọc dữ liệu mới và xóa các dòng cũ trước khi tạo lại bảng.
 function showCart() {
+    if (!requireCartLogin()) {
+        return;
+    }
+    document.querySelector('main.cart').hidden = false;
     cartProducts = getCartProducts();
     showStorageMessage();
     // Xóa các dòng cũ trong bảng
@@ -352,6 +362,12 @@ function showCart() {
 
 // Cập nhật khi mở trang hoặc quay lại bằng nút Back của trình duyệt.
 window.addEventListener('pageshow', showCart);
+// Đăng xuất ở tab khác thì đóng quyền xem giỏ hàng tại tab này.
+window.addEventListener('storage', function (event) {
+    if (event.key === 'currentUser' || event.key === null) {
+        requireCartLogin();
+    }
+});
 
 // HIỂN THỊ LẦN ĐẦU
 showCart();

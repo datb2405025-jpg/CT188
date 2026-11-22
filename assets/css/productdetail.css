@@ -1,0 +1,71 @@
+/* Chi tiết sách: bố cục mobile-first, mở rộng bằng Flexbox theo CT188. */
+.book-page {
+    width: 94%;
+    max-width: 1100px;
+    margin: 28px auto;
+}
+
+.book-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 24px;
+    padding: 24px;
+    border: 1px solid #dce5de;
+}
+
+.book-detail > img {
+    width: 200px;
+    height: 280px;
+    object-fit: contain;
+    align-self: center;
+}
+
+.book-description {
+    flex: 1;
+    min-width: 0;
+}
+
+.book-description h1 {
+    font-size: 26px;
+    color: #174b35;
+}
+
+.book-price {
+    color: #166534;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.book-description input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.book-description button {
+    display: block;
+    margin: 16px 0;
+    padding: 12px 20px;
+    border: 0;
+    background: #174b35;
+    color: white;
+    border-radius: 4px;
+}
+
+#book-notice {
+    color: #174b35;
+}
+
+@media screen and (min-width: 700px) {
+    .book-detail {
+        flex-direction: row;
+        gap: 50px;
+    }
+
+    .book-detail > img {
+        width: 280px;
+        height: 360px;
+    }
+
+}
