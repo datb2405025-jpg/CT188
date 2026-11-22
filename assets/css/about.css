@@ -26,9 +26,6 @@
   --home-shadow: 0 12px 35px rgba(23, 75, 53, 0.09);
 }
 
-html{
-  scroll-behavior: smooth;
-}
 .home-page {
   color: var(--home-ink);
   background: #fff;
@@ -54,11 +51,8 @@ html{
 
 /* Header and navigation */
 .home-header {
-  position: sticky;
-  top:0;
-  z-index: 10; /*sticky để dính , top=0 để dính trên cùng màn hình khi lướt xuống, z=10 để "nổi bọt hiển thị" cao hơn so với các phần tử khác */
-
-
+  position: relative;
+  z-index: 10;
   background: #fff;
   border-bottom: 1px solid var(--home-line);
 }
@@ -246,7 +240,7 @@ html{
     transform: scale(1.05);
     background-color: goldenrod;
     font-family: fantasy;
-    cursor: none;
+    cursor: pointer;
 }
 
 .sidebar-text
