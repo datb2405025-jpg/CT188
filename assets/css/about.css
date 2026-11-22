@@ -51,8 +51,10 @@
 
 /* Header and navigation */
 .home-header {
-  position: relative;
+  position: sticky;
   z-index: 10;
+  top:0; /*sticky để dính thanh header lên màn hình  khi lướt, top;0 là vị trí dính trên cùng màn hình, z index để quyết định độ nổi bọt hiển thị cao để ko bị các phần tử khác che mất khi lướt xuống*/
+
   background: #fff;
   border-bottom: 1px solid var(--home-line);
 }
@@ -832,11 +834,4 @@
   }
 }
 
-/*reponsive main*/
-
-@media (max-width:1200px){
-  .main-content__article__2sides
-  {
-    grid-template-columns: 1fr;
-  }
-}
+/*reponsive main kịch hoạt bằng cách click các tiêu đề ở thanh side bar bên trái màn hình*/ 
