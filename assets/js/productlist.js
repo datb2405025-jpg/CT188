@@ -15,9 +15,7 @@ const productCardElements = document.querySelectorAll(".product-card");
 const addToCartButtons = document.querySelectorAll(".product-card__add-button");
 
 const sortSelect = document.querySelector(".product-list__sort-select");
-const categoryPill = document.querySelectorAll(".category-pill");
 
-const categories = document.querySelector(".product-list__categories");
 const categoryBtns = document.querySelectorAll(".category-pill");
 
 // Mảng chứa các products
@@ -228,5 +226,3 @@ function setup() {
 
 // thực thi setup sau khi trang web được load
 window.addEventListener("load", setup, false);
-
-const a = 0;
