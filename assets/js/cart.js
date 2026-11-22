@@ -7,26 +7,24 @@
  * https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css
  */
 
-// Chỉ mở giỏ hàng khi có tài khoản đăng nhập do login.js lưu.
-// Đây là kiểm tra trạng thái trên trình duyệt của bài web tĩnh.
-function requireCartLogin() {
-    let user = null;
-    try {
-        user = JSON.parse(localStorage.getItem('currentUser'));
-    } catch (error) {
-        user = null;
-    }
-    if (!user || typeof user.name !== 'string' || user.name.trim() === '' ||
-        typeof user.email !== 'string' || user.email.trim() === '') {
-        document.querySelector('main.cart').hidden = true;
-        document.getElementById('cart-success').style.display = 'none';
-        window.location.replace('./login.html');
-        return false;
-    }
-    return true;
-}
+// 1. TÌM CÁC PHẦN TỬ HTML
+const cartBody = document.getElementById('cart-body');
+const cartContent = document.getElementById('cart-content');
+const cartEmpty = document.getElementById('cart-empty');
+const cartCount = document.getElementById('cart-count');
+const cartSubtotal = document.getElementById('cart-subtotal');
+const cartTotal = document.getElementById('cart-total');
+const checkoutForm = document.getElementById('cart-checkout-form');
+const fullNameInput = document.getElementById('cart-fullname');
+const phoneInput = document.getElementById('cart-phone');
+const addressInput = document.getElementById('cart-address');
+const successMessage = document.getElementById('cart-success');
+const closeSuccessButton = document.getElementById('cart-success-close');
+const formError = document.getElementById('cart-form-error');
+const dataError = document.getElementById('cart-data-error');
+const repairButton = document.getElementById('cart-repair');
 
-// DANH SÁCH ẢNH SÁCH
+// 2. DỮ LIỆU GIỎ HÀNG VÀ ẢNH SÁCH
 // Ghép bìa sách với sản phẩm theo id có trong productlist.html.
 const cartBookImages = [
     { "image": "./assets/images/productList_images/goc-nho-co-nang.webp", "id": "1" },
@@ -46,22 +44,25 @@ const cartBookImages = [
 // Lấy danh sách sản phẩm từ localStorage khi hiển thị giỏ hàng.
 let cartProducts = [];
 
-// TÌM CÁC PHẦN TỬ HTML
-const cartBody = document.getElementById('cart-body');
-const cartContent = document.getElementById('cart-content');
-const cartEmpty = document.getElementById('cart-empty');
-const cartCount = document.getElementById('cart-count');
-const cartSubtotal = document.getElementById('cart-subtotal');
-const cartTotal = document.getElementById('cart-total');
-const checkoutForm = document.getElementById('cart-checkout-form');
-const fullNameInput = document.getElementById('cart-fullname');
-const phoneInput = document.getElementById('cart-phone');
-const addressInput = document.getElementById('cart-address');
-const successMessage = document.getElementById('cart-success');
-const closeSuccessButton = document.getElementById('cart-success-close');
-const formError = document.getElementById('cart-form-error');
-const dataError = document.getElementById('cart-data-error');
-const repairButton = document.getElementById('cart-repair');
+// 3. KIỂM TRA ĐĂNG NHẬP VÀ CÁC HÀM HỖ TRỢ
+// Chỉ mở giỏ hàng khi có tài khoản đăng nhập do login.js lưu.
+// Đây là kiểm tra trạng thái trên trình duyệt của bài web tĩnh.
+function requireCartLogin() {
+    let user = null;
+    try {
+        user = JSON.parse(localStorage.getItem('currentUser'));
+    } catch (error) {
+        user = null;
+    }
+    if (!user || typeof user.name !== 'string' || user.name.trim() === '' ||
+        typeof user.email !== 'string' || user.email.trim() === '') {
+        document.querySelector('main.cart').hidden = true;
+        document.getElementById('cart-success').style.display = 'none';
+        window.location.replace('./login.html');
+        return false;
+    }
+    return true;
+}
 
 // HÀM HIỂN THỊ LỖI DỮ LIỆU
 // Chỉ hiện nút bỏ sản phẩm lỗi khi dữ liệu có bản ghi không hợp lệ.
@@ -75,17 +76,6 @@ function showStorageMessage() {
     }
 }
 
-// Lưu lại các sản phẩm hợp lệ khi người dùng chọn bỏ dữ liệu lỗi.
-repairButton.addEventListener('click', function () {
-    if (saveCartProducts(cartProducts)) {
-        showCart();
-    } else {
-        showStorageMessage();
-    }
-});
-
-// Menu và trạng thái đăng nhập trong header dùng chung assets/js/home.js.
-
 // ĐÓNG THÔNG BÁO THANH TOÁN
 // Cho cuộn trang trở lại và trả focus về nút Thanh toán nếu hộp đang mở.
 function clearCheckoutMessage() {
@@ -96,18 +86,6 @@ function clearCheckoutMessage() {
         document.getElementById('cart-checkout').focus();
     }
 }
-
-closeSuccessButton.addEventListener('click', clearCheckoutMessage);
-// Escape đóng hộp; Tab giữ focus ở nút Đóng trong hộp.
-successMessage.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-        clearCheckoutMessage();
-    }
-    if (event.key === 'Tab') {
-        event.preventDefault();
-        closeSuccessButton.focus();
-    }
-});
 
 // Định dạng số tiền theo tiếng Việt, ví dụ 79000 thành 79.000 đ.
 function formatPrice(amount) {
@@ -133,7 +111,7 @@ function createButton(parent, text, label) {
     return button;
 }
 
-// TÍNH TỔNG SỐ LƯỢNG VÀ TỔNG TIỀN
+// 4. TÍNH TỔNG VÀ HIỂN THỊ SẢN PHẨM
 function updateTotals() {
     clearCheckoutMessage();
     let quantity = 0;
@@ -286,7 +264,27 @@ function addProductRow(product) {
     updateRow();
 }
 
-// KIỂM TRA THÔNG TIN ĐẶT HÀNG
+// HÀM HIỂN THỊ GIỎ HÀNG
+// Đọc dữ liệu mới và xóa các dòng cũ trước khi tạo lại bảng.
+function showCart() {
+    if (!requireCartLogin()) {
+        return;
+    }
+    document.querySelector('main.cart').hidden = false;
+    cartProducts = getCartProducts();
+    showStorageMessage();
+    // Xóa các dòng cũ trong bảng
+    while (cartBody.firstChild) {
+        cartBody.removeChild(cartBody.firstChild);
+    }
+    // Tạo lại từng dòng từ danh sách vừa đọc
+    for (let i = 0; i < cartProducts.length; i++) {
+        addProductRow(cartProducts[i]);
+    }
+    updateTotals();
+}
+
+// 5. KIỂM TRA THÔNG TIN ĐẶT HÀNG
 // Hiện lỗi và đưa con trỏ đến ô cần sửa.
 function showFormError(input, message) {
     formError.textContent = message;
@@ -294,7 +292,7 @@ function showFormError(input, message) {
     input.focus();
 }
 
-checkoutForm.addEventListener('submit', function (event) {
+function checkout(event) {
     // Chặn gửi form để kiểm tra dữ liệu và hiện kết quả ngay trên trang.
     event.preventDefault();
     if (!requireCartLogin()) {
@@ -331,43 +329,56 @@ checkoutForm.addEventListener('submit', function (event) {
         document.body.style.overflow = 'hidden';
         closeSuccessButton.focus();
     }
-});
+}
 
-// Xóa thông báo cũ khi người dùng sửa thông tin.
-checkoutForm.addEventListener('input', function () {
+// Xóa lỗi cũ khi sửa thông tin người nhận.
+function clearFormError() {
     clearCheckoutMessage();
     formError.textContent = '';
     formError.style.display = 'none';
-});
-
-// HÀM HIỂN THỊ GIỎ HÀNG
-// Đọc dữ liệu mới và xóa các dòng cũ trước khi tạo lại bảng.
-function showCart() {
-    if (!requireCartLogin()) {
-        return;
-    }
-    document.querySelector('main.cart').hidden = false;
-    cartProducts = getCartProducts();
-    showStorageMessage();
-    // Xóa các dòng cũ trong bảng
-    while (cartBody.firstChild) {
-        cartBody.removeChild(cartBody.firstChild);
-    }
-    // Tạo lại từng dòng từ danh sách vừa đọc
-    for (let i = 0; i < cartProducts.length; i++) {
-        addProductRow(cartProducts[i]);
-    }
-    updateTotals();
 }
 
-// Cập nhật khi mở trang hoặc quay lại bằng nút Back của trình duyệt.
-window.addEventListener('pageshow', showCart);
-// Đăng xuất ở tab khác thì đóng quyền xem giỏ hàng tại tab này.
-window.addEventListener('storage', function (event) {
+// 6. XỬ LÝ DỮ LIỆU LỖI VÀ PHÍM TRONG HỘP THÔNG BÁO
+// Chỉ lưu lại các sản phẩm hợp lệ khi người dùng chọn sửa dữ liệu.
+function repairCart() {
+    if (saveCartProducts(cartProducts)) {
+        showCart();
+    } else {
+        showStorageMessage();
+    }
+}
+
+// Escape đóng hộp, Tab giữ con trỏ ở nút Đóng.
+function handleSuccessKeydown(event) {
+    if (event.key === 'Escape') {
+        clearCheckoutMessage();
+    }
+    if (event.key === 'Tab') {
+        event.preventDefault();
+        closeSuccessButton.focus();
+    }
+}
+
+// Đăng xuất ở tab khác thì chuyển về trang đăng nhập.
+function handleLoginChange(event) {
     if (event.key === 'currentUser' || event.key === null) {
         requireCartLogin();
     }
-});
+}
 
-// HIỂN THỊ LẦN ĐẦU
-showCart();
+// 7. GẮN SỰ KIỆN VÀ HIỂN THỊ LẦN ĐẦU
+// Menu và tên tài khoản trên header do home.js xử lý.
+function setupCart() {
+    repairButton.addEventListener('click', repairCart);
+    closeSuccessButton.addEventListener('click', clearCheckoutMessage);
+    successMessage.addEventListener('keydown', handleSuccessKeydown);
+    checkoutForm.addEventListener('submit', checkout);
+    checkoutForm.addEventListener('input', clearFormError);
+
+    // Đọc lại giỏ khi quay về trang; kiểm tra đăng xuất từ tab khác.
+    window.addEventListener('pageshow', showCart);
+    window.addEventListener('storage', handleLoginChange);
+    showCart();
+}
+
+setupCart();

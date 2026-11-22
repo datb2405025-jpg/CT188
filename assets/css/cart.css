@@ -2,7 +2,7 @@
  * cart.css - Định dạng trang giỏ hàng.
  * MSSV: B2408849 - Họ tên: Phan Quốc Hậu.
  * Tham khảo kiến thức: CT188-BGR-phần 1.pdf, chương 3 (CSS).
- * Header/footer dựa trên assets/css/home.css của dự án.
+ * Header/footer dùng home.css và shared.css; cart.css chỉ bổ sung sticky và nội dung giỏ.
  */
 
 /* 1. KHUNG TRANG VÀ ĐỊNH DẠNG CHUNG
@@ -23,6 +23,33 @@
 .cart-page .home-footer i {
     font-style: normal;
 }
+
+/* Ảnh và điều khiển trong trang cart. */
+.cart-page img {
+    max-width: 100%;
+}
+
+.cart-page button {
+    cursor: pointer;
+}
+
+.cart-page button,
+.cart-page input {
+    font-family: inherit;
+}
+
+
+/* Header dùng chung home.css như index.html, giữ sticky cho trang cart. */
+.cart-page > .home-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    color: var(--home-ink);
+    font-family: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
 
 .cart {
     width: 94%;
@@ -276,7 +303,29 @@
     background-color: #124d29;
 }
 
-/* 6. THÔNG BÁO THANH TOÁN THÀNH CÔNG
+/* 6. GIỎ HÀNG TRỐNG VÀ LIÊN KẾT MUA TIẾP */
+.cart__continue {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 6px 0;
+}
+
+/* Trạng thái chưa có sản phẩm trong giỏ. */
+.cart__empty {
+    display: none;
+    padding: 30px 10px;
+    text-align: center;
+}
+
+.cart__empty h2 {
+    font-size: 21px;
+}
+
+.cart__empty p {
+    color: #666;
+}
+
+/* 7. THÔNG BÁO THANH TOÁN THÀNH CÔNG
    Phủ nền toàn màn hình; Flexbox căn hộp thông báo ở giữa. */
 .cart__success {
     display: none;
@@ -375,169 +424,6 @@
     to { transform: scale(1); }
 }
 
-.cart__continue {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 6px 0;
-}
-
-/* Trạng thái chưa có sản phẩm trong giỏ. */
-.cart__empty {
-    display: none;
-    padding: 30px 10px;
-    text-align: center;
-}
-
-.cart__empty h2 {
-    font-size: 21px;
-}
-
-.cart__empty p {
-    color: #666;
-}
-
-/* 7. HEADER VÀ FOOTER
-   Các bộ chọn .cart-page chỉ áp dụng trong trang cart. */
-.cart-page img {
-    max-width: 100%;
-}
-
-.cart-page button {
-    cursor: pointer;
-}
-
-.cart-page button,
-.cart-page input {
-    font-family: inherit;
-}
-
-.cart-page .home-footer .home-container {
-    width: 94%;
-    max-width: 1160px;
-    margin: 0 auto;
-}
-
-.cart-page .home-footer {
-    padding-top: 40px;
-    border-top: 3px solid #79af85;
-    background-color: #123e2c;
-    color: #f1f7f1;
-}
-
-.cart-page .footer-content {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    padding-bottom: 40px;
-}
-
-.cart-page .footer-item {
-    flex: 1;
-    min-width: 0;
-}
-
-.cart-page .footer-brand img {
-    width: 205px;
-    height: 68px;
-    object-fit: contain;
-    object-position: left center;
-}
-
-.cart-page .footer-text {
-    color: #deeadf;
-    line-height: 1.8;
-}
-
-.cart-page .footer-slogan {
-    margin-bottom: 24px;
-    color: #a9d0ae;
-    font-size: 13px;
-    font-style: italic;
-}
-
-.cart-page .footer-title {
-    margin: 0 0 10px;
-    font-size: 16px;
-}
-
-.cart-page .footer-underline {
-    display: block;
-    width: 45px;
-    height: 3px;
-    margin-bottom: 24px;
-    background-color: #88ba90;
-}
-
-.cart-page .footer-links {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.cart-page .footer-links li {
-    margin-bottom: 16px;
-}
-
-.cart-page .footer-links a,
-.cart-page .footer-detail {
-    display: flex;
-    gap: 9px;
-    color: #d6e6d8;
-    font-size: 14px;
-    overflow-wrap: break-word;
-}
-
-.cart-page .footer-links a:hover {
-    color: white;
-    text-decoration: underline;
-}
-
-.cart-page .footer-links i {
-    flex-shrink: 0;
-    color: #9dd4a7;
-}
-
-.cart-page .footer-social {
-    display: flex;
-    gap: 12px;
-}
-
-.cart-page .footer-social a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #5e8270;
-    border-radius: 50%;
-    background-color: #2c5441;
-}
-
-.cart-page .footer-social a:hover {
-    background-color: #3e8555;
-}
-
-.cart-page .footer-bottom {
-    padding: 18px 12px;
-    border-top: 1px solid #41614f;
-    text-align: center;
-}
-
-.cart-page .footer-bottom p {
-    margin: 0;
-    color: #bdd5c1;
-    font-size: 12px;
-}
-
-.cart-page .footer-bottom img {
-    width: 44px;
-    vertical-align: middle;
-}
-.cart-page .home-footer a:focus {
-    outline: 2px solid #79af85;
-    outline-offset: 3px;
-}
-
 /* 8. MỞ RỘNG BỐ CỤC TỪ ĐIỆN THOẠI LÊN MÀN HÌNH LỚN */
 
 /* Từ 601px: tăng khoảng đệm, dùng kích thước điều khiển cho màn hình rộng. */
@@ -557,11 +443,9 @@
     }
 }
 
-/* Từ 801px: các mục footer xếp thành ba cột. */
-@media screen and (min-width: 801px) {
-    .cart-page .footer-content {
-        flex-direction: row;
-        gap: 40px;
+@media screen and (min-width: 769px) {
+    .cart-page > .home-header {
+        font-size: 16px;
     }
 }
 
@@ -578,23 +462,5 @@
     .cart__summary {
         flex: 0 0 320px;
         width: 320px;
-    }
-}
-
-
-/* Header dùng chung home.css như index.html, giữ sticky cho trang cart. */
-.cart-page > .home-header {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    color: var(--home-ink);
-    font-family: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-@media screen and (min-width: 769px) {
-    .cart-page > .home-header {
-        font-size: 16px;
     }
 }
