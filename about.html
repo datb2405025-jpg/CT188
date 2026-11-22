@@ -15,43 +15,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BOOKSHELT:ABOUT US AND CONTACT</title>
         <link rel="stylesheet" href="assets/css/about.css">
-        <link rel="icon" href="">
+        <link href="assets/css/style.css" rel="stylesheet" />
+        <link rel="icon" href="assets/images/Bookshelf.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     </head>
-    <body>
-         <header class="home-header">
-        <div class="home-container header-inner">
-          <a class="brand" href="index.html">
-            <img
-              alt="Logo Bookshelf"
-              class="brand-logo"
-              src="assets/images/Bookshelf.png"
-            />
-          </a>
-          <button class="menu-toggle" type="button">
-            <i class="ri-menu-line"></i>
-          </button>
-          <nav class="main-navigation" id="main-navigation">
-            <a class="nav-link active" href="index.html">Trang chủ</a>
-            <a class="nav-link" href="productlist.html">Sản phẩm</a>
-            <a class="nav-link" href="about.html">Giới thiệu</a>
-          </nav>
-          <div class="header-actions">
-            <a class="header-action" href="login.html">
-              <i class="ri-user-line"></i>
-              <span>Đăng nhập</span>
-            </a>
-            <a class="cart-action" href="cart.html">
-              <i class="ri-shopping-bag-3-line"></i>
-              <span>Giỏ hàng</span>
-            </a>
-          </div>
-        </div>
-    </header>
+    <body class="cart-page">
+        <!-- HEADER: logo, menu và liên kết giỏ hàng -->
+  <header class="home-header">
+    <div class="home-container header-inner">
+      <a class="brand" href="index.html" aria-label="Bookshelf - Trang chủ">
+        <img src="assets/images/Bookshelf.png" alt="Logo Bookshelf" class="brand-logo" />
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false"
+        aria-controls="main-navigation">
+        <i class="ri-menu-line" aria-hidden="true"></i>
+      </button>
+
+      <nav class="main-navigation" id="main-navigation" aria-label="Điều hướng chính">
+        <a class="nav-link" href="index.html">Trang chủ</a>
+        <a class="nav-link" href="productlist.html">Sản phẩm</a>
+        <a class="nav-link" href="about.html">Giới thiệu</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="cart-action" href="cart.html" aria-current="page" aria-label="Mở giỏ hàng">
+          <i class="ri-shopping-bag-3-line" aria-hidden="true"></i>
+          <span>Giỏ hàng</span>
+        </a>
+      </div>
+    </div>
+  </header>
         
         <main>
             <section>
-                <h1 class="main-title">Về Chúng Tôi và Liên Hệ</h1>
+                <h1 class="main-title" id="nut-cuon">Về Chúng Tôi và Liên Hệ</h1>
                 <div class="main-container_img">
                     <img class="main-container__img1" src="assets/images/bookshelf-white.png" alt="anh Logo">
                     <img class="main-container__img2" src="assets/images/logo-footer.png" alt="anh Logo">
@@ -108,13 +106,13 @@
                 </div>
 
                 <div class="sidebar-box">
-                    <h3 class="sidebar-title">Kết nối với chúng tôi</h3>
+                    <h3 class="sidebar-title" id="cuon-den">Kết nối với chúng tôi</h3>
                     <ul class="sidebar-list">
-                        <li><a  href="tel:0123456789">📞 Hotline: 0123 456 789</a></li>
-                        <li><a  href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">Facebook</a></li>
-                        <li><a  href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">TikTok</a></li>
-                        <li><a href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">YouTube</a></li>
-                        <li><a  href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">Instagram</a></li>
+                        <li><a class="sidebar-link " href="tel:0123456789">📞 Hotline: 0123 456 789</a></li>
+                        <li><a class="sidebar-link" href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">Facebook</a></li>
+                        <li><a class="sidebar-link" href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">TikTok</a></li>
+                        <li><a class="sidebar-link" href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">YouTube</a></li>
+                        <li><a class="sidebar-link" href="https://youtu.be/QDia3e12czc?si=wCxmO1ds7hS4GQ9f">Instagram</a></li>
                     </ul>
                 </div>
 
@@ -286,6 +284,6 @@
         </p>
       </div>
     </footer>
-        
+        <script src="./assets/js/about.js"></script>
     </body>
 </html>
