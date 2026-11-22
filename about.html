@@ -6,6 +6,8 @@
     -Ngày update 1:15/11/2026
 
     -Ngày update 2:20/11/2026
+
+    header+footer dùng chung từ index.html
 -->
 
 <!DOCTYPE html>
@@ -20,32 +22,49 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     </head>
     <body class="cart-page">
-        <!-- HEADER: logo, menu và liên kết giỏ hàng -->
-  <header class="home-header">
-    <div class="home-container header-inner">
-      <a class="brand" href="index.html" aria-label="Bookshelf - Trang chủ">
-        <img src="assets/images/Bookshelf.png" alt="Logo Bookshelf" class="brand-logo" />
-      </a>
-
-      <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false"
-        aria-controls="main-navigation">
-        <i class="ri-menu-line" aria-hidden="true"></i>
-      </button>
-
-      <nav class="main-navigation" id="main-navigation" aria-label="Điều hướng chính">
-        <a class="nav-link" href="index.html">Trang chủ</a>
-        <a class="nav-link" href="productlist.html">Sản phẩm</a>
-        <a class="nav-link" href="about.html">Giới thiệu</a>
-      </nav>
-
-      <div class="header-actions">
-        <a class="cart-action" href="cart.html" aria-current="page" aria-label="Mở giỏ hàng">
-          <i class="ri-shopping-bag-3-line" aria-hidden="true"></i>
-          <span>Giỏ hàng</span>
+        <!-- HEADER-->
+    <header class="home-header">
+      <div class="home-container header-inner">
+        <a class="brand" href="index.html">
+          <img
+            alt="Logo Bookshelf"
+            class="brand-logo"
+            src="assets/images/Bookshelf.png"
+          />
         </a>
+        <button class="menu-toggle" type="button">
+          <i class="ri-menu-line"></i>
+        </button>
+        <nav class="main-navigation" id="main-navigation">
+          <a class="nav-link active" href="index.html">Trang chủ</a>
+          <a class="nav-link" href="productlist.html">Sản phẩm</a>
+          <a class="nav-link" href="about.html">Giới thiệu</a>
+        </nav>
+        <!-- Đã sửa lại để có tên user và nút đăng xuất khi đã đăng nhập-->
+        <div class="header-actions">
+          <a class="header-action" id="header-login" href="login.html">
+            <i class="ri-user-line"></i>
+          <span>Đăng nhập</span>
+          </a>
+
+          <div class="header-user" id="header-user" style="display: none">
+             <span class="header-user-name">
+         <i class="ri-user-line"></i>
+         <span id="header-user-name"></span>
+              </span>
+           <button class="header-action" id="header-logout" type="button">
+            <i class="ri-logout-box-r-line"></i>
+      <span>Đăng xuất</span>
+    </button>
+  </div>
+
+  <a class="cart-action" href="cart.html">
+    <i class="ri-shopping-bag-3-line"></i>
+    <span>Giỏ hàng</span>
+  </a>
+</div>
       </div>
-    </div>
-  </header>
+    </header>
         
         <main>
             <section>
