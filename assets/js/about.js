@@ -26,8 +26,8 @@ anh.addEventListener("click", ()=> {
 });
 
 
-const change_grid_cha = ["1fr 1fr", "1fr 1fr 1fr", "1fr"];
-const change_grid_con= ["1fr", "1fr 1fr", "1fr 2fr"];
+const change_grid_cha = ["1fr 1fr", "1fr 1fr 1fr", "1fr" ,"1fr"];
+const change_grid_con= ["1fr", "1fr 1fr", "1fr 2fr", "1fr"];
 let count_click=0;
 
 
