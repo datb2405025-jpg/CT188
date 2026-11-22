@@ -193,7 +193,7 @@
 .main-container__img1:hover
 {
   opacity: 0.0;
-  cursor: none;
+  cursor: pointer;
 }
 
 .main-container__img2:hover
