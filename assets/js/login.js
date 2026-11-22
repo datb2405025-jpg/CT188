@@ -311,6 +311,7 @@ if (loginForm) {
                 "toastMessage",
                 "Chào mừng test đến với Bookshelf!"
             );
+            localStorage.setItem("userName", testUser.name);
             window.location.href = "./index.html";
             return;
         }
@@ -350,6 +351,7 @@ if (loginForm) {
             "currentUser",
             JSON.stringify(currentUser)
         );
+        localStorage.setItem("userName", user.name);
         // Lưu thông báo chào mừng
         localStorage.setItem(
             "toastMessage",

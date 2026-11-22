@@ -963,3 +963,25 @@
     height: 165px;
   }
 }
+/* CSS bổ sung cho header khi đã đăng nhập */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header-user-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--home-green);
+  font-size: 13px;
+  font-weight: 600;
+}
+.header-user button.header-action {
+  background: transparent;
+  cursor: pointer;
+}

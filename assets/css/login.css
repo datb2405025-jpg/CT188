@@ -1,8 +1,4 @@
-.login-page > .home-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
+
 /* =================================
    MAIN - TRANG ĐĂNG NHẬP / ĐĂNG KÝ
 ================================= */
@@ -318,6 +314,76 @@
     display: none;
 }
 
+/* =================================
+   RESPONSIVE TABLET
+================================= */
+
+@media (max-width: 992px) {
+    .auth-page {
+        gap: 30px;
+        padding: 40px 5%;
+    }
+
+    .auth-branding .content {
+        font-size: 23px;
+    }
+
+    .auth-login .wrapper {
+        padding: 35px 25px;
+    }
+}
+
+/* =================================
+   RESPONSIVE MOBILE
+================================= */
+
+@media (max-width: 768px) {
+    .auth-page {
+        flex-direction: column;
+        gap: 35px;
+        padding: 40px 20px;
+    }
+
+    .auth-branding {
+        width: 100%;
+    }
+
+    .logo-wrapper {
+        max-width: 350px;
+        max-height: 100px;
+    }
+
+    .auth-branding .content {
+        font-size: 20px;
+        padding: 15px 25px;
+    }
+
+    .auth-login {
+        width: 100%;
+    }
+
+    .auth-login .wrapper {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-page {
+        padding: 30px 15px;
+    }
+
+    .auth-login .wrapper {
+        padding: 30px 20px;
+    }
+
+    .form-header .title {
+        font-size: 24px;
+    }
+
+    .auth-branding .content {
+        font-size: 18px;
+    }
+}
 /* ================================
    CHUYỂN ĐỔI FORM ĐĂNG NHẬP / ĐĂNG KÝ
 ================================ */
