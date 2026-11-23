@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultText = document.querySelector("#search-result");
   const emptyMessage = document.querySelector("#empty-search");
 
-  function removeVietnameseDau(text) {
+  function boDauTiengViet(text) {
     return text
       .toLowerCase()
       .normalize("NFD")
@@ -38,12 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (searchInput && bookCards.length > 0) {
     searchInput.addEventListener("input", function () {
-      const keyword = removeVietnameseDau(searchInput.value.trim());
+      const keyword = boDauTiengViet(searchInput.value.trim());
       let visibleCount = 0;
 
       bookCards.forEach(function (card) {
-        const searchableText = removeVietnameseDau(
-          (card.dataset.search || "") + " " + card.textContent,
+        const category =
+          card.querySelector(".book-category")?.textContent || "";
+        const title = card.querySelector("h3")?.textContent || "";
+        const author = card.querySelector(".book-author")?.textContent || "";
+        const searchableText = boDauTiengViet(
+          category + " " + title + " " + author,
         );
         const isMatched = searchableText.includes(keyword);
         card.hidden = !isMatched;
@@ -61,25 +65,25 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-});
-// Bổ sung header hiển thị sau khi đăng nhập
-const loginLink = document.getElementById("header-login");
-const userBox = document.getElementById("header-user");
-const userNameEl = document.getElementById("header-user-name");
-const logoutBtn = document.getElementById("header-logout");
+  // Bổ sung header hiển thị sau khi đăng nhập
+  const loginLink = document.getElementById("header-login");
+  const userBox = document.getElementById("header-user");
+  const userNameEl = document.getElementById("header-user-name");
+  const logoutBtn = document.getElementById("header-logout");
 
-if (loginLink && userBox && userNameEl && logoutBtn) {
-  const userName = localStorage.getItem("userName");
+  if (loginLink && userBox && userNameEl && logoutBtn) {
+    const userName = localStorage.getItem("userName");
 
-  if (userName) {
-    loginLink.style.display = "none";
-    userBox.style.display = "flex";
-    userNameEl.textContent = userName;
+    if (userName) {
+      loginLink.style.display = "none";
+      userBox.style.display = "flex";
+      userNameEl.textContent = userName;
+    }
+
+    logoutBtn.addEventListener("click", function () {
+      localStorage.removeItem("userName");
+      localStorage.removeItem("currentUser");
+      window.location.href = "index.html";
+    });
   }
-
-  logoutBtn.addEventListener("click", function () {
-    localStorage.removeItem("userName");
-    localStorage.removeItem("currentUser");
-    window.location.href = "index.html";
-  });
-}
+});
