@@ -1,8 +1,14 @@
-/**
- * cart-storage.js - Đọc và lưu giỏ hàng trong localStorage.
- * MSSV: B2408849 - Họ tên: Phan Quốc Hậu.
- * Tham khảo: CT188-BGR-phần 2.pdf, chương 4, ví dụ 4.10, trang 143-145.
- */
+/* Tên: Phan Quốc Hậu
+   MSSV:B2408849
+   ngày thực hiện:20/11/2026
+
+   ngày update 1:22/11/2026
+*/
+
+/*
+   cart-storage.js - Đọc và lưu giỏ hàng trong localStorage.
+   Tham khảo: CT188-BGR-phần 2.pdf, chương 4, ví dụ 4.10, trang 143-145.
+*/
 
 // TRẠNG THÁI LỖI DỮ LIỆU
 // cart.js dùng hai biến này để hiện thông báo và nút bỏ sản phẩm lỗi.

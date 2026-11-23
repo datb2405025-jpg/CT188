@@ -1,9 +1,15 @@
+/* Tên: Phan Quốc Hậu
+   MSSV:B2408849
+   ngày thực hiện:20/11/2026
+
+   ngày update 1:22/11/2026
+*/
+
 /*
- * cart.css - Định dạng trang giỏ hàng.
- * MSSV: B2408849 - Họ tên: Phan Quốc Hậu.
- * Tham khảo kiến thức: CT188-BGR-phần 1.pdf, chương 3 (CSS).
- * Header/footer dùng home.css và shared.css; cart.css chỉ bổ sung sticky và nội dung giỏ.
- */
+   cart.css - Định dạng trang giỏ hàng.
+   Tham khảo kiến thức: CT188-BGR-phần 1.pdf, chương 3 (CSS).
+   Header/footer dùng home.css và shared.css; cart.css chỉ bổ sung sticky và nội dung giỏ.
+*/
 
 /* 1. KHUNG TRANG VÀ ĐỊNH DẠNG CHUNG
    Mobile-first: các quy tắc mặc định dành cho điện thoại.

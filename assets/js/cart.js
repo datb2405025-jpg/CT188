@@ -1,11 +1,17 @@
-/**
- * cart.js - Hiển thị và xử lý giỏ hàng.
- * MSSV: B2408849 - Họ tên: Phan Quốc Hậu.
- * Tham khảo kiến thức: Vũ Duy Linh, CT188-BGR-phần 2.pdf, chương 4,
- * ví dụ 4.10 (Project 3), trang 143-145; DOM, sự kiện và kiểm tra form.
- * Header/footer dựa trên index.html; biểu tượng dùng Remix Icon 4.6.0.
- * https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css
- */
+/* Tên: Phan Quốc Hậu
+   MSSV:B2408849
+   ngày thực hiện:20/11/2026
+
+   ngày update 1:22/11/2026
+*/
+
+/*
+   cart.js - Hiển thị và xử lý giỏ hàng.
+   Tham khảo kiến thức: Vũ Duy Linh, CT188-BGR-phần 2.pdf, chương 4,
+   ví dụ 4.10 (Project 3), trang 143-145; DOM, sự kiện và kiểm tra form.
+   Header/footer dựa trên index.html; biểu tượng dùng Remix Icon 4.6.0.
+   https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css
+*/
 
 // 1. TÌM CÁC PHẦN TỬ HTML
 const cartBody = document.getElementById('cart-body');
