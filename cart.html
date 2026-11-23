@@ -25,12 +25,8 @@
     <!-- 1. HEADER: logo, menu và tài khoản -->
     <header class="home-header">
         <div class="home-container header-inner">
-            <a class="brand" href="index.html">
-                <img alt="Logo Bookshelf" class="brand-logo" src="assets/images/Bookshelf.png" />
-            </a>
-            <button class="menu-toggle" type="button" aria-label="Mở menu" aria-controls="main-navigation">
-                <i class="ri-menu-line"></i>
-            </button>
+            <a class="brand" href="index.html"> <img alt="Logo Bookshelf" class="brand-logo" src="assets/images/Bookshelf.png" /> </a>
+            <button class="menu-toggle" type="button" aria-label="Mở menu" aria-controls="main-navigation"> <i class="ri-menu-line"></i> </button>
             <nav class="main-navigation" id="main-navigation">
                 <a class="nav-link" href="index.html">Trang chủ</a>
                 <a class="nav-link" href="productlist.html">Sản phẩm</a>
@@ -38,26 +34,14 @@
             </nav>
             <!-- Tài khoản đăng nhập và nút đăng xuất -->
             <div class="header-actions">
-                <a class="header-action" id="header-login" href="login.html">
-                    <i class="ri-user-line"></i>
-                    <span>Đăng nhập</span>
-                </a>
+                <a class="header-action" id="header-login" href="login.html"> <i class="ri-user-line"></i> <span>Đăng nhập</span> </a>
 
                 <div class="header-user" id="header-user" style="display: none">
-                    <span class="header-user-name">
-                        <i class="ri-user-line"></i>
-                        <span id="header-user-name"></span>
-                    </span>
-                    <button class="header-action" id="header-logout" type="button">
-                        <i class="ri-logout-box-r-line"></i>
-                        <span>Đăng xuất</span>
-                    </button>
+                    <span class="header-user-name"> <i class="ri-user-line"></i> <span id="header-user-name"></span> </span>
+                    <button class="header-action" id="header-logout" type="button"> <i class="ri-logout-box-r-line"></i> <span>Đăng xuất</span> </button>
                 </div>
 
-                <a class="cart-action" href="cart.html" aria-current="page">
-                    <i class="ri-shopping-bag-3-line"></i>
-                    <span>Giỏ hàng</span>
-                </a>
+                <a class="cart-action" href="cart.html" aria-current="page"> <i class="ri-shopping-bag-3-line"></i> <span>Giỏ hàng</span> </a>
             </div>
         </div>
     </header>
@@ -92,22 +76,9 @@
                 <!-- FORM ĐẶT HÀNG: JavaScript kiểm tra dữ liệu trước khi hiện kết quả -->
                 <form class="cart__summary" id="cart-checkout-form" aria-labelledby="cart-summary-title" novalidate>
                     <h2 id="cart-summary-title">Thông tin đặt hàng</h2>
-                    <label class="cart__field" for="cart-fullname">
-                        Họ và tên
-                        <input id="cart-fullname" type="text" name="fullname" autocomplete="name"
-                            placeholder="Nhập họ và tên" required>
-                    </label>
-                    <label class="cart__field" for="cart-phone">
-                        Số điện thoại
-                        <input id="cart-phone" type="tel" name="phone" autocomplete="tel"
-                            title="Nhập từ 9 đến 15 chữ số, có thể bắt đầu bằng dấu +."
-                            placeholder="Ví dụ: 0901234567" required>
-                    </label>
-                    <label class="cart__field" for="cart-address">
-                        Địa chỉ nhận hàng
-                        <input id="cart-address" type="text" name="address" autocomplete="street-address"
-                            placeholder="Số nhà, đường, phường/xã, tỉnh/thành" required>
-                    </label>
+                    <label class="cart__field" for="cart-fullname"> Họ và tên <input id="cart-fullname" type="text" name="fullname" autocomplete="name" placeholder="Nhập họ và tên" required> </label>
+                    <label class="cart__field" for="cart-phone"> Số điện thoại <input id="cart-phone" type="tel" name="phone" autocomplete="tel" title="Nhập từ 9 đến 15 chữ số, có thể bắt đầu bằng dấu +." placeholder="Ví dụ: 0901234567" required> </label>
+                    <label class="cart__field" for="cart-address"> Địa chỉ nhận hàng <input id="cart-address" type="text" name="address" autocomplete="street-address" placeholder="Số nhà, đường, phường/xã, tỉnh/thành" required> </label>
                     <!-- Tổng tiền và nút thanh toán -->
                     <p>Tạm tính <span id="cart-subtotal">0 đ</span></p>
                     <p>Giao hàng <span>Miễn phí</span></p>
@@ -133,10 +104,7 @@
                 <div class="footer-brand">
                     <img src="assets/images/logo-footer.png" alt="Logo Bookshelf" />
                 </div>
-                <p class="footer-text">
-                    Lan tỏa tri thức <br />
-                    nuôi dưỡng đam mê.
-                </p>
+                <p class="footer-text"> Lan tỏa tri thức <br /> nuôi dưỡng đam mê. </p>
                 <p class="footer-slogan">Mỗi trang sách, một chân trời mới.</p>
                 <div class="footer-title-underline">
                     <h2 class="footer-title">Tìm hiểu nhiều hơn</h2>
@@ -157,24 +125,19 @@
                 </div>
                 <ul class="footer-links">
                     <li>
-                        <a href="index.html"><i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                            BOOKSHELF</a>
+                        <a href="index.html"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> BOOKSHELF</a>
                     </li>
                     <li>
-                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Tuyển
-                            dụng</a>
+                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Tuyển dụng</a>
                     </li>
                     <li>
-                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Điều
-                            khoản</a>
+                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Điều khoản</a>
                     </li>
                     <li>
-                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Chính
-                            sách bảo mật</a>
+                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Chính sách bảo mật</a>
                     </li>
                     <li>
-                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Flash
-                            Sale</a>
+                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Flash Sale</a>
                     </li>
                 </ul>
             </div>
@@ -186,8 +149,7 @@
                 </div>
                 <ul class="footer-links">
                     <li>
-                        <span class="footer-detail"><i class="ri-map-pin-fill" aria-hidden="true"></i><span>97 Đường 3/2, P. Xuân
-                                Khánh, Q. Ninh Kiều, TP. Cần Thơ</span></span>
+                        <span class="footer-detail"><i class="ri-map-pin-fill" aria-hidden="true"></i><span>97 Đường 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ</span></span>
                     </li>
                     <li>
                         <a href="tel:0979797970"><i class="ri-phone-fill" aria-hidden="true"></i><span>0979 797 970</span></a>
@@ -199,11 +161,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>
-                © 2026
-                <img src="assets/images/logo-footer.png" alt="" aria-hidden="true" />
-                Bookshelf · Thực hiện bởi Nhóm 6 – CT188.
-            </p>
+            <p> © 2026 <img src="assets/images/logo-footer.png" alt="" aria-hidden="true" /> Bookshelf · Thực hiện bởi Nhóm 6 – CT188. </p>
         </div>
     </footer>
     <!-- 4. THÔNG BÁO THANH TOÁN: hiện khi thông tin đặt hàng hợp lệ -->
