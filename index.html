@@ -1,351 +1,463 @@
+<!--
+    Tên: Võ Minh Tấn
+    Ngày thực hiện:15/11/2026
+    MSSV:B2405054
+-->
 <!doctype html>
 
 <html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta
+      content="Bookshelf - Không gian khám phá và lựa chọn những cuốn sách dành cho bạn."
+      name="description"
+    />
+    <title>Trang chủ | Bookshelf</title>
+    <link href="assets/images/Bookshelf.png" rel="icon" type="image/png" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/home.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      rel="stylesheet"
+    />
+    <script defer="" src="assets/js/home.js"></script>
+    <link rel="stylesheet" href="assets/css/shared.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="Bookshelf - Không gian khám phá và lựa chọn những cuốn sách dành cho bạn." name="description" />
-  <title>Trang chủ | Bookshelf</title>
-  <link href="assets/images/Bookshelf.png" rel="icon" type="image/png" />
-  <link href="assets/css/style.css" rel="stylesheet" />
-  <link href="assets/css/home.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" rel="stylesheet" />
-  <script defer="" src="assets/js/home.js"></script>
-  <link rel="stylesheet" href="assets/css/shared.css">
-</head>
-
-<body class="home-page">
-  <!-- HEADER-->
-  <header class="home-header">
-    <div class="home-container header-inner">
-      <a class="brand" href="index.html">
-        <img alt="Logo Bookshelf" class="brand-logo" src="assets/images/Bookshelf.png" />
-      </a>
-      <button class="menu-toggle" type="button">
-        <i class="ri-menu-line"></i>
-      </button>
-      <nav class="main-navigation" id="main-navigation">
-        <a class="nav-link active" href="index.html">Trang chủ</a>
-        <a class="nav-link" href="productlist.html">Sản phẩm</a>
-        <a class="nav-link" href="about.html">Giới thiệu</a>
-      </nav>
-      <!-- Đã sửa lại để có tên user và nút đăng xuất khi đã đăng nhập-->
-      <div class="header-actions">
-        <a class="header-action" id="header-login" href="login.html">
-          <i class="ri-user-line"></i>
-          <span>Đăng nhập</span>
+  <body class="home-page">
+    <!-- HEADER-->
+    <header class="home-header">
+      <div class="home-container header-inner">
+        <a class="brand" href="index.html">
+          <img
+            alt="Logo Bookshelf"
+            class="brand-logo"
+            src="assets/images/Bookshelf.png"
+          />
         </a>
-
-        <div class="header-user" id="header-user" style="display: none">
-          <span class="header-user-name">
+        <button class="menu-toggle" type="button">
+          <i class="ri-menu-line"></i>
+        </button>
+        <nav class="main-navigation" id="main-navigation">
+          <a class="nav-link active" href="index.html">Trang chủ</a>
+          <a class="nav-link" href="productlist.html">Sản phẩm</a>
+          <a class="nav-link" href="about.html">Giới thiệu</a>
+        </nav>
+        <!-- Đã sửa lại để có tên user và nút đăng xuất khi đã đăng nhập-->
+        <div class="header-actions">
+          <a class="header-action" id="header-login" href="login.html">
             <i class="ri-user-line"></i>
-            <span id="header-user-name"></span>
-          </span>
-          <button class="header-action" id="header-logout" type="button">
-            <i class="ri-logout-box-r-line"></i>
-            <span>Đăng xuất</span>
-          </button>
-        </div>
+            <span>Đăng nhập</span>
+          </a>
 
-        <a class="cart-action" href="cart.html">
-          <i class="ri-shopping-bag-3-line"></i>
-          <span>Giỏ hàng</span>
-        </a>
-      </div>
-    </div>
-  </header>
-  <main>
-    <!-- HERO: giới thiệu thương hiệu -->
-    <section class="hero-section">
-      <div class="home-container hero-layout">
-        <div class="hero-copy">
-          <p class="eyebrow"><span></span> CHÀO MỪNG ĐẾN VỚI BOOKSHELF</p>
-          <h1>Mỗi trang sách,<br /><em>một chân trời mới.</em></h1>
-          <p class="hero-description">
-            Khám phá những câu chuyện truyền cảm hứng, mở rộng tri thức và tìm
-            thấy cuốn sách dành riêng cho hành trình của bạn.
-          </p>
-          <div class="hero-buttons">
-            <a class="button button-primary" href="productlist.html">Khám phá sách <i
-                class="ri-arrow-right-line"></i></a>
-            <a class="button button-secondary" href="about.html">Về Bookshelf</a>
+          <div class="header-user" id="header-user" style="display: none">
+            <span class="header-user-name">
+              <i class="ri-user-line"></i>
+              <span id="header-user-name"></span>
+            </span>
+            <button class="header-action" id="header-logout" type="button">
+              <i class="ri-logout-box-r-line"></i>
+              <span>Đăng xuất</span>
+            </button>
           </div>
-          <div class="hero-note">
-            <i class="ri-book-open-line"></i><span>Đọc mỗi ngày – trưởng thành mỗi ngày</span>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="hero-image-frame">
-            <img alt="Biểu tượng quyển sách và thương hiệu Bookshelf" src="assets/images/Bookshelf.png" />
-          </div>
-          <div class="hero-sticker">
-            <i class="ri-heart-3-fill"></i><span>Nuôi dưỡng<br />đam mê đọc</span>
-          </div>
-          <span class="hero-dot hero-dot-one"></span>
-          <span class="hero-dot hero-dot-two"></span>
-        </div>
-      </div>
-    </section>
-    <!-- LỢI ÍCH-->
-    <section class="benefit-strip">
-      <div class="home-container benefit-grid">
-        <article class="benefit-item">
-          <span class="benefit-icon"><i class="ri-book-2-line"></i></span>
-          <div>
-            <h2>Đa dạng đầu sách</h2>
-            <p>Nhiều chủ đề để lựa chọn</p>
-          </div>
-        </article>
-        <article class="benefit-item">
-          <span class="benefit-icon"><i class="ri-price-tag-3-line"></i></span>
-          <div>
-            <h2>Thông tin rõ ràng</h2>
-            <p>Giá sách được hiển thị cụ thể</p>
-          </div>
-        </article>
-        <article class="benefit-item">
-          <span class="benefit-icon"><i class="ri-customer-service-2-line"></i></span>
-          <div>
-            <h2>Đồng hành cùng bạn</h2>
-            <p>Kết nối với Bookshelf dễ dàng</p>
-          </div>
-        </article>
-      </div>
-    </section>
-    <!-- SÁCH NỔI BẬT-->
-    <section class="featured-section section-space" id="featured-books">
-      <div class="home-container">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">GỢI Ý DÀNH CHO BẠN</p>
-            <h2>Sách nổi bật</h2>
-            <p class="section-description">
-              Khám phá những cuốn sách đang có tại cửa hàng Bookshelf.
-            </p>
-          </div>
-          <a class="text-link" href="productlist.html">Xem tất cả sách
-            <i class="ri-arrow-right-line"></i>
+
+          <a class="cart-action" href="cart.html">
+            <i class="ri-shopping-bag-3-line"></i>
+            <span>Giỏ hàng</span>
           </a>
         </div>
-        <div class="book-toolbar">
-          <label class="search-box" for="book-search">
-            <i class="ri-search-line"></i>
-            <input autocomplete="off" id="book-search" placeholder="Tìm tên sách hoặc tác giả..." type="search" />
-            <span class="sr-only">Tìm sách trên trang chủ</span>
-          </label>
-          <p class="search-hint" id="search-result">Hiển thị 6 gợi ý sách</p>
+      </div>
+    </header>
+    <main>
+      <!-- HERO: giới thiệu thương hiệu -->
+      <section class="hero-section">
+        <div class="home-container hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow"><span></span> CHÀO MỪNG ĐẾN VỚI BOOKSHELF</p>
+            <h1>Mỗi trang sách,<br /><em>một chân trời mới.</em></h1>
+            <p class="hero-description">
+              Khám phá những câu chuyện truyền cảm hứng, mở rộng tri thức và tìm
+              thấy cuốn sách dành riêng cho hành trình của bạn.
+            </p>
+            <div class="hero-buttons">
+              <a class="button button-primary" href="productlist.html"
+                >Khám phá sách <i class="ri-arrow-right-line"></i
+              ></a>
+              <a class="button button-secondary" href="about.html"
+                >Về Bookshelf</a
+              >
+            </div>
+            <div class="hero-note">
+              <i class="ri-book-open-line"></i
+              ><span>Đọc mỗi ngày – trưởng thành mỗi ngày</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-image-frame">
+              <img
+                alt="Biểu tượng quyển sách và thương hiệu Bookshelf"
+                src="assets/images/Bookshelf.png"
+              />
+            </div>
+            <div class="hero-sticker">
+              <i class="ri-heart-3-fill"></i
+              ><span>Nuôi dưỡng<br />đam mê đọc</span>
+            </div>
+            <span class="hero-dot hero-dot-one"></span>
+            <span class="hero-dot hero-dot-two"></span>
+          </div>
         </div>
-        <div class="book-grid" id="book-grid">
-          <article class="book-card" data-search="Góc Nhỏ Có Nắng Little Rainbow Văn học">
-            <a class="book-cover" href="productlist.html">
-              <img alt="Bìa sách Góc Nhỏ Có Nắng" decoding="async" height="600" loading="lazy"
-                src="assets/images/productList_images/goc-nho-co-nang.webp" width="600" />
-              <span class="book-discount">-30%</span>
-            </a>
-            <div class="book-info">
-              <p class="book-category">Văn học</p>
-              <h3><a href="productlist.html">Góc Nhỏ Có Nắng</a></h3>
-              <p class="book-author">Little Rainbow</p>
-              <div class="book-bottom">
-                <div class="book-price">
-                  <strong>47.000đ</strong>
-                  <del>68.000đ</del>
-                </div>
-                <a class="book-detail-link" href="productlist.html">Xem sách
-                  <i class="ri-arrow-right-line"></i>
-                </a>
-              </div>
+      </section>
+      <!-- LỢI ÍCH-->
+      <section class="benefit-strip">
+        <div class="home-container benefit-grid">
+          <article class="benefit-item">
+            <span class="benefit-icon"><i class="ri-book-2-line"></i></span>
+            <div>
+              <h2>Đa dạng đầu sách</h2>
+              <p>Nhiều chủ đề để lựa chọn</p>
             </div>
           </article>
-          <article class="book-card" data-search="Nhà Giả Kim Paulo Coelho Văn học">
-            <a class="book-cover" href="productlist.html">
-              <img alt="Bìa sách Nhà Giả Kim" decoding="async" height="500" loading="lazy"
-                src="assets/images/productList_images/nha-gia-kim.jpg" width="297" />
-              <span class="book-discount">-20%</span>
-            </a>
-            <div class="book-info">
-              <p class="book-category">Văn học</p>
-              <h3><a href="productlist.html">Nhà Giả Kim</a></h3>
-              <p class="book-author">Paulo Coelho</p>
-              <div class="book-bottom">
-                <div class="book-price">
-                  <strong>79.000đ</strong>
-                  <del>99.000đ</del>
-                </div>
-                <a class="book-detail-link" href="productlist.html">Xem sách
-                  <i class="ri-arrow-right-line"></i>
-                </a>
-              </div>
+          <article class="benefit-item">
+            <span class="benefit-icon"
+              ><i class="ri-price-tag-3-line"></i
+            ></span>
+            <div>
+              <h2>Thông tin rõ ràng</h2>
+              <p>Giá sách được hiển thị cụ thể</p>
             </div>
           </article>
-          <article class="book-card" data-search="Tuổi Trẻ Đáng Giá Bao Nhiêu Rosie Nguyễn Kỹ năng sống">
-            <a class="book-cover" href="productlist.html">
-              <img alt="Bìa sách Tuổi Trẻ Đáng Giá Bao Nhiêu" decoding="async" height="969" loading="lazy"
-                src="assets/images/productList_images/tuoi-tre-dang-gia-bao-nhieu.jpg" width="662" />
-              <span class="book-discount">-15%</span>
-            </a>
-            <div class="book-info">
-              <p class="book-category">Kỹ năng sống</p>
-              <h3>
-                <a href="productlist.html">Tuổi Trẻ Đáng Giá Bao Nhiêu</a>
-              </h3>
-              <p class="book-author">Rosie Nguyễn</p>
-              <div class="book-bottom">
-                <div class="book-price">
-                  <strong>68.000đ</strong>
-                  <del>80.000đ</del>
-                </div>
-                <a class="book-detail-link" href="productlist.html">Xem sách
-                  <i class="ri-arrow-right-line"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-          <article class="book-card" data-search="Đắc Nhân Tâm Dale Carnegie Kỹ năng sống">
-            <a class="book-cover" href="productlist.html">
-              <img alt="Bìa sách Đắc Nhân Tâm" decoding="async" height="2004" loading="lazy"
-                src="assets/images/productList_images/dac-nhan-tam.jpg" width="1352" />
-              <span class="book-discount">-25%</span>
-            </a>
-            <div class="book-info">
-              <p class="book-category">Kỹ năng sống</p>
-              <h3><a href="productlist.html">Đắc Nhân Tâm</a></h3>
-              <p class="book-author">Dale Carnegie</p>
-              <div class="book-bottom">
-                <div class="book-price">
-                  <strong>75.000đ</strong>
-                  <del>100.000đ</del>
-                </div>
-                <a class="book-detail-link" href="productlist.html">Xem sách
-                  <i class="ri-arrow-right-line"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-          <article class="book-card" data-search="Đi Tìm Lẽ Sống Viktor E. Frankl Tâm lý">
-            <a class="book-cover" href="productlist.html">
-              <img alt="Bìa sách Đi Tìm Lẽ Sống" decoding="async" height="671" loading="lazy"
-                src="assets/images/productList_images/di-tim-le-song.jpeg" width="457" />
-              <span class="book-discount">-10%</span>
-            </a>
-            <div class="book-info">
-              <p class="book-category">Tâm lý</p>
-              <h3><a href="productlist.html">Đi Tìm Lẽ Sống</a></h3>
-              <p class="book-author">Viktor E. Frankl</p>
-              <div class="book-bottom">
-                <div class="book-price">
-                  <strong>81.000đ</strong>
-                  <del>90.000đ</del>
-                </div>
-                <a class="book-detail-link" href="productlist.html">Xem sách
-                  <i class="ri-arrow-right-line"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-          <article class="book-card" data-search="Cây Cam Ngọt Của Tôi José Mauro de Vasconcelos Văn học">
-            <a class="book-cover" href="productlist.html">
-              <img alt="Bìa sách Cây Cam Ngọt Của Tôi" decoding="async" height="590" loading="lazy"
-                src="assets/images/productList_images/cay-cam-ngot-cua-toi.jpeg" width="400" />
-              <span class="book-discount">-30%</span>
-            </a>
-            <div class="book-info">
-              <p class="book-category">Văn học</p>
-              <h3><a href="productlist.html">Cây Cam Ngọt Của Tôi</a></h3>
-              <p class="book-author">José Mauro de Vasconcelos</p>
-              <div class="book-bottom">
-                <div class="book-price">
-                  <strong>84.000đ</strong>
-                  <del>120.000đ</del>
-                </div>
-                <a class="book-detail-link" href="productlist.html">Xem sách
-                  <i class="ri-arrow-right-line"></i>
-                </a>
-              </div>
+          <article class="benefit-item">
+            <span class="benefit-icon"
+              ><i class="ri-customer-service-2-line"></i
+            ></span>
+            <div>
+              <h2>Đồng hành cùng bạn</h2>
+              <p>Kết nối với Bookshelf dễ dàng</p>
             </div>
           </article>
         </div>
-        <p class="empty-search" hidden="" id="empty-search">
-          Không tìm thấy sách phù hợp. Bạn hãy thử từ khóa khác nhé.
+      </section>
+      <!-- SÁCH NỔI BẬT-->
+      <section class="featured-section section-space" id="featured-books">
+        <div class="home-container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">GỢI Ý DÀNH CHO BẠN</p>
+              <h2>Sách nổi bật</h2>
+              <p class="section-description">
+                Khám phá những cuốn sách đang có tại cửa hàng Bookshelf.
+              </p>
+            </div>
+            <a class="text-link" href="productlist.html"
+              >Xem tất cả sách
+              <i class="ri-arrow-right-line"></i>
+            </a>
+          </div>
+          <div class="book-toolbar">
+            <label class="search-box" for="book-search">
+              <i class="ri-search-line"></i>
+              <input
+                autocomplete="off"
+                id="book-search"
+                placeholder="Tìm tên sách hoặc tác giả..."
+                type="search"
+              />
+              <span class="sr-only">Tìm sách trên trang chủ</span>
+            </label>
+            <p class="search-hint" id="search-result">Hiển thị 6 gợi ý sách</p>
+          </div>
+          <div class="book-grid" id="book-grid">
+            <article
+              class="book-card"
+              data-search="Góc Nhỏ Có Nắng Little Rainbow Văn học"
+            >
+              <a class="book-cover" href="productlist.html">
+                <img
+                  alt="Bìa sách Góc Nhỏ Có Nắng"
+                  decoding="async"
+                  height="600"
+                  loading="lazy"
+                  src="assets/images/productList_images/goc-nho-co-nang.webp"
+                  width="600"
+                />
+                <span class="book-discount">-30%</span>
+              </a>
+              <div class="book-info">
+                <p class="book-category">Văn học</p>
+                <h3><a href="productlist.html">Góc Nhỏ Có Nắng</a></h3>
+                <p class="book-author">Little Rainbow</p>
+                <div class="book-bottom">
+                  <div class="book-price">
+                    <strong>47.000đ</strong>
+                    <del>68.000đ</del>
+                  </div>
+                  <a class="book-detail-link" href="productlist.html"
+                    >Xem sách
+                    <i class="ri-arrow-right-line"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article
+              class="book-card"
+              data-search="Nhà Giả Kim Paulo Coelho Văn học"
+            >
+              <a class="book-cover" href="productlist.html">
+                <img
+                  alt="Bìa sách Nhà Giả Kim"
+                  decoding="async"
+                  height="500"
+                  loading="lazy"
+                  src="assets/images/productList_images/nha-gia-kim.jpg"
+                  width="297"
+                />
+                <span class="book-discount">-20%</span>
+              </a>
+              <div class="book-info">
+                <p class="book-category">Văn học</p>
+                <h3><a href="productlist.html">Nhà Giả Kim</a></h3>
+                <p class="book-author">Paulo Coelho</p>
+                <div class="book-bottom">
+                  <div class="book-price">
+                    <strong>79.000đ</strong>
+                    <del>99.000đ</del>
+                  </div>
+                  <a class="book-detail-link" href="productlist.html"
+                    >Xem sách
+                    <i class="ri-arrow-right-line"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article
+              class="book-card"
+              data-search="Tuổi Trẻ Đáng Giá Bao Nhiêu Rosie Nguyễn Kỹ năng sống"
+            >
+              <a class="book-cover" href="productlist.html">
+                <img
+                  alt="Bìa sách Tuổi Trẻ Đáng Giá Bao Nhiêu"
+                  decoding="async"
+                  height="969"
+                  loading="lazy"
+                  src="assets/images/productList_images/tuoi-tre-dang-gia-bao-nhieu.jpg"
+                  width="662"
+                />
+                <span class="book-discount">-15%</span>
+              </a>
+              <div class="book-info">
+                <p class="book-category">Kỹ năng sống</p>
+                <h3>
+                  <a href="productlist.html">Tuổi Trẻ Đáng Giá Bao Nhiêu</a>
+                </h3>
+                <p class="book-author">Rosie Nguyễn</p>
+                <div class="book-bottom">
+                  <div class="book-price">
+                    <strong>68.000đ</strong>
+                    <del>80.000đ</del>
+                  </div>
+                  <a class="book-detail-link" href="productlist.html"
+                    >Xem sách
+                    <i class="ri-arrow-right-line"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article
+              class="book-card"
+              data-search="Đắc Nhân Tâm Dale Carnegie Kỹ năng sống"
+            >
+              <a class="book-cover" href="productlist.html">
+                <img
+                  alt="Bìa sách Đắc Nhân Tâm"
+                  decoding="async"
+                  height="2004"
+                  loading="lazy"
+                  src="assets/images/productList_images/dac-nhan-tam.jpg"
+                  width="1352"
+                />
+                <span class="book-discount">-25%</span>
+              </a>
+              <div class="book-info">
+                <p class="book-category">Kỹ năng sống</p>
+                <h3><a href="productlist.html">Đắc Nhân Tâm</a></h3>
+                <p class="book-author">Dale Carnegie</p>
+                <div class="book-bottom">
+                  <div class="book-price">
+                    <strong>75.000đ</strong>
+                    <del>100.000đ</del>
+                  </div>
+                  <a class="book-detail-link" href="productlist.html"
+                    >Xem sách
+                    <i class="ri-arrow-right-line"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article
+              class="book-card"
+              data-search="Đi Tìm Lẽ Sống Viktor E. Frankl Tâm lý"
+            >
+              <a class="book-cover" href="productlist.html">
+                <img
+                  alt="Bìa sách Đi Tìm Lẽ Sống"
+                  decoding="async"
+                  height="671"
+                  loading="lazy"
+                  src="assets/images/productList_images/di-tim-le-song.jpeg"
+                  width="457"
+                />
+                <span class="book-discount">-10%</span>
+              </a>
+              <div class="book-info">
+                <p class="book-category">Tâm lý</p>
+                <h3><a href="productlist.html">Đi Tìm Lẽ Sống</a></h3>
+                <p class="book-author">Viktor E. Frankl</p>
+                <div class="book-bottom">
+                  <div class="book-price">
+                    <strong>81.000đ</strong>
+                    <del>90.000đ</del>
+                  </div>
+                  <a class="book-detail-link" href="productlist.html"
+                    >Xem sách
+                    <i class="ri-arrow-right-line"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article
+              class="book-card"
+              data-search="Cây Cam Ngọt Của Tôi José Mauro de Vasconcelos Văn học"
+            >
+              <a class="book-cover" href="productlist.html">
+                <img
+                  alt="Bìa sách Cây Cam Ngọt Của Tôi"
+                  decoding="async"
+                  height="590"
+                  loading="lazy"
+                  src="assets/images/productList_images/cay-cam-ngot-cua-toi.jpeg"
+                  width="400"
+                />
+                <span class="book-discount">-30%</span>
+              </a>
+              <div class="book-info">
+                <p class="book-category">Văn học</p>
+                <h3><a href="productlist.html">Cây Cam Ngọt Của Tôi</a></h3>
+                <p class="book-author">José Mauro de Vasconcelos</p>
+                <div class="book-bottom">
+                  <div class="book-price">
+                    <strong>84.000đ</strong>
+                    <del>120.000đ</del>
+                  </div>
+                  <a class="book-detail-link" href="productlist.html"
+                    >Xem sách
+                    <i class="ri-arrow-right-line"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="empty-search" hidden="" id="empty-search">
+            Không tìm thấy sách phù hợp. Bạn hãy thử từ khóa khác nhé.
+          </p>
+        </div>
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <footer class="home-footer" id="footer">
+      <div class="footer-line"></div>
+      <div class="home-container footer-content">
+        <div class="footer-item footer-bookshelf">
+          <div class="footer-brand">
+            <img alt="Logo Bookshelf" src="assets/images/logo-footer.png" />
+          </div>
+          <p class="footer-text">
+            Lan tỏa tri thức <br />
+            nuôi dưỡng đam mê.
+          </p>
+          <p class="footer-slogan">Mỗi trang sách, một chân trời mới.</p>
+          <div class="footer-title-underline">
+            <h2 class="footer-title">Tìm hiểu nhiều hơn</h2>
+            <span class="footer-underline"></span>
+          </div>
+          <div class="footer-social">
+            <a href="#" title="Facebook (chưa cập nhật liên kết)"
+              ><i class="ri-facebook-fill"></i
+            ></a>
+            <a href="#" title="Instagram (chưa cập nhật liên kết)"
+              ><i class="ri-instagram-fill"></i
+            ></a>
+            <a href="#" title="TikTok (chưa cập nhật liên kết)"
+              ><i class="ri-tiktok-fill"></i
+            ></a>
+            <a href="#" title="Twitter (chưa cập nhật liên kết)"
+              ><i class="ri-twitter-fill"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-item footer-about">
+          <div class="footer-title-underline">
+            <h2 class="footer-title">BOOKSHELF VIỆT NAM</h2>
+            <span class="footer-underline"></span>
+          </div>
+          <ul class="footer-links">
+            <li>
+              <a href="index.html"
+                ><i class="ri-arrow-right-s-line"></i> BOOKSHELF</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="ri-arrow-right-s-line"></i> Tuyển dụng</a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-arrow-right-s-line"></i> Điều khoản</a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="ri-arrow-right-s-line"></i> Chính sách bảo mật</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="ri-arrow-right-s-line"></i> Flash Sale</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-item footer-contact">
+          <div class="footer-title-underline">
+            <h2 class="footer-title">LIÊN HỆ BOOKSHELF</h2>
+            <span class="footer-underline"></span>
+          </div>
+          <ul class="footer-links">
+            <li>
+              <span class="footer-detail"
+                ><i class="ri-map-pin-fill"></i
+                ><span
+                  >97 Đường 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ</span
+                ></span
+              >
+            </li>
+            <li>
+              <a href="tel:0979797970"
+                ><i class="ri-phone-fill"></i><span>0979 797 970</span></a
+              >
+            </li>
+            <li>
+              <a href="mailto:cskh@bookshelf.com.vn"
+                ><i class="ri-mail-line"></i
+                ><span>cskh@bookshelf.com.vn</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2026
+          <img alt="" src="assets/images/logo-footer.png" />
+          Bookshelf · Thực hiện bởi Nhóm 6 – CT188.
         </p>
       </div>
-    </section>
-  </main>
-  <!-- FOOTER -->
-  <footer class="home-footer" id="footer">
-    <div class="footer-line"></div>
-    <div class="home-container footer-content">
-      <div class="footer-item footer-bookshelf">
-        <div class="footer-brand">
-          <img alt="Logo Bookshelf" src="assets/images/logo-footer.png" />
-        </div>
-        <p class="footer-text">
-          Lan tỏa tri thức <br />
-          nuôi dưỡng đam mê.
-        </p>
-        <p class="footer-slogan">Mỗi trang sách, một chân trời mới.</p>
-        <div class="footer-title-underline">
-          <h2 class="footer-title">Tìm hiểu nhiều hơn</h2>
-          <span class="footer-underline"></span>
-        </div>
-        <div class="footer-social">
-          <a href="#" title="Facebook (chưa cập nhật liên kết)"><i class="ri-facebook-fill"></i></a>
-          <a href="#" title="Instagram (chưa cập nhật liên kết)"><i class="ri-instagram-fill"></i></a>
-          <a href="#" title="TikTok (chưa cập nhật liên kết)"><i class="ri-tiktok-fill"></i></a>
-          <a href="#" title="Twitter (chưa cập nhật liên kết)"><i class="ri-twitter-fill"></i></a>
-        </div>
-      </div>
-      <div class="footer-item footer-about">
-        <div class="footer-title-underline">
-          <h2 class="footer-title">BOOKSHELF VIỆT NAM</h2>
-          <span class="footer-underline"></span>
-        </div>
-        <ul class="footer-links">
-          <li>
-            <a href="index.html"><i class="ri-arrow-right-s-line"></i> BOOKSHELF</a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-arrow-right-s-line"></i> Tuyển dụng</a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-arrow-right-s-line"></i> Điều khoản</a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-arrow-right-s-line"></i> Chính sách bảo mật</a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-arrow-right-s-line"></i> Flash Sale</a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer-item footer-contact">
-        <div class="footer-title-underline">
-          <h2 class="footer-title">LIÊN HỆ BOOKSHELF</h2>
-          <span class="footer-underline"></span>
-        </div>
-        <ul class="footer-links">
-          <li>
-            <span class="footer-detail"><i class="ri-map-pin-fill"></i><span>97 Đường 3/2, P. Xuân Khánh, Q. Ninh Kiều,
-                TP. Cần Thơ</span></span>
-          </li>
-          <li>
-            <a href="tel:0979797970"><i class="ri-phone-fill"></i><span>0979 797 970</span></a>
-          </li>
-          <li>
-            <a href="mailto:cskh@bookshelf.com.vn"><i class="ri-mail-line"></i><span>cskh@bookshelf.com.vn</span></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>
-        © 2026
-        <img alt="" src="assets/images/logo-footer.png" />
-        Bookshelf · Thực hiện bởi Nhóm 6 – CT188.
-      </p>
-    </div>
-  </footer>
-</body>
-
+    </footer>
+  </body>
 </html>

@@ -1,5 +1,7 @@
 /* =========================================================
-
+    Tên: Võ Minh Tấn
+    Ngày thực hiện:15/11/2026
+    MSSV:B2405054
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -61,23 +63,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 // Bổ sung header hiển thị sau khi đăng nhập
-  const loginLink = document.getElementById("header-login");
-  const userBox = document.getElementById("header-user");
-  const userNameEl = document.getElementById("header-user-name");
-  const logoutBtn = document.getElementById("header-logout");
+const loginLink = document.getElementById("header-login");
+const userBox = document.getElementById("header-user");
+const userNameEl = document.getElementById("header-user-name");
+const logoutBtn = document.getElementById("header-logout");
 
-  if (loginLink && userBox && userNameEl && logoutBtn) {
-    const userName = localStorage.getItem("userName");
+if (loginLink && userBox && userNameEl && logoutBtn) {
+  const userName = localStorage.getItem("userName");
 
-    if (userName) {
-      loginLink.style.display = "none";
-      userBox.style.display = "flex";
-      userNameEl.textContent = userName;
-    }
-
-    logoutBtn.addEventListener("click", function () {
-      localStorage.removeItem("userName");
-      localStorage.removeItem("currentUser");
-      window.location.href = "index.html";
-    });
+  if (userName) {
+    loginLink.style.display = "none";
+    userBox.style.display = "flex";
+    userNameEl.textContent = userName;
   }
+
+  logoutBtn.addEventListener("click", function () {
+    localStorage.removeItem("userName");
+    localStorage.removeItem("currentUser");
+    window.location.href = "index.html";
+  });
+}
