@@ -158,11 +158,11 @@ const changeQuantity = (e) => {
 
   const typeOfChange = changeButton.textContent.trim();
 
-  // nếu button nhấp vào có content là "-"" thì giảm số lượng nhập, nếu số lượng là 1 thì không trừ tiếp để tránh số lượng âm hoặc bằng 0
+  // nếu button nhấp vào có content là "-" thì giảm số lượng nhập, nếu số lượng là 1 thì không trừ tiếp để tránh số lượng âm hoặc bằng 0
   if (typeOfChange === "-" && quantity > 1) {
     quantity--;
   }
-  // nếu button nhấp vào có content là "+"" thì tăng số lượng nhập
+  // nếu button nhấp vào có content là "+" thì tăng số lượng nhập
   if (typeOfChange === "+") {
     quantity++;
   }
