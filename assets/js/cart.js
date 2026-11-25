@@ -1,4 +1,4 @@
-/* =============================================================
+/* ================================================================
 TÁC GIẢ
         PHAN QUỐC HẬU
         B2408849
@@ -7,7 +7,7 @@ TÁC GIẢ
         ngày update 1:22/11/2026
         ngày update 2:23/11/2026
         ngày update 3:25/11/2026
-==================================================================
+================================================================
 */
 
 /*
@@ -15,7 +15,6 @@ TÁC GIẢ
    Tham khảo kiến thức: Vũ Duy Linh, CT188-BGR-phần 2.pdf, chương 4,
    ví dụ 4.10 (Project 3), trang 143-145; DOM, sự kiện và kiểm tra form.
    Header/footer dựa trên index.html; biểu tượng dùng Remix Icon 4.6.0.
-   https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css
 */
 
 // ================= 1. TÌM CÁC PHẦN TỬ HTML =================
@@ -59,7 +58,6 @@ let cartProducts = [];
 // Chỉ mở giỏ hàng khi có tài khoản đăng nhập do login.js lưu.
 // Đây là kiểm tra trạng thái trên trình duyệt của bài web tĩnh.
 function requireCartLogin() {
-    // Đọc currentUser do trang đăng nhập lưu; JSON lỗi được xử lý trong catch bên dưới.
     let user = null;
     try {
         user = JSON.parse(localStorage.getItem('currentUser'));
@@ -91,7 +89,6 @@ function showStorageMessage() {
 // ĐÓNG THÔNG BÁO THANH TOÁN
 // Cho cuộn trang trở lại và trả focus về nút Thanh toán nếu hộp đang mở.
 function clearCheckoutMessage() {
-    // Ghi nhớ hộp đang mở để chỉ trả focus về nút Thanh toán khi thực sự đóng hộp.
     const wasOpen = successMessage.style.display === 'flex';
     successMessage.style.display = 'none';
     document.body.style.overflow = '';
@@ -107,7 +104,6 @@ function formatPrice(amount) {
 
 // Tạo ô td, thêm chữ và đưa vào dòng tr; trả về ô để thêm các phần tử con.
 function createCell(row, text, className) {
-    // createElement tạo ô mới, textContent điền chữ; appendChild gắn ô vào dòng bảng.
     const cell = document.createElement('td');
     cell.textContent = text;
     cell.className = className;
@@ -247,7 +243,6 @@ function addProductRow(product) {
     // XÓA SẢN PHẨM
     // Xóa khỏi mảng, lưu dữ liệu thành công rồi mới xóa dòng trong bảng.
     remove.addEventListener('click', function () {
-        // Nhớ dòng kế hoặc dòng trước để người dùng bàn phím không mất vị trí sau khi xóa.
         const nextRow = row.nextElementSibling || row.previousElementSibling;
         for (let i = 0; i < cartProducts.length; i++) {
             if (cartProducts[i] === product) {
@@ -391,7 +386,6 @@ function setupCart() {
     checkoutForm.addEventListener('input', clearFormError);
 
     // Đọc lại giỏ khi quay về trang; kiểm tra đăng xuất từ tab khác.
-    // pageshow chạy cả khi mở trang và khi quay lại bằng nút Back của trình duyệt.
     window.addEventListener('pageshow', showCart);
     window.addEventListener('storage', handleLoginChange);
     showCart();

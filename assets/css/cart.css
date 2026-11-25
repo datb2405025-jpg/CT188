@@ -1,4 +1,4 @@
-/* =============================================================
+/* ================================================================
 TÁC GIẢ
         PHAN QUỐC HẬU
         B2408849
@@ -7,7 +7,7 @@ TÁC GIẢ
         ngày update 1:22/11/2026
         ngày update 2:23/11/2026
         ngày update 3:25/11/2026
-==================================================================
+================================================================
 */
 
 /*
@@ -16,9 +16,8 @@ TÁC GIẢ
    Header/footer dùng home.css và shared.css; cart.css chỉ bổ sung sticky và nội dung giỏ.
 */
 
-/* ================= 1. KHUNG TRANG VÀ ĐỊNH DẠNG CHUNG =================
-   Mobile-first: các quy tắc mặc định dành cho điện thoại.
-   Dùng min-width ở cuối file để mở rộng bố cục khi màn hình đủ rộng. */
+/* ================= 1. KHUNG TRANG VÀ ĐỊNH DẠNG CHUNG ================= */
+/* Mobile-first: các quy tắc mặc định dành cho điện thoại. Dùng min-width ở cuối file để mở rộng bố cục khi màn hình đủ rộng. */
 .cart-page {
     margin: 0;
     background-color: #f2f2f2;
@@ -102,7 +101,6 @@ TÁC GIẢ
 }
 
 /* ================= 3. BỐ CỤC DANH SÁCH VÀ FORM ================= */
-/* Điện thoại: danh sách và form xếp dọc */
 /* Flexbox mặc định xếp dọc; breakpoint 1101px đổi sang hàng để form nằm cạnh bảng. */
 .cart__layout {
     display: flex;
@@ -111,7 +109,6 @@ TÁC GIẢ
     gap: 24px;
 }
 
-/* Bảng rộng hơn vùng chứa thì cuộn ngang trong vùng này. */
 /* overflow-x cho phép cuộn riêng bảng khi bảng rộng hơn màn hình điện thoại. */
 .cart__table-wrapper {
     width: 100%;
@@ -219,8 +216,8 @@ TÁC GIẢ
     outline-offset: 2px;
 }
 
-/* ================= 4. THÔNG BÁO LỖI DỮ LIỆU VÀ LỖI NHẬP FORM =================
-   JavaScript đổi display để hiện lỗi khi cần. */
+/* ================= 4. THÔNG BÁO LỖI DỮ LIỆU VÀ LỖI NHẬP FORM ================= */
+/* JavaScript đổi display để hiện lỗi khi cần. */
 .cart__data-error {
     display: none;
     padding: 10px;
@@ -339,8 +336,8 @@ TÁC GIẢ
     color: #666;
 }
 
-/* ================= 7. THÔNG BÁO THANH TOÁN THÀNH CÔNG =================
-   Phủ nền toàn màn hình; Flexbox căn hộp thông báo ở giữa. */
+/* ================= 7. THÔNG BÁO THANH TOÁN THÀNH CÔNG ================= */
+/* Phủ nền toàn màn hình; Flexbox căn hộp thông báo ở giữa. */
 /* Mặc định ẩn; JS đổi display thành flex để hiện lớp nền và căn hộp thoại giữa màn hình. */
 .cart__success {
     display: none;

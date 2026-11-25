@@ -1,4 +1,4 @@
-/* =============================================================
+/* ================================================================
 TÁC GIẢ
         PHAN QUỐC HẬU
         B2408849
@@ -7,7 +7,7 @@ TÁC GIẢ
         ngày update 1:22/11/2026
         ngày update 2:23/11/2026
         ngày update 3:25/11/2026
-==================================================================
+================================================================
 */
 
 /*
@@ -15,12 +15,12 @@ TÁC GIẢ
    Tham khảo: CT188-BGR-phần 2.pdf, chương 4, ví dụ 4.10, trang 143-145.
 */
 
-// ================= TRẠNG THÁI LỖI DỮ LIỆU =================
+// ================= 1. TRẠNG THÁI LỖI DỮ LIỆU =================
 // cart.js dùng hai biến này để hiện thông báo và nút bỏ sản phẩm lỗi.
 let cartStorageMessage = '';
 let cartHasInvalidProducts = false;
 
-// ================= HÀM ĐỌC GIỎ HÀNG =================
+// ================= 2. HÀM ĐỌC GIỎ HÀNG =================
 // Khóa cartItems dùng chung với trang sản phẩm; chưa có dữ liệu thì trả về [].
 function getCartProducts() {
     cartStorageMessage = '';
@@ -88,7 +88,7 @@ function getCartProducts() {
     return [];
 }
 
-// ================= HÀM LƯU GIỎ HÀNG =================
+// ================= 3. HÀM LƯU GIỎ HÀNG =================
 // Trả về true nếu lưu được, false để cart.js khôi phục thao tác vừa thực hiện.
 function saveCartProducts(products) {
     try {

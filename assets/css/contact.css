@@ -1,11 +1,11 @@
-/* =============================================================
+/* ================================================================
 TÁC GIẢ
         PHAN QUỐC HẬU
         B2408849
 
         ngày thực hiện:25/11/2026
         ngày update 1:25/11/2026
-==================================================================
+================================================================
 */
 /* CT188: CSS thuần, Flexbox, Grid và media query.
    Form co giãn theo màn hình, giới hạn chiều rộng và căn giữa. */
@@ -183,7 +183,7 @@ TÁC GIẢ
     outline-offset: 4px;
 }
 
-/* ================= 5. RWD: tăng khoảng đệm khi màn hình đủ rộng. ================= */
+/* ================= 5. RWD: TĂNG KHOẢNG ĐỆM KHI MÀN HÌNH ĐỦ RỘNG. ================= */
 @media screen and (min-width: 801px) {
     .contact-heading {
         padding: 60px 0;
