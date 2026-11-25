@@ -30,34 +30,25 @@
   color: var(--home-ink);
   background: #fff;
 }
+
 .home-page a {
   text-decoration: none;
 }
+
 .home-container {
   width: min(1160px, calc(100% - 40px));
   margin: 0 auto;
 }
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
-}
 
-/* Header and navigation */
+/* ==================== HEADER & NAVIGATION ==================== */
 .home-header {
-  position: sticky;
-  z-index: 10;
-  top:0; /*sticky để dính thanh header lên màn hình  khi lướt, top;0 là vị trí dính trên cùng màn hình, z index để quyết định độ nổi bọt hiển thị cao để ko bị các phần tử khác che mất khi lướt xuống*/
-
-  background: #fff;
-  border-bottom: 1px solid var(--home-line);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid var(--home-line);
 }
+
 .header-inner {
   min-height: 86px;
   display: flex;
@@ -65,16 +56,19 @@
   justify-content: space-between;
   gap: 28px;
 }
+
 .brand {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
 }
+
 .brand-logo {
   width: 160px;
   height: 64px;
   object-fit: contain;
 }
+
 .main-navigation {
   display: flex;
   align-items: center;
@@ -82,19 +76,23 @@
   gap: 34px;
   margin-left: auto;
 }
+
 .nav-link {
   color: #56645b;
   font-size: 14px;
   font-weight: 600;
   transition: color 0.2s ease;
 }
+
 .nav-link:hover,
 .nav-link.active {
   color: var(--home-green);
 }
+
 .nav-link.active {
   position: relative;
 }
+
 .nav-link.active::after {
   content: "";
   position: absolute;
@@ -105,11 +103,13 @@
   background: #6e9c70;
   border-radius: 2px;
 }
+
 .header-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
+
 .header-action,
 .cart-action {
   min-height: 42px;
@@ -123,18 +123,47 @@
   font-weight: 600;
   white-space: nowrap;
 }
+
 .header-action {
   color: var(--home-green);
   border: 1px solid var(--home-line);
 }
+
 .cart-action {
   color: #fff;
   background: var(--home-green);
 }
+
 .header-action i,
 .cart-action i {
   font-size: 17px;
 }
+
+/* Trạng thái đã đăng nhập trên header */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-user-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--home-green);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.header-user button.header-action {
+  background: transparent;
+  cursor: pointer;
+}
+
 .menu-toggle {
   display: none;
   border: 0;
@@ -142,7 +171,6 @@
   color: var(--home-green);
   font-size: 26px;
 }
-
 
 /* Main */
 
