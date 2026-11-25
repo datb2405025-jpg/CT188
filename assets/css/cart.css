@@ -1,10 +1,13 @@
-/* Tên: Phan Quốc Hậu
-   MSSV:B2408849
-   ngày thực hiện:20/11/2026
+/* =============================================================
+TÁC GIẢ
+        PHAN QUỐC HẬU
+        B2408849
 
-   ngày update 1:22/11/2026
-   ngày update 2:23/11/2026
-   ngày update 3:25/11/2026
+        ngày thực hiện:20/11/2026
+        ngày update 1:22/11/2026
+        ngày update 2:23/11/2026
+        ngày update 3:25/11/2026
+==================================================================
 */
 
 /*
@@ -13,7 +16,7 @@
    Header/footer dùng home.css và shared.css; cart.css chỉ bổ sung sticky và nội dung giỏ.
 */
 
-/* 1. KHUNG TRANG VÀ ĐỊNH DẠNG CHUNG
+/* ================= 1. KHUNG TRANG VÀ ĐỊNH DẠNG CHUNG =================
    Mobile-first: các quy tắc mặc định dành cho điện thoại.
    Dùng min-width ở cuối file để mở rộng bố cục khi màn hình đủ rộng. */
 .cart-page {
@@ -47,7 +50,7 @@
 }
 
 
-/* Header dùng chung home.css như index.html, giữ sticky cho trang cart. */
+/* Header dùng home.css và shared.css; giữ sticky để bám trên cùng khi cuộn. */
 .cart-page > .home-header {
     position: sticky;
     top: 0;
@@ -80,7 +83,7 @@
     text-decoration: underline;
 }
 
-/* 2. TIÊU ĐỀ GIỎ HÀNG */
+/* ================= 2. TIÊU ĐỀ GIỎ HÀNG ================= */
 .cart__heading {
     margin: 20px 0;
     text-align: center;
@@ -98,8 +101,9 @@
     font-size: 14px;
 }
 
-/* 3. BỐ CỤC DANH SÁCH VÀ FORM */
+/* ================= 3. BỐ CỤC DANH SÁCH VÀ FORM ================= */
 /* Điện thoại: danh sách và form xếp dọc */
+/* Flexbox mặc định xếp dọc; breakpoint 1101px đổi sang hàng để form nằm cạnh bảng. */
 .cart__layout {
     display: flex;
     flex-direction: column;
@@ -108,6 +112,7 @@
 }
 
 /* Bảng rộng hơn vùng chứa thì cuộn ngang trong vùng này. */
+/* overflow-x cho phép cuộn riêng bảng khi bảng rộng hơn màn hình điện thoại. */
 .cart__table-wrapper {
     width: 100%;
     flex: auto;
@@ -171,6 +176,7 @@
     font-weight: bold;
 }
 
+/* Nhóm nút trừ, số lượng và nút cộng; các thao tác được xử lý trong cart.js. */
 .cart__quantity-controls {
     display: inline-flex;
     align-items: center;
@@ -213,7 +219,7 @@
     outline-offset: 2px;
 }
 
-/* 4. THÔNG BÁO LỖI DỮ LIỆU VÀ LỖI NHẬP FORM
+/* ================= 4. THÔNG BÁO LỖI DỮ LIỆU VÀ LỖI NHẬP FORM =================
    JavaScript đổi display để hiện lỗi khi cần. */
 .cart__data-error {
     display: none;
@@ -235,7 +241,7 @@
     font-size: 13px;
 }
 
-/* 5. KHUNG THÔNG TIN ĐẶT HÀNG VÀ TỔNG TIỀN */
+/* ================= 5. KHUNG THÔNG TIN ĐẶT HÀNG VÀ TỔNG TIỀN ================= */
 .cart__summary {
     width: 100%;
     flex: auto;
@@ -311,7 +317,7 @@
     background-color: #124d29;
 }
 
-/* 6. GIỎ HÀNG TRỐNG VÀ LIÊN KẾT MUA TIẾP */
+/* ================= 6. GIỎ HÀNG TRỐNG VÀ LIÊN KẾT MUA TIẾP ================= */
 .cart__continue {
     display: inline-block;
     margin-top: 20px;
@@ -333,8 +339,9 @@
     color: #666;
 }
 
-/* 7. THÔNG BÁO THANH TOÁN THÀNH CÔNG
+/* ================= 7. THÔNG BÁO THANH TOÁN THÀNH CÔNG =================
    Phủ nền toàn màn hình; Flexbox căn hộp thông báo ở giữa. */
+/* Mặc định ẩn; JS đổi display thành flex để hiện lớp nền và căn hộp thoại giữa màn hình. */
 .cart__success {
     display: none;
     position: fixed;
@@ -432,7 +439,7 @@
     to { transform: scale(1); }
 }
 
-/* 8. MỞ RỘNG BỐ CỤC TỪ ĐIỆN THOẠI LÊN MÀN HÌNH LỚN */
+/* ================= 8. MỞ RỘNG BỐ CỤC TỪ ĐIỆN THOẠI LÊN MÀN HÌNH LỚN ================= */
 
 /* Từ 601px: tăng khoảng đệm, dùng kích thước điều khiển cho màn hình rộng. */
 @media screen and (min-width: 601px) {

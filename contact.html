@@ -1,31 +1,44 @@
-<!DOCTYPE html>
-<!-- Tên: Phan Quốc Hậu
-     MSSV:B2408849
-     ngày thực hiện:25/11/2026
+<!-- =============================================================
+TÁC GIẢ
+        PHAN QUỐC HẬU
+        B2408849
 
-    ngày update 1:25/11/2026
+        ngày thực hiện:25/11/2026
+        ngày update 1:25/11/2026
+==================================================================
 -->
 <!-- Tham khảo kiến thức: CT188-BGR phần 1 (HTML, form, CSS, RWD),
      phần 2 (DOM, sự kiện và kiểm tra dữ liệu form).
      Header/footer dùng chung cấu trúc và CSS với các trang trong dự án.
 -->
+<!doctype html>
+
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <!-- Responsive: cho chiều rộng trang khớp với màn hình thiết bị, dùng cùng media query trong CSS. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Thông tin liên hệ Bookshelf và biểu mẫu góp ý của người đọc.">
     <title>Liên hệ | Bookshelf</title>
+    <!-- Biểu tượng Bookshelf hiển thị trên tab của trình duyệt. -->
     <link rel="icon" href="assets/images/Bookshelf.png">
+    <!-- CSS chung: biến màu, box-sizing và định dạng cơ bản của toàn dự án. -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- CSS trang chủ: tái sử dụng kiểu chữ, màu sắc và giao diện header/footer. -->
     <link rel="stylesheet" href="assets/css/home.css">
+    <!-- CSS riêng của liên hệ: tiêu đề, khung form, ô nhập, nút gửi và thông báo kết quả. -->
     <link rel="stylesheet" href="assets/css/contact.css">
+    <!-- Remix Icon: thư viện biểu tượng dùng cho tài khoản, giỏ hàng và thông tin liên hệ. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+    <!-- CSS dùng chung: co giãn header/footer và bố trí menu trên màn hình nhỏ. -->
     <link rel="stylesheet" href="assets/css/shared.css">
+    <!-- JS dùng chung: mở/đóng menu, hiển thị tài khoản và xử lý đăng xuất; defer đợi HTML được phân tích xong. -->
     <script src="assets/js/home.js" defer></script>
+    <!-- JS riêng của liên hệ: kiểm tra thông tin và hiển thị phản hồi góp ý mô phỏng. -->
     <script src="assets/js/contact.js" defer></script>
 </head>
 <body class="home-page contact-page">
-    <!-- 1. HEADER -->
+    <!-- ================= 1. HEADER ================= -->
 <header class="home-header">
       <div class="home-container header-inner">
         <a class="brand" href="index.html"> <img alt="Logo Bookshelf" class="brand-logo" src="assets/images/Bookshelf.png" /> </a>
@@ -58,7 +71,7 @@
       </div>
     </header>
     <main class="contact-main">
-        <!-- 2. TIÊU ĐỀ TRANG -->
+        <!-- ================= 2. TIÊU ĐỀ TRANG ================= -->
         <section class="contact-heading" aria-labelledby="contact-title">
             <div class="contact-container">
                 <p class="contact-eyebrow">KẾT NỐI VỚI BOOKSHELF</p>
@@ -67,7 +80,7 @@
             </div>
         </section>
 
-        <!-- 3. FORM GÓP Ý -->
+        <!-- ================= 3. FORM GÓP Ý ================= -->
         <div class="contact-container contact-layout">
 <section class="contact-feedback" aria-labelledby="contact-form-title">
                 <h2 id="contact-form-title">Góp ý với chúng tôi</h2>
@@ -75,14 +88,17 @@
                 <!-- novalidate để JavaScript kiểm tra và hiển thị lỗi ngay dưới form. -->
                 <form id="contact-form" novalidate>
                     <div class="contact-field">
+                        <!-- Ô nhập họ tên: required bắt buộc nhập, maxlength giới hạn độ dài và autocomplete gợi ý tên. -->
                         <label for="contact-name">Họ và tên <span aria-hidden="true">*</span></label>
                         <input id="contact-name" name="fullname" type="text" maxlength="100" autocomplete="name" placeholder="Nhập họ và tên" required>
                     </div>
                     <div class="contact-field">
+                        <!-- Ô email: type="email" cung cấp quy tắc kiểm tra định dạng cho checkValidity trong contact.js. -->
                         <label for="contact-email">Email <span aria-hidden="true">*</span></label>
                         <input id="contact-email" name="email" type="email" maxlength="254" autocomplete="email" placeholder="Nhập email" required>
                     </div>
                     <div class="contact-field">
+                        <!-- Danh sách chủ đề góp ý; select hiển thị các lựa chọn có sẵn, không cần thư viện bên ngoài. -->
                         <label for="contact-subject">Chủ đề</label>
                         <select id="contact-subject" name="subject">
                             <option value="feedback">Phản hồi và góp ý</option>
@@ -92,18 +108,21 @@
                         </select>
                     </div>
                     <div class="contact-field">
+                        <!-- Ô nhập nội dung nhiều dòng: textarea giới hạn 2000 ký tự và bắt buộc có nội dung. -->
                         <label for="contact-content">Nội dung <span aria-hidden="true">*</span></label>
                         <textarea id="contact-content" name="content" rows="5" maxlength="2000" placeholder="Nhập nội dung bạn muốn chia sẻ" required></textarea>
                     </div>
+                    <!-- Vùng thông báo do JS cập nhật; aria-live="polite" đọc kết quả khi người dùng dùng trình đọc màn hình. -->
                     <p class="contact-message" id="contact-message" role="status" aria-live="polite"></p>
                     <p class="contact-demo-note" id="contact-demo-note">Biểu mẫu minh họa của website tĩnh, chưa gửi email. Để được hỗ trợ, bạn có thể gọi điện hoặc liên hệ qua email ở cuối trang.</p>
+                    <!-- Nút submit kích hoạt sự kiện gửi form; JS chặn tải lại trang và kiểm tra dữ liệu trước khi báo kết quả. -->
                     <button class="contact-submit" type="submit" aria-describedby="contact-demo-note">Gửi góp ý</button>
                 </form>
                 <noscript><p>Vui lòng bật JavaScript để sử dụng biểu mẫu, hoặc liên hệ trực tiếp qua điện thoại và email.</p></noscript>
             </section>
         </div>
     </main>
-    <!-- 4. FOOTER -->
+    <!-- ================= 4. FOOTER ================= -->
 <footer class="home-footer" id="footer">
       <div class="footer-line"></div>
       <div class="home-container footer-content">
@@ -117,6 +136,7 @@
             <h2 class="footer-title">Tìm hiểu nhiều hơn</h2>
             <span class="footer-underline"></span>
           </div>
+          <!-- Các liên kết mạng xã hội đang dùng # làm vị trí chờ, chưa có địa chỉ trang thực tế. -->
           <div class="footer-social">
             <a href="#" title="Facebook"><i class="ri-facebook-fill"></i></a>
             <a href="#" title="Instagram"><i class="ri-instagram-fill"></i></a>

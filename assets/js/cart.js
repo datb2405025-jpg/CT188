@@ -1,10 +1,13 @@
-/* Tên: Phan Quốc Hậu
-   MSSV:B2408849
-   ngày thực hiện:20/11/2026
+/* =============================================================
+TÁC GIẢ
+        PHAN QUỐC HẬU
+        B2408849
 
-   ngày update 1:22/11/2026
-   ngày update 2:23/11/2026
-   ngày update 3:25/11/2026
+        ngày thực hiện:20/11/2026
+        ngày update 1:22/11/2026
+        ngày update 2:23/11/2026
+        ngày update 3:25/11/2026
+==================================================================
 */
 
 /*
@@ -15,7 +18,7 @@
    https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css
 */
 
-// 1. TÌM CÁC PHẦN TỬ HTML
+// ================= 1. TÌM CÁC PHẦN TỬ HTML =================
 const cartBody = document.getElementById('cart-body');
 const cartContent = document.getElementById('cart-content');
 const cartEmpty = document.getElementById('cart-empty');
@@ -32,7 +35,7 @@ const formError = document.getElementById('cart-form-error');
 const dataError = document.getElementById('cart-data-error');
 const repairButton = document.getElementById('cart-repair');
 
-// 2. DỮ LIỆU GIỎ HÀNG VÀ ẢNH SÁCH
+// ================= 2. DỮ LIỆU GIỎ HÀNG VÀ ẢNH SÁCH =================
 // Ghép bìa sách với sản phẩm theo id có trong productlist.html.
 const cartBookImages = [
     { "image": "./assets/images/productList_images/goc-nho-co-nang.webp", "id": "1" },
@@ -52,10 +55,11 @@ const cartBookImages = [
 // Lấy danh sách sản phẩm từ localStorage khi hiển thị giỏ hàng.
 let cartProducts = [];
 
-// 3. KIỂM TRA ĐĂNG NHẬP VÀ CÁC HÀM HỖ TRỢ
+// ================= 3. KIỂM TRA ĐĂNG NHẬP VÀ CÁC HÀM HỖ TRỢ =================
 // Chỉ mở giỏ hàng khi có tài khoản đăng nhập do login.js lưu.
 // Đây là kiểm tra trạng thái trên trình duyệt của bài web tĩnh.
 function requireCartLogin() {
+    // Đọc currentUser do trang đăng nhập lưu; JSON lỗi được xử lý trong catch bên dưới.
     let user = null;
     try {
         user = JSON.parse(localStorage.getItem('currentUser'));
@@ -73,7 +77,7 @@ function requireCartLogin() {
 }
 
 // HÀM HIỂN THỊ LỖI DỮ LIỆU
-// Chỉ hiện nút bỏ sản phẩm lỗi khi dữ liệu có bản ghi không hợp lệ.
+// Hiện nút sửa khi có sản phẩm lỗi hoặc dữ liệu giỏ hàng sai định dạng.
 function showStorageMessage() {
     repairButton.style.display = cartHasInvalidProducts ? 'inline-block' : 'none';
     dataError.textContent = cartStorageMessage;
@@ -87,6 +91,7 @@ function showStorageMessage() {
 // ĐÓNG THÔNG BÁO THANH TOÁN
 // Cho cuộn trang trở lại và trả focus về nút Thanh toán nếu hộp đang mở.
 function clearCheckoutMessage() {
+    // Ghi nhớ hộp đang mở để chỉ trả focus về nút Thanh toán khi thực sự đóng hộp.
     const wasOpen = successMessage.style.display === 'flex';
     successMessage.style.display = 'none';
     document.body.style.overflow = '';
@@ -102,6 +107,7 @@ function formatPrice(amount) {
 
 // Tạo ô td, thêm chữ và đưa vào dòng tr; trả về ô để thêm các phần tử con.
 function createCell(row, text, className) {
+    // createElement tạo ô mới, textContent điền chữ; appendChild gắn ô vào dòng bảng.
     const cell = document.createElement('td');
     cell.textContent = text;
     cell.className = className;
@@ -119,7 +125,7 @@ function createButton(parent, text, label) {
     return button;
 }
 
-// 4. TÍNH TỔNG VÀ HIỂN THỊ SẢN PHẨM
+// ================= 4. TÍNH TỔNG VÀ HIỂN THỊ SẢN PHẨM =================
 function updateTotals() {
     clearCheckoutMessage();
     let quantity = 0;
@@ -241,6 +247,7 @@ function addProductRow(product) {
     // XÓA SẢN PHẨM
     // Xóa khỏi mảng, lưu dữ liệu thành công rồi mới xóa dòng trong bảng.
     remove.addEventListener('click', function () {
+        // Nhớ dòng kế hoặc dòng trước để người dùng bàn phím không mất vị trí sau khi xóa.
         const nextRow = row.nextElementSibling || row.previousElementSibling;
         for (let i = 0; i < cartProducts.length; i++) {
             if (cartProducts[i] === product) {
@@ -292,7 +299,7 @@ function showCart() {
     updateTotals();
 }
 
-// 5. KIỂM TRA THÔNG TIN ĐẶT HÀNG
+// ================= 5. KIỂM TRA THÔNG TIN ĐẶT HÀNG =================
 // Hiện lỗi và đưa con trỏ đến ô cần sửa.
 function showFormError(input, message) {
     formError.textContent = message;
@@ -346,7 +353,7 @@ function clearFormError() {
     formError.style.display = 'none';
 }
 
-// 6. XỬ LÝ DỮ LIỆU LỖI VÀ PHÍM TRONG HỘP THÔNG BÁO
+// ================= 6. XỬ LÝ DỮ LIỆU LỖI VÀ PHÍM TRONG HỘP THÔNG BÁO =================
 // Chỉ lưu lại các sản phẩm hợp lệ khi người dùng chọn sửa dữ liệu.
 function repairCart() {
     if (saveCartProducts(cartProducts)) {
@@ -374,7 +381,7 @@ function handleLoginChange(event) {
     }
 }
 
-// 7. GẮN SỰ KIỆN VÀ HIỂN THỊ LẦN ĐẦU
+// ================= 7. GẮN SỰ KIỆN VÀ HIỂN THỊ LẦN ĐẦU =================
 // Menu và tên tài khoản trên header do home.js xử lý.
 function setupCart() {
     repairButton.addEventListener('click', repairCart);
@@ -384,6 +391,7 @@ function setupCart() {
     checkoutForm.addEventListener('input', clearFormError);
 
     // Đọc lại giỏ khi quay về trang; kiểm tra đăng xuất từ tab khác.
+    // pageshow chạy cả khi mở trang và khi quay lại bằng nút Back của trình duyệt.
     window.addEventListener('pageshow', showCart);
     window.addEventListener('storage', handleLoginChange);
     showCart();

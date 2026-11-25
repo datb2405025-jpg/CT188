@@ -1,13 +1,16 @@
-/* Tên: Phan Quốc Hậu
-   MSSV:B2408849
-   ngày thực hiện:25/11/2026
+/* =============================================================
+TÁC GIẢ
+        PHAN QUỐC HẬU
+        B2408849
 
-   ngày update 1:25/11/2026
+        ngày thực hiện:25/11/2026
+        ngày update 1:25/11/2026
+==================================================================
 */
 /* CT188: CSS thuần, Flexbox, Grid và media query.
    Form co giãn theo màn hình, giới hạn chiều rộng và căn giữa. */
 
-/* 1. KHUNG TRANG VÀ TIÊU ĐỀ */
+/* ================= 1. KHUNG TRANG VÀ TIÊU ĐỀ ================= */
 .contact-main {
     color: #1d2b23;
     background-color: #fbfcf9;
@@ -52,7 +55,8 @@
     font-size: 14px;
 }
 
-/* 2. KHUNG FORM GÓP Ý */
+/* ================= 2. KHUNG FORM GÓP Ý ================= */
+/* Khung form giới hạn 800px và căn giữa nhờ margin auto kế thừa từ contact-container. */
 .contact-layout {
     max-width: 800px;
     display: grid;
@@ -74,7 +78,7 @@
     font-size: 25px;
 }
 
-/* 3. CÁC Ô NHẬP GÓP Ý */
+/* ================= 3. CÁC Ô NHẬP GÓP Ý ================= */
 .contact-required-note {
     margin: -12px 0 22px;
     color: #68756d;
@@ -124,11 +128,13 @@
     border-color: #54775a;
 }
 
+/* JS gắn aria-invalid khi phát hiện dữ liệu sai để tô viền ô cần sửa. */
 .contact-field [aria-invalid="true"] {
     border-color: #a33737;
 }
 
-/* 4. THÔNG BÁO VÀ NÚT GỬI */
+/* ================= 4. THÔNG BÁO VÀ NÚT GỬI ================= */
+/* Thông báo mặc định ẩn; khi gửi form, JS cập nhật nội dung và bật display. */
 .contact-message {
     display: none;
     margin: 0 0 16px;
@@ -140,6 +146,7 @@
     line-height: 1.8;
 }
 
+/* Lớp is-success do JS thêm khi các ô nhập đã hợp lệ, đổi thông báo sang màu xanh. */
 .contact-message.is-success {
     border-left-color: #54775a;
     background-color: #eef5ed;
@@ -176,7 +183,7 @@
     outline-offset: 4px;
 }
 
-/* 5. RWD: tăng khoảng đệm khi màn hình đủ rộng. */
+/* ================= 5. RWD: tăng khoảng đệm khi màn hình đủ rộng. ================= */
 @media screen and (min-width: 801px) {
     .contact-heading {
         padding: 60px 0;

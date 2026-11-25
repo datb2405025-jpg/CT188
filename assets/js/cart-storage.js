@@ -1,10 +1,13 @@
-/* Tên: Phan Quốc Hậu
-   MSSV:B2408849
-   ngày thực hiện:20/11/2026
+/* =============================================================
+TÁC GIẢ
+        PHAN QUỐC HẬU
+        B2408849
 
-   ngày update 1:22/11/2026
-   ngày update 2:23/11/2026
-   ngày update 3:25/11/2026
+        ngày thực hiện:20/11/2026
+        ngày update 1:22/11/2026
+        ngày update 2:23/11/2026
+        ngày update 3:25/11/2026
+==================================================================
 */
 
 /*
@@ -12,12 +15,12 @@
    Tham khảo: CT188-BGR-phần 2.pdf, chương 4, ví dụ 4.10, trang 143-145.
 */
 
-// TRẠNG THÁI LỖI DỮ LIỆU
+// ================= TRẠNG THÁI LỖI DỮ LIỆU =================
 // cart.js dùng hai biến này để hiện thông báo và nút bỏ sản phẩm lỗi.
 let cartStorageMessage = '';
 let cartHasInvalidProducts = false;
 
-// HÀM ĐỌC GIỎ HÀNG
+// ================= HÀM ĐỌC GIỎ HÀNG =================
 // Khóa cartItems dùng chung với trang sản phẩm; chưa có dữ liệu thì trả về [].
 function getCartProducts() {
     cartStorageMessage = '';
@@ -29,7 +32,9 @@ function getCartProducts() {
             return [];
         }
         // Chuyển chuỗi JSON đã lưu về mảng sản phẩm.
+        // JSON.parse chuyển chuỗi đã lưu thành mảng; các phần tử sẽ được kiểm tra trước khi hiển thị.
         const products = JSON.parse(savedCart);
+        // Chỉ xử lý giỏ hàng dạng mảng, tránh gọi vòng lặp trên dữ liệu lưu sai cấu trúc.
         if (Array.isArray(products)) {
             const validProducts = [];
             // Kiểm tra từng sản phẩm đã lưu
@@ -83,7 +88,7 @@ function getCartProducts() {
     return [];
 }
 
-// HÀM LƯU GIỎ HÀNG
+// ================= HÀM LƯU GIỎ HÀNG =================
 // Trả về true nếu lưu được, false để cart.js khôi phục thao tác vừa thực hiện.
 function saveCartProducts(products) {
     try {

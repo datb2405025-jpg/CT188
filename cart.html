@@ -1,69 +1,71 @@
+<!DOCTYPE html>
+<!-- =============================================================
+TÁC GIẢ
+        PHAN QUỐC HẬU
+        B2408849
+
+        ngày thực hiện:10/11/2026
+        ngày update 1:22/11/2026
+        ngày update 2:23/11/2026
+        ngày update 3:25/11/2026
+==================================================================
+-->
+
 <!--
     cart.html - Trang giỏ hàng.
-    MSSV: B2408849 - Họ tên: Phan Quốc Hậu.
-    ngày thực hiện:10/11/2026
-
-    ngày update 1:22/11/2026
-    ngày update 2:23/11/2026
-    ngày update 3:25/11/2026
+    Header/footer dùng cấu trúc index.html và CSS chung home.css, shared.css.
     Kiến thức tham khảo: CT188-BGR phần 1 (HTML, form), phần 2 (Project 3).
 -->
 
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <!-- Responsive: cho chiều rộng trang khớp với màn hình thiết bị, dùng cùng media query trong CSS. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/images/Bookshelf.png">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/home.css">
-    <link rel="stylesheet" href="./assets/css/cart.css">
-    <script src="./assets/js/home.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
     <title>Giỏ hàng | Bookshelf</title>
-  <link rel="stylesheet" href="assets/css/shared.css">
+    <!-- Biểu tượng Bookshelf hiển thị trên tab của trình duyệt. -->
+    <link rel="icon" href="assets/images/Bookshelf.png">
+
+    <!-- CSS chung: biến màu, box-sizing và định dạng cơ bản của toàn dự án. -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- CSS trang chủ: tái sử dụng kiểu chữ, màu sắc và giao diện header/footer. -->
+    <link rel="stylesheet" href="assets/css/home.css">
+    <!-- CSS riêng của cart: bảng sản phẩm, form người nhận, thông báo và bố cục responsive. -->
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <!-- Remix Icon: thư viện biểu tượng dùng cho tài khoản, giỏ hàng và thông tin liên hệ. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+    <!-- CSS dùng chung: co giãn header/footer và bố trí menu trên màn hình nhỏ. -->
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <!-- JS dùng chung: mở/đóng menu, hiển thị tài khoản và xử lý đăng xuất; defer đợi HTML được phân tích xong. -->
+    <script src="assets/js/home.js" defer></script>
 </head>
 <body class="cart-page">
-  <!-- HEADER: logo, menu và liên kết giỏ hàng -->
-  <header class="home-header">
-    <div class="home-container header-inner">
-      <a class="brand" href="index.html">
-        <img alt="Logo Bookshelf" class="brand-logo" src="assets/images/Bookshelf.png" />
-      </a>
-      <button class="menu-toggle" type="button" aria-label="Mở menu" aria-controls="main-navigation">
-        <i class="ri-menu-line"></i>
-      </button>
-      <nav class="main-navigation" id="main-navigation">
-        <a class="nav-link" href="index.html">Trang chủ</a>
-        <a class="nav-link" href="productlist.html">Sản phẩm</a>
-        <a class="nav-link" href="about.html">Giới thiệu</a>
-        <a class="nav-link" href="contact.html">Liên hệ</a>
-      </nav>
-      <!-- Đã sửa lại để có tên user và nút đăng xuất khi đã đăng nhập-->
-      <div class="header-actions">
-        <a class="header-action" id="header-login" href="login.html">
-          <i class="ri-user-line"></i>
-          <span>Đăng nhập</span>
-        </a>
+    <!-- ================= 1. HEADER: logo, menu và tài khoản ================= -->
+    <header class="home-header">
+        <div class="home-container header-inner">
+            <a class="brand" href="index.html"> <img alt="Logo Bookshelf" class="brand-logo" src="assets/images/Bookshelf.png" /> </a>
+            <button class="menu-toggle" type="button" aria-label="Mở menu" aria-controls="main-navigation"> <i class="ri-menu-line"></i> </button>
+            <nav class="main-navigation" id="main-navigation">
+                <a class="nav-link" href="index.html">Trang chủ</a>
+                <a class="nav-link" href="productlist.html">Sản phẩm</a>
+                <a class="nav-link" href="about.html">Giới thiệu</a>
+                <a class="nav-link" href="contact.html">Liên hệ</a>
+            </nav>
+            <!-- Tài khoản đăng nhập và nút đăng xuất -->
+            <div class="header-actions">
+                <a class="header-action" id="header-login" href="login.html"> <i class="ri-user-line"></i> <span>Đăng nhập</span> </a>
 
-        <div class="header-user" id="header-user" style="display: none">
-          <span class="header-user-name">
-            <i class="ri-user-line"></i>
-            <span id="header-user-name"></span>
-          </span>
-          <button class="header-action" id="header-logout" type="button">
-            <i class="ri-logout-box-r-line"></i>
-            <span>Đăng xuất</span>
-          </button>
+                <div class="header-user" id="header-user" style="display: none">
+                    <span class="header-user-name"> <i class="ri-user-line"></i> <span id="header-user-name"></span> </span>
+                    <button class="header-action" id="header-logout" type="button"> <i class="ri-logout-box-r-line"></i> <span>Đăng xuất</span> </button>
+                </div>
+
+                <a class="cart-action" href="cart.html" aria-current="page"> <i class="ri-shopping-bag-3-line"></i> <span>Giỏ hàng</span> </a>
+            </div>
         </div>
-
-        <a class="cart-action" href="cart.html" aria-current="page">
-          <i class="ri-shopping-bag-3-line"></i>
-          <span>Giỏ hàng</span>
-        </a>
-      </div>
-    </div>
-  </header>
-    <!-- NỘI DUNG GIỎ HÀNG -->
+    </header>
+    <!-- ================= 2. NỘI DUNG GIỎ HÀNG ================= -->
+    <!-- Ẩn nội dung ban đầu; cart.js kiểm tra trạng thái đăng nhập rồi mới hiển thị giỏ hàng. -->
     <main class="cart" hidden>
         <header class="cart__heading">
             <h1>Giỏ hàng</h1>
@@ -91,22 +93,20 @@
                         <tbody id="cart-body"></tbody>
                     </table>
                 </div>
-                <!-- FORM ĐẶT HÀNG: JavaScript kiểm tra dữ liệu trước khi hiện kết quả -->
+                <!-- FORM ĐẶT HÀNG: novalidate tắt thông báo kiểm tra mặc định, dùng JavaScript để hiện lỗi trên trang. -->
                 <form class="cart__summary" id="cart-checkout-form" aria-labelledby="cart-summary-title" novalidate>
                     <h2 id="cart-summary-title">Thông tin đặt hàng</h2>
-                    <label class="cart__field" for="cart-fullname">Họ và tên
-                      <input id="cart-fullname" type="text" name="fullname" autocomplete="name" placeholder="Nhập họ và tên" required>
-                    </label>
-                    <label class="cart__field" for="cart-phone">Số điện thoại
-                        <input id="cart-phone" type="tel" name="phone" autocomplete="tel" title="Nhập từ 9 đến 15 chữ số, có thể bắt đầu bằng dấu +." placeholder="Ví dụ: 0901234567" required>
-                    </label>
-                    <label class="cart__field" for="cart-address">Địa chỉ nhận hàng 
-                      <input id="cart-address" type="text" name="address" autocomplete="street-address" placeholder="Số nhà, đường, phường/xã, tỉnh/thành" required>
-                    </label>
+                    <!-- Ô nhập họ tên người nhận; for/id liên kết nhãn với ô nhập, autocomplete gợi ý thông tin đã lưu. -->
+                    <label class="cart__field" for="cart-fullname"> Họ và tên <input id="cart-fullname" type="text" name="fullname" autocomplete="name" placeholder="Nhập họ và tên" required> </label>
+                    <!-- Ô số điện thoại: type="tel" gợi ý bàn phím điện thoại, JavaScript kiểm tra chuỗi chữ số. -->
+                    <label class="cart__field" for="cart-phone"> Số điện thoại <input id="cart-phone" type="tel" name="phone" autocomplete="tel" title="Nhập từ 9 đến 15 chữ số, có thể bắt đầu bằng dấu +." placeholder="Ví dụ: 0901234567" required> </label>
+                    <!-- Ô địa chỉ nhận hàng: bắt buộc có nội dung sau khi bỏ khoảng trắng đầu và cuối. -->
+                    <label class="cart__field" for="cart-address"> Địa chỉ nhận hàng <input id="cart-address" type="text" name="address" autocomplete="street-address" placeholder="Số nhà, đường, phường/xã, tỉnh/thành" required> </label>
                     <!-- Tổng tiền và nút thanh toán -->
                     <p>Tạm tính <span id="cart-subtotal">0 đ</span></p>
                     <p>Giao hàng <span>Miễn phí</span></p>
                     <p class="cart__total">Tổng cộng <strong id="cart-total">0 đ</strong></p>
+                    <!-- Vùng hiện lỗi nhập liệu; role="alert" giúp trình đọc màn hình thông báo khi có lỗi. -->
                     <p class="cart__form-error" id="cart-form-error" role="alert"></p>
                     <button class="cart__checkout" id="cart-checkout" type="submit">Thanh toán</button>
                 </form>
@@ -120,87 +120,88 @@
         <a class="cart__continue" id="cart-continue" href="./productlist.html">← Tiếp tục mua hàng</a>
         <noscript><p>Vui lòng bật JavaScript để xem và cập nhật giỏ hàng.</p></noscript>
     </main>
-  <!-- FOOTER: thương hiệu, liên kết và thông tin liên hệ -->
-  <footer class="home-footer" id="footer">
-    <div class="footer-line" aria-hidden="true"></div>
-    <div class="home-container footer-content">
-      <div class="footer-item footer-bookshelf">
-        <div class="footer-brand">
-          <img src="assets/images/logo-footer.png" alt="Logo Bookshelf" />
-        </div>
-        <p class="footer-text">
-          Lan tỏa tri thức <br />
-          nuôi dưỡng đam mê.
-        </p>
-        <p class="footer-slogan">Mỗi trang sách, một chân trời mới.</p>
-        <div class="footer-title-underline">
-          <h2 class="footer-title">Tìm hiểu nhiều hơn</h2>
-          <span class="footer-underline" aria-hidden="true"></span>
-        </div>
-        <div class="footer-social">
-          <a href="#" aria-label="Facebook (chưa cập nhật liên kết)" title="Facebook (chưa cập nhật liên kết)"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
-          <a href="#" aria-label="Instagram (chưa cập nhật liên kết)" title="Instagram (chưa cập nhật liên kết)"><i class="ri-instagram-fill" aria-hidden="true"></i></a>
-          <a href="#" aria-label="TikTok (chưa cập nhật liên kết)" title="TikTok (chưa cập nhật liên kết)"><i class="ri-tiktok-fill" aria-hidden="true"></i></a>
-          <a href="#" aria-label="Twitter (chưa cập nhật liên kết)" title="Twitter (chưa cập nhật liên kết)"><i class="ri-twitter-fill" aria-hidden="true"></i></a>
-        </div>
-      </div>
+    <!-- ================= 3. FOOTER: thương hiệu, liên kết và thông tin liên hệ ================= -->
+    <footer class="home-footer" id="footer">
+        <div class="footer-line" aria-hidden="true"></div>
+        <div class="home-container footer-content">
+            <div class="footer-item footer-bookshelf">
+                <div class="footer-brand">
+                    <img src="assets/images/logo-footer.png" alt="Logo Bookshelf" />
+                </div>
+                <p class="footer-text"> Lan tỏa tri thức <br /> nuôi dưỡng đam mê. </p>
+                <p class="footer-slogan">Mỗi trang sách, một chân trời mới.</p>
+                <div class="footer-title-underline">
+                    <h2 class="footer-title">Tìm hiểu nhiều hơn</h2>
+                    <span class="footer-underline" aria-hidden="true"></span>
+                </div>
+                <!-- Các liên kết mạng xã hội đang dùng # làm vị trí chờ, chưa có địa chỉ trang thực tế. -->
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook (chưa cập nhật liên kết)" title="Facebook (chưa cập nhật liên kết)"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram (chưa cập nhật liên kết)" title="Instagram (chưa cập nhật liên kết)"><i class="ri-instagram-fill" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="TikTok (chưa cập nhật liên kết)" title="TikTok (chưa cập nhật liên kết)"><i class="ri-tiktok-fill" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Twitter (chưa cập nhật liên kết)" title="Twitter (chưa cập nhật liên kết)"><i class="ri-twitter-fill" aria-hidden="true"></i></a>
+                </div>
+            </div>
 
-      <div class="footer-item footer-about">
-        <div class="footer-title-underline">
-          <h2 class="footer-title">BOOKSHELF VIỆT NAM</h2>
-          <span class="footer-underline" aria-hidden="true"></span>
-        </div>
-        <ul class="footer-links">
-          <li>
-            <a href="index.html"><i class="ri-arrow-right-s-line" aria-hidden="true"></i>BOOKSHELF</a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Tuyển dụng</a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Điều khoản</a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Chính sách bảo mật</a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Flash Sale</a>
-          </li>
-        </ul>
-      </div>
+            <div class="footer-item footer-about">
+                <div class="footer-title-underline">
+                    <h2 class="footer-title">BOOKSHELF VIỆT NAM</h2>
+                    <span class="footer-underline" aria-hidden="true"></span>
+                </div>
+                <ul class="footer-links">
+                    <li>
+                        <a href="index.html"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> BOOKSHELF</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Tuyển dụng</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Điều khoản</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Chính sách bảo mật</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ri-arrow-right-s-line" aria-hidden="true"></i> Flash Sale</a>
+                    </li>
+                </ul>
+            </div>
 
-      <div class="footer-item footer-contact">
-        <div class="footer-title-underline">
-          <h2 class="footer-title">LIÊN HỆ BOOKSHELF</h2>
-          <span class="footer-underline" aria-hidden="true"></span>
+            <div class="footer-item footer-contact">
+                <div class="footer-title-underline">
+                    <h2 class="footer-title">LIÊN HỆ BOOKSHELF</h2>
+                    <span class="footer-underline" aria-hidden="true"></span>
+                </div>
+                <ul class="footer-links">
+                    <li>
+                        <span class="footer-detail"><i class="ri-map-pin-fill" aria-hidden="true"></i><span>97 Đường 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ</span></span>
+                    </li>
+                    <li>
+                        <a href="tel:0979797970"><i class="ri-phone-fill" aria-hidden="true"></i><span>0979 797 970</span></a>
+                    </li>
+                    <li>
+                        <a href="mailto:cskh@bookshelf.com.vn"><i class="ri-mail-line" aria-hidden="true"></i><span>cskh@bookshelf.com.vn</span></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="footer-links">
-          <li>
-            <span class="footer-detail"><i class="ri-map-pin-fill" aria-hidden="true"></i><span> 97 Đường 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ </span></span>
-          </li>
-          <li>
-            <a href="tel:0979797970"><i class="ri-phone-fill" aria-hidden="true"></i><span>0979 797 970</span></a>
-          </li>
-          <li>
-            <a href="mailto:cskh@bookshelf.com.vn"><i class="ri-mail-line" aria-hidden="true"></i><span>cskh@bookshelf.com.vn</span></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 <img src="assets/images/logo-footer.png" alt="" aria-hidden="true" /> Bookshelf · Thực hiện bởi Nhóm 6 – CT188.</p>
-    </div>
-  </footer>
-    <!-- THÔNG BÁO THÀNH CÔNG: hiện sau khi form hợp lệ, thanh toán mô phỏng. -->
+        <div class="footer-bottom">
+            <p> © 2026 <img src="assets/images/logo-footer.png" alt="" aria-hidden="true" /> Bookshelf · Thực hiện bởi Nhóm 6 – CT188. </p>
+        </div>
+    </footer>
+    <!-- ================= 4. THÔNG BÁO THANH TOÁN: hiện khi thông tin đặt hàng hợp lệ ================= -->
     <div class="cart__success" id="cart-success">
+        <!-- Hộp thông báo mô phỏng thanh toán: role="dialog" và aria-modal mô tả hộp thoại đang mở. -->
         <div class="cart__success-box" role="dialog" aria-modal="true" aria-labelledby="cart-success-title">
             <span class="cart__success-icon" aria-hidden="true">✓</span>
             <h2 id="cart-success-title">Đã thanh toán thành công!</h2>
             <button id="cart-success-close" type="button">Đóng</button>
         </div>
     </div>
-    <!-- Nạp hàm đọc/lưu trước rồi mới xử lý và hiển thị giỏ hàng. -->
+    <!-- ================= 5. JAVASCRIPT: hàm đọc/lưu dữ liệu được nạp trước hàm xử lý cart ================= -->
+    <!-- Nạp hàm đọc/lưu localStorage trước vì cart.js sẽ sử dụng các hàm này. -->
     <script src="./assets/js/cart-storage.js"></script>
+    <!-- JS riêng của cart: tạo dòng sản phẩm, tính tiền, tăng/giảm, xóa và kiểm tra form thanh toán. -->
     <script src="./assets/js/cart.js"></script>
 </body>
 </html>
