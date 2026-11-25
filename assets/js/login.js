@@ -352,11 +352,6 @@ if (loginForm) {
             JSON.stringify(currentUser)
         );
         localStorage.setItem("userName", user.name);
-        // Lưu thông báo chào mừng
-        localStorage.setItem(
-            "toastMessage",
-            `Chào mừng ${user.name} đến với Bookshelf! 🎉`
-        );
         // Xóa form
         loginForm.reset();
         // Chuyển về trang chủ
