@@ -87,13 +87,17 @@ function showStorageMessage() {
 }
 
 // ĐÓNG THÔNG BÁO THANH TOÁN
-// Cho cuộn trang trở lại và trả focus về nút Thanh toán nếu hộp đang mở.
+// Cho cuộn trang trở lại; nếu giỏ đã trống thì đưa focus về liên kết mua tiếp.
 function clearCheckoutMessage() {
     const wasOpen = successMessage.style.display === 'flex';
     successMessage.style.display = 'none';
     document.body.style.overflow = '';
     if (wasOpen) {
-        document.getElementById('cart-checkout').focus();
+        if (cartProducts.length === 0) {
+            document.getElementById('cart-continue').focus();
+        } else {
+            document.getElementById('cart-checkout').focus();
+        }
     }
 }
 
@@ -330,7 +334,22 @@ function checkout(event) {
             showFormError(addressInput, 'Vui lòng nhập địa chỉ nhận hàng.');
             return;
         }
-        phoneInput.value = phone;
+        // Lưu giỏ rỗng trước; nếu lưu thất bại thì giữ sản phẩm và thông tin người nhận.
+        if (!saveCartProducts([])) {
+            showStorageMessage();
+            return;
+        }
+
+        // Xóa sản phẩm trên trang, cập nhật số lượng và tổng tiền về 0.
+        cartProducts = [];
+        while (cartBody.firstChild) {
+            cartBody.removeChild(cartBody.firstChild);
+        }
+        showStorageMessage();
+        updateTotals();
+
+        // Xóa thông tin người nhận sau khi giỏ rỗng đã được lưu thành công.
+        checkoutForm.reset();
         formError.textContent = '';
         formError.style.display = 'none';
         // Thông tin hợp lệ: hiện hộp thành công và khóa cuộn trang nền.
