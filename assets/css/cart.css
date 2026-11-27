@@ -7,13 +7,14 @@ TÁC GIẢ
         ngày update 1:22/11/2026
         ngày update 2:23/11/2026
         ngày update 3:25/11/2026
+        ngày update 4:27/11/2026
 ================================================================
 */
 
 /*
    cart.css - Định dạng trang giỏ hàng.
    Tham khảo kiến thức: CT188-BGR-phần 1.pdf, chương 3 (CSS).
-   Header/footer dùng home.css và shared.css; cart.css chỉ bổ sung sticky và nội dung giỏ.
+   Header/footer định dạng trong shared.css; cart.css chỉ định dạng nội dung giỏ hàng.
 */
 
 /* ================= 1. KHUNG TRANG VÀ ĐỊNH DẠNG CHUNG ================= */
@@ -30,9 +31,6 @@ TÁC GIẢ
 .cart-page * {
     box-sizing: border-box;
 }
-.cart-page .home-footer i {
-    font-style: normal;
-}
 
 /* Ảnh và điều khiển trong trang cart. */
 .cart-page img {
@@ -46,18 +44,6 @@ TÁC GIẢ
 .cart-page button,
 .cart-page input {
     font-family: inherit;
-}
-
-
-/* Header dùng home.css và shared.css; giữ sticky để bám trên cùng khi cuộn. */
-.cart-page > .home-header {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    color: var(--home-ink);
-    font-family: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
 }
 
 
@@ -119,7 +105,7 @@ TÁC GIẢ
 
 .cart__table {
     width: 100%;
-    min-width: 650px;
+    min-width: 700px;
     border-collapse: collapse;
 }
 
@@ -135,9 +121,77 @@ TÁC GIẢ
     font-size: 14px;
 }
 
-.cart__table th:first-child,
-.cart__table td:first-child {
+.cart__table th:nth-child(2),
+.cart__table td:nth-child(2) {
     text-align: left;
+}
+
+/* Checkbox chọn sản phẩm và thanh chọn tất cả; có thể xuống hàng trên điện thoại. */
+.cart__selection {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Nhóm chọn tất cả và số lượng sản phẩm đang được chọn. */
+.cart__selection-actions {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
+
+.cart .cart__remove-selected {
+    width: 64px;
+    margin-right: 10px;
+    margin-left: auto;
+    flex-shrink: 0;
+    color: #a33737;
+    border-color: #d8baba;
+}
+
+.cart__selection label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.cart__selection span {
+    color: #666;
+    font-size: 14px;
+}
+
+.cart__selection input,
+.cart__select-item {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.cart__selection input:focus,
+.cart__select-item:focus {
+    outline: 2px solid #166534;
+    outline-offset: 3px;
+}
+
+/* Giữ cột Xóa rộng 84px để nút xóa chung thẳng với các nút của từng dòng. */
+.cart__table th:last-child,
+.cart__table td:last-child {
+    width: 84px;
+}
+
+.cart__select-cell {
+    width: 44px;
 }
 
 /* Ảnh giữ nguyên tỉ lệ và đặt bên trái tên sách. */
@@ -453,16 +507,16 @@ TÁC GIẢ
     .cart__field input {
         font-size: 14px;
     }
-}
 
-@media screen and (min-width: 769px) {
-    .cart-page > .home-header {
-        font-size: 16px;
-    }
 }
 
 /* Từ 1101px: danh sách bên trái, form 320px bên phải. */
 @media screen and (min-width: 1101px) {
+    /* Thanh chọn chỉ rộng bằng bảng: trừ form 320px và khoảng cách 24px. */
+    .cart__selection {
+        width: calc(100% - 344px);
+    }
+
     .cart__layout {
         flex-direction: row;
     }
@@ -475,4 +529,5 @@ TÁC GIẢ
         flex: 0 0 320px;
         width: 320px;
     }
+
 }

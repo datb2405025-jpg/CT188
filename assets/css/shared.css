@@ -1,3 +1,460 @@
+/* Header và footer dùng chung của Bookshelf.
+   Tách các quy tắc vốn nằm trong home.css; các trang nạp shared.css sau CSS riêng.
+   CSS thuần: Flexbox, Grid, position sticky và media query. */
+
+
+/* ==================== HEADER & NAVIGATION ==================== */
+.home-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid var(--home-line);
+}
+
+.header-inner {
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.brand-logo {
+  width: 160px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.main-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  margin-left: auto;
+}
+
+.nav-link {
+  color: #56645b;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--home-green);
+}
+
+.nav-link.active {
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  height: 2px;
+  background: #6e9c70;
+  border-radius: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-action,
+.cart-action {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.header-action {
+  color: var(--home-green);
+  border: 1px solid var(--home-line);
+}
+
+.cart-action {
+  color: #fff;
+  background: var(--home-green);
+}
+
+.header-action i,
+.cart-action i {
+  font-size: 17px;
+}
+
+/* Trạng thái đã đăng nhập trên header */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-user-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--home-green);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.header-user button.header-action {
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--home-green);
+  font-size: 26px;
+}
+
+/* ==================== FOOTER ==================== */
+.home-footer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 55px;
+  color: #f1f7f1;
+  background: linear-gradient(135deg, #103a29, #174b35 54%, #0b2c1e);
+}
+
+.home-footer .footer-line {
+  position: absolute;
+  top: 0;
+  left: 8%;
+  width: 84%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #79af85,
+    #deeddf,
+    #79af85,
+    transparent
+  );
+}
+
+.home-footer .footer-content {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.3fr;
+  gap: 55px;
+  padding-bottom: 45px;
+}
+
+.home-footer .footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.home-footer .footer-brand {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.home-footer .footer-brand img {
+  width: 205px;
+  height: 68px;
+  object-fit: contain;
+  object-position: left center;
+  transition: transform 0.3s ease;
+}
+
+.home-footer .footer-brand img:hover {
+  transform: rotate(-3deg) scale(1.03);
+}
+
+.home-footer .footer-text {
+  margin: 0 0 10px;
+  color: #deeadf;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.home-footer .footer-slogan {
+  margin: 0 0 25px;
+  color: #a9d0ae;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.home-footer .footer-title-underline {
+  margin-bottom: 25px;
+}
+
+.home-footer .footer-title {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.home-footer .footer-underline {
+  display: block;
+  width: 45px;
+  height: 3px;
+  border-radius: 10px;
+  background: #88ba90;
+  transition: width 0.3s ease;
+}
+
+.home-footer .footer-item:hover .footer-underline {
+  width: 75px;
+}
+
+.home-footer .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-footer .footer-links li {
+  width: 100%;
+}
+
+.home-footer .footer-links a,
+.home-footer .footer-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #d6e6d8;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.home-footer .footer-links a {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.home-footer .footer-links i,
+.home-footer .footer-detail i {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #9dd4a7;
+  font-size: 18px;
+}
+
+.home-footer .footer-links a:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+.home-footer .footer-links a:hover i {
+  color: #fff;
+}
+
+.home-footer .footer-social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-footer .footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.09);
+  font-size: 19px;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.home-footer .footer-social a:hover {
+  background: #3e8555;
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+}
+
+.home-footer a:focus-visible {
+  outline: 2px solid #d4f0d7;
+  outline-offset: 4px;
+}
+
+.home-footer .footer-bottom {
+  width: 100%;
+  padding: 20px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+}
+
+.home-footer .footer-bottom p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0;
+  color: #bdd5c1;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.home-footer .footer-bottom img {
+  width: 44px;
+  height: 20px;
+  object-fit: contain;
+}@media (max-width: 992px) {
+  .home-footer {
+    padding-top: 45px;
+  }
+
+  .home-footer .footer-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+  }
+
+  .home-footer .footer-bookshelf {
+    grid-column: 1 / -1;
+  }
+}@media (max-width: 900px) {
+  .header-inner {
+    gap: 16px;
+  }
+
+  .main-navigation {
+    gap: 18px;
+  }
+
+  .header-action span {
+    display: none;
+  }
+}@media (max-width: 680px) {
+
+  .header-inner {
+    min-height: 72px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 132px;
+    height: 56px;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .main-navigation {
+    order: 4;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 4px 0 12px;
+  }
+
+  .main-navigation.is-open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 10px 4px;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 7px;
+  }
+
+  .header-action,
+.cart-action {
+    width: 38px;
+    min-height: 38px;
+    padding: 0;
+  }
+
+  .header-action span,
+.cart-action span {
+    display: none;
+  }
+}@media (max-width: 600px) {
+  .home-footer {
+    padding-top: 40px;
+  }
+
+  .home-footer .footer-content {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-bottom: 35px;
+  }
+
+  .home-footer .footer-bookshelf {
+    grid-column: auto;
+  }
+
+  .home-footer .footer-title {
+    font-size: 15px;
+  }
+
+  .home-footer .footer-links a,
+.home-footer .footer-detail {
+    font-size: 13px;
+  }
+
+  .home-footer .footer-bottom p {
+    font-size: 11px;
+  }
+}@media (prefers-reduced-motion: reduce) {
+  .home-footer .footer-brand img,
+.home-footer .footer-underline,
+.home-footer .footer-links a,
+.home-footer .footer-social a {
+    transition: none;
+  }
+}
+
 /* Bố cục header/footer co giãn dùng chung cho các trang. */
 /* Header/footer co gian theo cua so; dung CSS thuan (Flexbox, Grid, media query). */
 body {
@@ -164,4 +621,18 @@ body > .home-footer .footer-bookshelf {
   body > .home-footer .footer-bookshelf {
     grid-column: auto;
   }
+}
+
+/* Cùng font và tầng hiển thị trên mọi trang; hộp thanh toán (z-index 10) nổi trên header. */
+body > .home-header,
+body > .home-footer {
+    font-family: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+body > .home-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
 }

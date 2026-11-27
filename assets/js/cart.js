@@ -7,6 +7,7 @@ TÁC GIẢ
         ngày update 1:22/11/2026
         ngày update 2:23/11/2026
         ngày update 3:25/11/2026
+        ngày update 4:27/11/2026
 ================================================================
 */
 
@@ -33,6 +34,9 @@ const closeSuccessButton = document.getElementById('cart-success-close');
 const formError = document.getElementById('cart-form-error');
 const dataError = document.getElementById('cart-data-error');
 const repairButton = document.getElementById('cart-repair');
+const selectAllInput = document.getElementById('cart-select-all');
+const removeSelectedButton = document.getElementById('cart-remove-selected');
+const selectedCount = document.getElementById('cart-selected-count');
 
 // ================= 2. DỮ LIỆU GIỎ HÀNG VÀ ẢNH SÁCH =================
 // Ghép bìa sách với sản phẩm theo id có trong productlist.html.
@@ -53,6 +57,8 @@ const cartBookImages = [
 
 // Lấy danh sách sản phẩm từ localStorage khi hiển thị giỏ hàng.
 let cartProducts = [];
+// Chỉ giữ trạng thái chọn trên trang, không thay đổi cấu trúc dữ liệu sản phẩm đã lưu.
+let selectedCartProducts = [];
 
 // ================= 3. KIỂM TRA ĐĂNG NHẬP VÀ CÁC HÀM HỖ TRỢ =================
 // Chỉ mở giỏ hàng khi có tài khoản đăng nhập do login.js lưu.
@@ -129,13 +135,24 @@ function createButton(parent, text, label) {
 function updateTotals() {
     clearCheckoutMessage();
     let quantity = 0;
+    let selectedQuantity = 0;
     let total = 0;
 
-    // Duyệt các sản phẩm để cộng số lượng và tiền
+    // Đếm toàn bộ sách, nhưng chỉ tính tiền các sản phẩm đang được chọn.
     for (let i = 0; i < cartProducts.length; i++) {
         quantity += cartProducts[i].quantity;
-        total += cartProducts[i].price * cartProducts[i].quantity;
+        if (selectedCartProducts.indexOf(cartProducts[i]) !== -1) {
+            selectedQuantity += cartProducts[i].quantity;
+            total += cartProducts[i].price * cartProducts[i].quantity;
+        }
     }
+
+    // Checkbox chung có ba trạng thái: chọn hết, chọn một phần hoặc chưa chọn.
+    selectAllInput.checked = cartProducts.length > 0 && selectedCartProducts.length === cartProducts.length;
+    selectAllInput.indeterminate = selectedCartProducts.length > 0 && selectedCartProducts.length < cartProducts.length;
+    selectAllInput.disabled = cartProducts.length === 0;
+    removeSelectedButton.disabled = selectedCartProducts.length === 0;
+    selectedCount.textContent = 'Đã chọn ' + selectedQuantity + ' sản phẩm';
 
     // Hiện tổng số cuốn và tổng tiền lên trang
     cartCount.textContent = quantity + ' sản phẩm';
@@ -152,10 +169,79 @@ function updateTotals() {
     }
 }
 
+// Chọn hoặc bỏ chọn tất cả, rồi cập nhật tiền và trạng thái các checkbox từng dòng.
+function selectAllProducts() {
+    selectedCartProducts = [];
+    if (selectAllInput.checked) {
+        for (let i = 0; i < cartProducts.length; i++) {
+            selectedCartProducts.push(cartProducts[i]);
+        }
+    }
+    const checkboxes = cartBody.querySelectorAll('.cart__select-item');
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = selectAllInput.checked;
+    }
+    clearFormError();
+    updateTotals();
+}
+
+// Xóa toàn bộ dòng đang được chọn; sách chưa chọn vẫn nằm trong giỏ.
+function removeSelectedProducts() {
+    if (!requireCartLogin() || selectedCartProducts.length === 0) {
+        return;
+    }
+    const remainingProducts = [];
+    for (let i = 0; i < cartProducts.length; i++) {
+        if (selectedCartProducts.indexOf(cartProducts[i]) === -1) {
+            remainingProducts.push(cartProducts[i]);
+        }
+    }
+    // Chỉ đổi giao diện sau khi lưu được giỏ mới; lưu lỗi thì giữ nguyên lựa chọn.
+    if (!saveCartProducts(remainingProducts)) {
+        showStorageMessage();
+        return;
+    }
+    cartProducts = remainingProducts;
+    selectedCartProducts = [];
+    while (cartBody.firstChild) {
+        cartBody.removeChild(cartBody.firstChild);
+    }
+    for (let i = 0; i < cartProducts.length; i++) {
+        addProductRow(cartProducts[i]);
+    }
+    showStorageMessage();
+    clearFormError();
+    updateTotals();
+    // Đưa con trỏ về checkbox của sách còn lại hoặc liên kết mua tiếp khi giỏ trống.
+    if (cartProducts.length > 0) {
+        cartBody.querySelector('.cart__select-item').focus();
+    } else {
+        document.getElementById('cart-continue').focus();
+    }
+}
+
 // HÀM TẠO DÒNG SẢN PHẨM
 function addProductRow(product) {
     // Tạo dòng mới trong bảng
     const row = document.createElement('tr');
+    // CỘT CHỌN SẢN PHẨM: mỗi checkbox điều khiển việc tính tiền của một dòng.
+    const selectCell = createCell(row, '', 'cart__select-cell');
+    const selectInput = document.createElement('input');
+    selectInput.type = 'checkbox';
+    selectInput.className = 'cart__select-item';
+    selectInput.setAttribute('aria-label', 'Chọn ' + product.name);
+    selectInput.checked = selectedCartProducts.indexOf(product) !== -1;
+    selectCell.appendChild(selectInput);
+    selectInput.addEventListener('change', function () {
+        const index = selectedCartProducts.indexOf(product);
+        if (selectInput.checked && index === -1) {
+            selectedCartProducts.push(product);
+        } else if (!selectInput.checked && index !== -1) {
+            selectedCartProducts.splice(index, 1);
+        }
+        clearFormError();
+        updateTotals();
+    });
     // CỘT SẢN PHẨM
     const productCell = createCell(row, '', 'cart__product');
     // Tìm ảnh theo mã sách và thêm vào ô sản phẩm
@@ -261,6 +347,11 @@ function addProductRow(product) {
                 break;
             }
         }
+        // Bỏ trạng thái chọn của sản phẩm đã xóa khỏi giỏ.
+        const selectedIndex = selectedCartProducts.indexOf(product);
+        if (selectedIndex !== -1) {
+            selectedCartProducts.splice(selectedIndex, 1);
+        }
         // Xóa dòng trên giao diện sau khi đã lưu thành công
         cartBody.removeChild(row);
         updateTotals();
@@ -286,6 +377,11 @@ function showCart() {
     }
     document.querySelector('main.cart').hidden = false;
     cartProducts = getCartProducts();
+    // Mặc định chọn tất cả khi mở hoặc tải lại trang giỏ hàng.
+    selectedCartProducts = [];
+    for (let i = 0; i < cartProducts.length; i++) {
+        selectedCartProducts.push(cartProducts[i]);
+    }
     showStorageMessage();
     // Xóa các dòng cũ trong bảng
     while (cartBody.firstChild) {
@@ -313,6 +409,10 @@ function checkout(event) {
         return;
     }
     if (cartProducts.length > 0) {
+        if (selectedCartProducts.length === 0) {
+            showFormError(selectAllInput, 'Vui lòng chọn ít nhất một sản phẩm để thanh toán.');
+            return;
+        }
         // Bỏ khoảng trắng thừa ở đầu và cuối các ô nhập
         fullNameInput.value = fullNameInput.value.trim();
         phoneInput.value = phoneInput.value.trim();
@@ -334,21 +434,32 @@ function checkout(event) {
             showFormError(addressInput, 'Vui lòng nhập địa chỉ nhận hàng.');
             return;
         }
-        // Lưu giỏ rỗng trước; nếu lưu thất bại thì giữ sản phẩm và thông tin người nhận.
-        if (!saveCartProducts([])) {
+        // Chỉ xóa các sản phẩm được chọn, giữ những sách chưa thanh toán trong giỏ.
+        const remainingProducts = [];
+        for (let i = 0; i < cartProducts.length; i++) {
+            if (selectedCartProducts.indexOf(cartProducts[i]) === -1) {
+                remainingProducts.push(cartProducts[i]);
+            }
+        }
+        // Lưu thất bại thì giữ nguyên giỏ, lựa chọn và thông tin người nhận.
+        if (!saveCartProducts(remainingProducts)) {
             showStorageMessage();
             return;
         }
 
-        // Xóa sản phẩm trên trang, cập nhật số lượng và tổng tiền về 0.
-        cartProducts = [];
+        cartProducts = remainingProducts;
+        selectedCartProducts = [];
         while (cartBody.firstChild) {
             cartBody.removeChild(cartBody.firstChild);
+        }
+        // Sách còn lại vẫn chưa được chọn cho lần thanh toán tiếp theo.
+        for (let i = 0; i < cartProducts.length; i++) {
+            addProductRow(cartProducts[i]);
         }
         showStorageMessage();
         updateTotals();
 
-        // Xóa thông tin người nhận sau khi giỏ rỗng đã được lưu thành công.
+        // Xóa thông tin người nhận sau khi đã lưu giỏ hàng thành công.
         checkoutForm.reset();
         formError.textContent = '';
         formError.style.display = 'none';
@@ -398,6 +509,8 @@ function handleLoginChange(event) {
 // ================= 7. GẮN SỰ KIỆN VÀ HIỂN THỊ LẦN ĐẦU =================
 // Menu và tên tài khoản trên header do home.js xử lý.
 function setupCart() {
+    selectAllInput.addEventListener('change', selectAllProducts);
+    removeSelectedButton.addEventListener('click', removeSelectedProducts);
     repairButton.addEventListener('click', repairCart);
     closeSuccessButton.addEventListener('click', clearCheckoutMessage);
     successMessage.addEventListener('keydown', handleSuccessKeydown);

@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (menuButton && navigation) {
     menuButton.addEventListener("click", function () {
       const isOpen = navigation.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Đóng menu" : "Mở menu");
       menuButton.innerHTML = isOpen
         ? '<i class="ri-close-line"></i>'
         : '<i class="ri-menu-line"></i>';
