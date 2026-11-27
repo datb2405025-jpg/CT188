@@ -14,7 +14,7 @@
 /* 1. KHUNG TRANG VÀ CHỮ */
 /* Dùng cùng font với toàn dự án, có Arial dự phòng cho chữ tiếng Việt. */
 .about-page {
-    font-family: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
+    font-family: var(--font-family-base);
 }
 
 .about-main {
@@ -179,7 +179,6 @@
 /* 3. CÂU CHUYỆN VÀ ĐẶC ĐIỂM CỦA BOOKSHELF */
 .about-story,
 .about-values,
-.about-books,
 .about-contact-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -283,59 +282,7 @@
     font-size: 14px;
 }
 
-/* 5. GỢI Ý ĐỌC */
-.about-reading {
-    background-color: #f7f9f5;
-    border-top: 1px solid #e5ebe6;
-    border-bottom: 1px solid #e5ebe6;
-}
-
-.about-section-heading {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 28px;
-}
-
-.about-section-heading h2 {
-    margin-bottom: 0;
-}
-
-.about-book {
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    min-width: 0;
-}
-
-.about-book > img {
-    width: 86px;
-    height: auto;
-    flex-shrink: 0;
-    border-radius: 2px;
-    box-shadow: 2px 4px 8px rgba(23, 75, 53, 0.1);
-}
-
-.about-book-category {
-    margin: 0 0 8px;
-    color: #54775a;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-}
-
-.about-book h3 {
-    font-size: 16px;
-}
-
-.about-book h3 + p {
-    margin-bottom: 12px;
-    color: #68756d;
-    font-size: 13px;
-}
-
-/* 6. THÔNG TIN LIÊN HỆ */
+/* 5. THÔNG TIN LIÊN HỆ */
 #about-contact {
     scroll-margin-top: 110px;
 }
@@ -398,7 +345,7 @@
     margin-bottom: 12px;
 }
 
-/* 7. RWD: mở rộng từ điện thoại lên máy tính bảng và máy tính. */
+/* 6. RWD: mở rộng từ điện thoại lên máy tính bảng và máy tính. */
 @media screen and (min-width: 601px) {
     .about-main h1 {
         font-size: 44px;
@@ -409,12 +356,6 @@
         padding-bottom: 60px;
     }
 
-    .about-section-heading {
-        flex-direction: row;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 24px;
-    }
 
     .about-values {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -425,17 +366,8 @@
         padding: 20px;
     }
 
-    .about-books {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
 
-    .about-book {
-        flex-direction: column;
-    }
 
-    .about-book > img {
-        width: 100px;
-    }
 }
 
 /* Màn hình đủ rộng: ba thành viên nằm cùng hàng, các thẻ cao bằng nhau. */

@@ -1,4 +1,7 @@
 
+/* MOBILE-FIRST: các quy tắc ngoài media query dành cho màn hình nhỏ.
+   Mở rộng dần bố cục bằng các media query min-width ở cuối file. */
+
 /* =================================
    MAIN - TRANG ĐĂNG NHẬP / ĐĂNG KÝ
 ================================= */
@@ -7,19 +10,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(35px, 5vw, 70px);
-
+    gap: 35px;
     width: 100%;
     min-height: 650px;
-    padding: 45px 7%;
+    padding: 30px 15px;
     box-sizing: border-box;
-
     background: linear-gradient(
         135deg,
         #f4f7ff,
         #eef2ff,
         #ffffff
     );
+    flex-direction: column;
 }
 
 /* =================================
@@ -32,17 +34,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     text-align: center;
+    width: 100%;
 }
 
 .logo-wrapper {
     position: relative;
     width: 100%;
-    max-width: 460px;
-    max-height: 120px;
+    max-width: 350px;
+    max-height: 100px;
     margin-bottom: 22px;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,20 +62,17 @@
 
 .auth-branding .content {
     color: #ffffff;
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 1.5;
     letter-spacing: 1px;
-
     background: linear-gradient(
         135deg,
         #15803d,
         #4ade80
     );
-
-    padding: 17px 30px;
+    padding: 15px 25px;
     border-radius: 18px;
-
     box-shadow: 0 10px 30px rgba(65, 86, 170, 0.2);
 }
 
@@ -82,33 +80,32 @@
    PHẦN FORM BÊN PHẢI
 ================================= */
 
-
 .wrapper {
     position: relative;
     width: 100%;
     max-width: 430px;
     margin: 0 auto;
 }
+
 .auth-login {
     flex: 1;
     min-width: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
+/* Form cao theo nội dung để đăng ký nhiều ô không bị tràn khi đổi trạng thái. */
 .auth-login .wrapper {
+    height: auto;
     width: 100%;
-    max-width: 430px;
+    max-width: 450px;
     margin: 0 auto;
-
-    padding: 35px 32px;
-
+    padding: 30px 20px;
     background: #ffffff;
     border-radius: 20px;
-
     box-shadow: 0 10px 40px rgba(40, 55, 100, 0.12);
-
     border: 1px solid #edf0fa;
     transition: transform 0.3s ease,
                 box-shadow 0.3s ease;
@@ -128,7 +125,7 @@
 
 .form-header .title {
     color: #166534;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     position: relative;
     padding-bottom: 12px;
@@ -140,10 +137,8 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-
     width: 55px;
     height: 4px;
-
     border-radius: 10px;
     background: #22c55e;
 }
@@ -156,14 +151,11 @@
     position: relative;
     display: flex;
     align-items: center;
-
     width: 100%;
     height: 52px;
     margin-bottom: 20px;
-
     border: 1px solid #dfe4f0;
     border-radius: 12px;
-
     background: #f8f9fd;
     transition: all 0.3s ease;
 }
@@ -171,7 +163,6 @@
 .input-box:focus-within {
     border-color: #75c6b7;
     background: #ffffff;
-
     box-shadow: 0 0 0 3px rgba(101, 123, 224, 0.12);
 }
 
@@ -184,13 +175,10 @@
 .input-field {
     width: 100%;
     height: 100%;
-
     border: none;
     outline: none;
-
     background: transparent;
     color: #333;
-
     font-size: 14px;
     padding-right: 12px;
 }
@@ -242,22 +230,17 @@
 .submit-btn {
     width: 100%;
     height: 50px;
-
     border: none;
     border-radius: 12px;
-
     background: linear-gradient(
         135deg,
         #2a898b,
         #0a652d
     );
-
     color: #ffffff;
     font-size: 16px;
     font-weight: 600;
-
     cursor: pointer;
-
     transition: all 0.3s ease;
 }
 
@@ -268,9 +251,7 @@
 
 .submit-btn:hover {
     transform: translateY(-3px);
-
     box-shadow: 0 7px 18px rgba(82, 104, 201, 0.3);
-
     background: linear-gradient(
         135deg,
         #166534,
@@ -289,7 +270,6 @@
 .switch-form {
     margin-top: 25px;
     text-align: center;
-
     color: #777f91;
     font-size: 13px;
 }
@@ -299,7 +279,6 @@
     font-weight: 600;
     text-decoration: none;
     margin-left: 4px;
-
     transition: color 0.3s ease;
 }
 
@@ -314,76 +293,6 @@
     display: none;
 }
 
-/* =================================
-   RESPONSIVE TABLET
-================================= */
-
-@media (max-width: 992px) {
-    .auth-page {
-        gap: 30px;
-        padding: 40px 5%;
-    }
-
-    .auth-branding .content {
-        font-size: 23px;
-    }
-
-    .auth-login .wrapper {
-        padding: 35px 25px;
-    }
-}
-
-/* =================================
-   RESPONSIVE MOBILE
-================================= */
-
-@media (max-width: 768px) {
-    .auth-page {
-        flex-direction: column;
-        gap: 35px;
-        padding: 40px 20px;
-    }
-
-    .auth-branding {
-        width: 100%;
-    }
-
-    .logo-wrapper {
-        max-width: 350px;
-        max-height: 100px;
-    }
-
-    .auth-branding .content {
-        font-size: 20px;
-        padding: 15px 25px;
-    }
-
-    .auth-login {
-        width: 100%;
-    }
-
-    .auth-login .wrapper {
-        max-width: 450px;
-    }
-}
-
-@media (max-width: 480px) {
-    .auth-page {
-        padding: 30px 15px;
-    }
-
-    .auth-login .wrapper {
-        padding: 30px 20px;
-    }
-
-    .form-header .title {
-        font-size: 24px;
-    }
-
-    .auth-branding .content {
-        font-size: 18px;
-    }
-}
 /* ================================
    CHUYỂN ĐỔI FORM ĐĂNG NHẬP / ĐĂNG KÝ
 ================================ */
@@ -409,5 +318,60 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+/* Từ 481px: tăng khoảng đệm và cỡ chữ của form. */
+@media screen and (min-width: 481px) {
+    .auth-page {
+        padding: 40px 20px;
+    }
+    .auth-branding .content {
+        font-size: 20px;
+    }
+    .auth-login .wrapper {
+        padding: 35px 25px;
+    }
+    .form-header .title {
+        font-size: 28px;
+    }
+}
+
+/* Từ 769px: thương hiệu và form đăng nhập đặt cạnh nhau. */
+@media screen and (min-width: 769px) {
+    .auth-page {
+        gap: 30px;
+        padding: 40px 5%;
+        flex-direction: row;
+    }
+    .auth-branding .content {
+        font-size: 23px;
+        padding: 17px 30px;
+    }
+    .auth-login .wrapper {
+        max-width: 430px;
+    }
+    .auth-branding {
+        width: auto;
+    }
+    .logo-wrapper {
+        max-width: 460px;
+        max-height: 120px;
+    }
+    .auth-login {
+        width: auto;
+    }
+}
+
+/* Từ 993px: dùng khoảng cách và kích thước dành cho máy tính. */
+@media screen and (min-width: 993px) {
+    .auth-page {
+        gap: clamp(35px, 5vw, 70px);
+        padding: 45px 7%;
+    }
+    .auth-branding .content {
+        font-size: 26px;
+    }
+    .auth-login .wrapper {
+        padding: 35px 32px;
     }
 }

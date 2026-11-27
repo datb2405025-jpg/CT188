@@ -1,7 +1,9 @@
+
+/* MOBILE-FIRST: các quy tắc ngoài media query dành cho màn hình nhỏ.
+   Mở rộng dần bố cục bằng các media query min-width ở cuối file. */
 /* Header và footer dùng chung của Bookshelf.
    Tách các quy tắc vốn nằm trong home.css; các trang nạp shared.css sau CSS riêng.
    CSS thuần: Flexbox, Grid, position sticky và media query. */
-
 
 /* ==================== HEADER & NAVIGATION ==================== */
 .home-header {
@@ -13,146 +15,162 @@
 }
 
 .header-inner {
-  min-height: 86px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .brand {
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
 }
 
 .brand-logo {
-  width: 160px;
-  height: 64px;
-  object-fit: contain;
+    width: 132px;
+    height: 56px;
+    object-fit: contain;
 }
 
 .main-navigation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 34px;
-  margin-left: auto;
+    display: none;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    margin-left: auto;
+    order: 4;
+    width: 100%;
+    flex-direction: column;
+    padding: 4px 0 12px;
 }
 
 .nav-link {
-  color: #56645b;
-  font-size: 14px;
-  font-weight: 600;
-  transition: color 0.2s ease;
+    color: #56645b;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    padding: 10px 4px;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--home-green);
+    color: var(--home-green);
 }
 
 .nav-link.active {
-  position: relative;
+    position: relative;
 }
 
 .nav-link.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -12px;
-  height: 2px;
-  background: #6e9c70;
-  border-radius: 2px;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -12px;
+    height: 2px;
+    background: #6e9c70;
+    border-radius: 2px;
+    display: none;
 }
 
 .header-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
 
 .header-action,
 .cart-action {
-  min-height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .header-action {
-  color: var(--home-green);
-  border: 1px solid var(--home-line);
+    color: var(--home-green);
+    border: 1px solid var(--home-line);
+    width: 38px;
+    min-height: 38px;
+    padding: 0;
 }
 
 .cart-action {
-  color: #fff;
-  background: var(--home-green);
+    color: #fff;
+    background: var(--home-green);
+    width: 38px;
+    min-height: 38px;
+    padding: 0;
 }
 
 .header-action i,
 .cart-action i {
-  font-size: 17px;
+    font-size: 17px;
 }
 
 /* Trạng thái đã đăng nhập trên header */
 .header-user {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .header-user-name {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  max-width: 140px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: var(--home-green);
-  font-size: 13px;
-  font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--home-green);
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .header-user button.header-action {
-  background: transparent;
-  cursor: pointer;
+    background: transparent;
+    cursor: pointer;
 }
 
 .menu-toggle {
-  display: none;
-  border: 0;
-  background: transparent;
-  color: var(--home-green);
-  font-size: 26px;
+    display: inline-flex;
+    border: 0;
+    background: transparent;
+    color: var(--home-green);
+    font-size: 26px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
 }
 
 /* ==================== FOOTER ==================== */
 .home-footer {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  padding-top: 55px;
-  color: #f1f7f1;
-  background: linear-gradient(135deg, #103a29, #174b35 54%, #0b2c1e);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 40px;
+    color: #f1f7f1;
+    background: linear-gradient(135deg, #103a29, #174b35 54%, #0b2c1e);
 }
 
 .home-footer .footer-line {
-  position: absolute;
-  top: 0;
-  left: 8%;
-  width: 84%;
-  height: 3px;
-  border-radius: 10px;
-  background: linear-gradient(
+    position: absolute;
+    top: 0;
+    left: 8%;
+    width: 84%;
+    height: 3px;
+    border-radius: 10px;
+    background: linear-gradient(
     90deg,
     transparent,
     #79af85,
@@ -163,290 +181,190 @@
 }
 
 .home-footer .footer-content {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1.3fr;
-  gap: 55px;
-  padding-bottom: 45px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-bottom: 35px;
 }
 
 .home-footer .footer-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
 }
 
 .home-footer .footer-brand {
-  display: flex;
-  align-items: center;
-  margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
 }
 
 .home-footer .footer-brand img {
-  width: 205px;
-  height: 68px;
-  object-fit: contain;
-  object-position: left center;
-  transition: transform 0.3s ease;
+    width: 205px;
+    height: 68px;
+    object-fit: contain;
+    object-position: left center;
+    transition: transform 0.3s ease;
 }
 
 .home-footer .footer-brand img:hover {
-  transform: rotate(-3deg) scale(1.03);
+    transform: rotate(-3deg) scale(1.03);
 }
 
 .home-footer .footer-text {
-  margin: 0 0 10px;
-  color: #deeadf;
-  font-size: 15px;
-  line-height: 1.8;
+    margin: 0 0 10px;
+    color: #deeadf;
+    font-size: 15px;
+    line-height: 1.8;
 }
 
 .home-footer .footer-slogan {
-  margin: 0 0 25px;
-  color: #a9d0ae;
-  font-size: 13px;
-  font-style: italic;
+    margin: 0 0 25px;
+    color: #a9d0ae;
+    font-size: 13px;
+    font-style: italic;
 }
 
 .home-footer .footer-title-underline {
-  margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 .home-footer .footer-title {
-  margin: 0 0 10px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.4px;
+    margin: 0 0 10px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
 }
 
 .home-footer .footer-underline {
-  display: block;
-  width: 45px;
-  height: 3px;
-  border-radius: 10px;
-  background: #88ba90;
-  transition: width 0.3s ease;
+    display: block;
+    width: 45px;
+    height: 3px;
+    border-radius: 10px;
+    background: #88ba90;
+    transition: width 0.3s ease;
 }
 
 .home-footer .footer-item:hover .footer-underline {
-  width: 75px;
+    width: 75px;
 }
 
 .home-footer .footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .home-footer .footer-links li {
-  width: 100%;
-}
-
-.home-footer .footer-links a,
-.home-footer .footer-detail {
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  color: #d6e6d8;
-  font-size: 14px;
-  line-height: 1.7;
-  overflow-wrap: anywhere;
+    width: 100%;
 }
 
 .home-footer .footer-links a {
-  transition:
-    color 0.3s ease,
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: #d6e6d8;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.home-footer .footer-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: #d6e6d8;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.home-footer .footer-links a {
+    transition: color 0.3s ease,
     transform 0.3s ease;
+    font-size: 13px;
 }
 
 .home-footer .footer-links i,
 .home-footer .footer-detail i {
-  flex: 0 0 auto;
-  margin-top: 1px;
-  color: #9dd4a7;
-  font-size: 18px;
+    flex: 0 0 auto;
+    margin-top: 1px;
+    color: #9dd4a7;
+    font-size: 18px;
 }
 
 .home-footer .footer-links a:hover {
-  color: #fff;
-  transform: translateX(5px);
+    color: #fff;
+    transform: translateX(5px);
 }
 
 .home-footer .footer-links a:hover i {
-  color: #fff;
+    color: #fff;
 }
 
 .home-footer .footer-social {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .home-footer .footer-social a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 50%;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.09);
-  font-size: 19px;
-  transition:
-    transform 0.3s ease,
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.09);
+    font-size: 19px;
+    transition: transform 0.3s ease,
     background 0.3s ease,
     box-shadow 0.3s ease;
 }
 
 .home-footer .footer-social a:hover {
-  background: #3e8555;
-  transform: translateY(-4px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+    background: #3e8555;
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
 }
 
 .home-footer a:focus-visible {
-  outline: 2px solid #d4f0d7;
-  outline-offset: 4px;
+    outline: 2px solid #d4f0d7;
+    outline-offset: 4px;
 }
 
 .home-footer .footer-bottom {
-  width: 100%;
-  padding: 20px 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  text-align: center;
+    width: 100%;
+    padding: 20px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
 }
 
 .home-footer .footer-bottom p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin: 0;
-  color: #bdd5c1;
-  font-size: 13px;
-  line-height: 1.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0;
+    color: #bdd5c1;
+    font-size: 11px;
+    line-height: 1.8;
 }
 
 .home-footer .footer-bottom img {
-  width: 44px;
-  height: 20px;
-  object-fit: contain;
-}@media (max-width: 992px) {
-  .home-footer {
-    padding-top: 45px;
-  }
-
-  .home-footer .footer-content {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px;
-  }
-
-  .home-footer .footer-bookshelf {
-    grid-column: 1 / -1;
-  }
-}@media (max-width: 900px) {
-  .header-inner {
-    gap: 16px;
-  }
-
-  .main-navigation {
-    gap: 18px;
-  }
-
-  .header-action span {
-    display: none;
-  }
-}@media (max-width: 680px) {
-
-  .header-inner {
-    min-height: 72px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .brand-logo {
-    width: 132px;
-    height: 56px;
-  }
-
-  .menu-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-  }
-
-  .main-navigation {
-    order: 4;
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 4px 0 12px;
-  }
-
-  .main-navigation.is-open {
-    display: flex;
-  }
-
-  .nav-link {
-    padding: 10px 4px;
-  }
-
-  .nav-link.active::after {
-    display: none;
-  }
-
-  .header-actions {
-    gap: 7px;
-  }
-
-  .header-action,
-.cart-action {
-    width: 38px;
-    min-height: 38px;
-    padding: 0;
-  }
-
-  .header-action span,
-.cart-action span {
-    display: none;
-  }
-}@media (max-width: 600px) {
-  .home-footer {
-    padding-top: 40px;
-  }
-
-  .home-footer .footer-content {
-    grid-template-columns: 1fr;
-    gap: 35px;
-    padding-bottom: 35px;
-  }
-
-  .home-footer .footer-bookshelf {
-    grid-column: auto;
-  }
-
-  .home-footer .footer-title {
-    font-size: 15px;
-  }
-
-  .home-footer .footer-links a,
-.home-footer .footer-detail {
-    font-size: 13px;
-  }
-
-  .home-footer .footer-bottom p {
-    font-size: 11px;
-  }
-}@media (prefers-reduced-motion: reduce) {
+    width: 44px;
+    height: 20px;
+    object-fit: contain;
+}
+@media (prefers-reduced-motion: reduce) {
   .home-footer .footer-brand img,
 .home-footer .footer-underline,
 .home-footer .footer-links a,
@@ -458,175 +376,99 @@
 /* Bố cục header/footer co giãn dùng chung cho các trang. */
 /* Header/footer co gian theo cua so; dung CSS thuan (Flexbox, Grid, media query). */
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 body > .home-header,
 body > .home-footer {
-  width: 100%;
-  flex-shrink: 0;
+    width: 100%;
+    flex-shrink: 0;
 }
 
 /* Khong gioi han 1160px: khi thu nho zoom, khung van trai theo cua so. */
 body > .home-header > .header-inner,
 body > .home-footer > .home-container,
 body.cart-page > .home-footer > .home-container {
-  width: 92%;
-  max-width: none;
-  margin-left: auto;
-  margin-right: auto;
+    width: 92%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body > .home-header > .header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 86px;
-  gap: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 72px;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 body > .home-header .main-navigation {
-  flex: 1;
-  margin-left: 0;
-  justify-content: center;
-}
-
-body > .home-header .header-actions {
-  flex-shrink: 0;
-}
-
-body > .home-header .header-user {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-
-body > .home-header .header-user-name {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  max-width: 140px;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-body > .home-header #header-user-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Khoang trong con lai nam truoc footer, footer khong che noi dung. */
-body > .home-footer {
-  margin-top: auto;
-}
-
-body > .home-footer > .footer-content {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1.3fr;
-  gap: 40px;
-}
-
-body > .home-footer .footer-item {
-  min-width: 0;
-}
-
-body > .home-footer .footer-bookshelf {
-  grid-column: auto;
-}
-
-@media (max-width: 1000px) {
-  body > .home-header > .header-inner {
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-
-  body > .home-header .menu-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-  }
-
-  body > .home-header .main-navigation {
-    display: none;
     flex: 0 0 100%;
+    margin-left: 0;
+    justify-content: center;
+    display: none;
     order: 4;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
     padding: 8px 0;
-  }
-
-  body > .home-header .main-navigation.is-open {
-    display: flex;
-  }
-
-  body > .home-header .nav-link {
-    padding: 10px 0;
-  }
-
-  body > .home-header .nav-link.active::after {
-    bottom: 4px;
-  }
 }
 
-@media (max-width: 800px) {
-  body > .home-footer > .footer-content {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-  }
-
-  body > .home-footer .footer-bookshelf {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 600px) {
-  body > .home-header > .header-inner {
-    min-height: 72px;
-    gap: 8px;
-  }
-
-  body > .home-header .brand-logo {
-    width: 100px;
-    height: 48px;
-  }
-
-  body > .home-header .header-actions {
+body > .home-header .header-actions {
+    flex-shrink: 0;
     gap: 6px;
-  }
+}
 
-  body > .home-header .header-action,
-  body > .home-header .cart-action {
-    width: 34px;
-    min-height: 36px;
-    padding: 0;
-  }
+body > .home-header .header-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
 
-  body > .home-header .header-action span,
-  body > .home-header .cart-action span,
-  body > .home-header .header-user-name {
+body > .home-header .header-user-name {
     display: none;
-  }
+    align-items: center;
+    gap: 6px;
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
-  body > .home-footer > .footer-content {
+body > .home-header #header-user-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Khoang trong con lai nam truoc footer, footer khong che noi dung. */
+body > .home-footer {
+    margin-top: auto;
+}
+
+body > .home-footer > .footer-content {
+    display: grid;
     grid-template-columns: 1fr;
-  }
+    gap: 28px;
+}
 
-  body > .home-footer .footer-bookshelf {
+body > .home-footer .footer-item {
+    min-width: 0;
+}
+
+body > .home-footer .footer-bookshelf {
     grid-column: auto;
-  }
 }
 
 /* Cùng font và tầng hiển thị trên mọi trang; hộp thanh toán (z-index 10) nổi trên header. */
 body > .home-header,
 body > .home-footer {
-    font-family: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
+    font-family: var(--font-family-base);
     font-size: 16px;
     line-height: 1.6;
 }
@@ -635,4 +477,261 @@ body > .home-header {
     position: sticky;
     top: 0;
     z-index: 5;
+}
+
+.home-footer .footer-bookshelf {
+    grid-column: auto;
+}
+
+.header-action span {
+    display: none;
+}
+
+.main-navigation.is-open {
+    display: flex;
+}
+
+.cart-action span {
+    display: none;
+}
+
+body > .home-header .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+}
+
+body > .home-header .main-navigation.is-open {
+    display: flex;
+}
+
+body > .home-header .nav-link {
+    padding: 10px 0;
+}
+
+body > .home-header .nav-link.active::after {
+    bottom: 4px;
+}
+
+body > .home-header .brand-logo {
+    width: 100px;
+    height: 48px;
+}
+
+body > .home-header .header-action {
+    width: 34px;
+    min-height: 36px;
+    padding: 0;
+}
+
+body > .home-header .cart-action {
+    width: 34px;
+    min-height: 36px;
+    padding: 0;
+}
+
+body > .home-header .header-action span {
+    display: none;
+}
+
+body > .home-header .cart-action span {
+    display: none;
+}
+
+/* Từ 601px: tăng kích thước header và footer; footer có hai cột. */
+@media screen and (min-width: 601px) {
+    .home-footer {
+        padding-top: 45px;
+    }
+    .home-footer .footer-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px;
+        padding-bottom: 45px;
+    }
+    .home-footer .footer-bookshelf {
+        grid-column: 1 / -1;
+    }
+    .home-footer .footer-title {
+        font-size: 16px;
+    }
+    .home-footer .footer-links a {
+        font-size: 14px;
+    }
+    .home-footer .footer-detail {
+        font-size: 14px;
+    }
+    .home-footer .footer-bottom p {
+        font-size: 13px;
+    }
+    body > .home-header > .header-inner {
+        gap: 12px;
+        min-height: 86px;
+    }
+    body > .home-footer > .footer-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    body > .home-footer .footer-bookshelf {
+        grid-column: 1 / -1;
+    }
+    body > .home-header .brand-logo {
+        width: 132px;
+        height: 56px;
+    }
+    body > .home-header .header-actions {
+        gap: 7px;
+    }
+    body > .home-header .header-action {
+        width: 38px;
+        min-height: 38px;
+    }
+    body > .home-header .cart-action {
+        width: 38px;
+        min-height: 38px;
+    }
+    body > .home-header .header-user-name {
+        display: inline-flex;
+    }
+}
+
+/* Từ 681px: tăng kích thước logo và nút tài khoản. */
+@media screen and (min-width: 681px) {
+    .header-inner {
+        gap: 16px;
+        min-height: 86px;
+        flex-wrap: nowrap;
+    }
+    .main-navigation {
+        gap: 18px;
+        order: 0;
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+    }
+    .brand-logo {
+        width: 160px;
+        height: 64px;
+    }
+    .menu-toggle {
+        display: none;
+        align-items: normal;
+        justify-content: normal;
+        margin-left: 0;
+    }
+    .nav-link {
+        padding: 0;
+    }
+    .nav-link.active::after {
+        display: block;
+    }
+    .header-actions {
+        gap: 12px;
+    }
+    .header-action {
+        width: auto;
+        min-height: 42px;
+        padding: 0 14px;
+    }
+    .cart-action {
+        width: auto;
+        min-height: 42px;
+        padding: 0 14px;
+    }
+    .cart-action span {
+        display: inline;
+    }
+    body > .home-header .brand-logo {
+        width: 160px;
+        height: 64px;
+    }
+    body > .home-header .header-actions {
+        gap: 12px;
+    }
+    body > .home-header .header-action {
+        width: auto;
+        min-height: 42px;
+        padding: 0 14px;
+    }
+    body > .home-header .cart-action {
+        width: auto;
+        min-height: 42px;
+        padding: 0 14px;
+    }
+    body > .home-header .cart-action span {
+        display: inline;
+    }
+}
+
+/* Từ 801px: footer hiển thị ba cột. */
+@media screen and (min-width: 801px) {
+    body > .home-footer > .footer-content {
+        grid-template-columns: 1.3fr 1fr 1.3fr;
+        gap: 40px;
+    }
+    body > .home-footer .footer-bookshelf {
+        grid-column: auto;
+    }
+}
+
+/* Từ 901px: hiện chữ ở nút tài khoản. */
+@media screen and (min-width: 901px) {
+    .header-inner {
+        gap: 28px;
+    }
+    .main-navigation {
+        gap: 34px;
+    }
+    .header-action span {
+        display: inline;
+    }
+    body > .home-header .header-action span {
+        display: inline;
+    }
+}
+
+/* Từ 993px: tăng khoảng đệm phía trên footer. */
+@media screen and (min-width: 993px) {
+    .home-footer {
+        padding-top: 55px;
+    }
+    .home-footer .footer-content {
+        grid-template-columns: 1.3fr 1fr 1.3fr;
+        gap: 55px;
+    }
+    .home-footer .footer-bookshelf {
+        grid-column: auto;
+    }
+}
+
+/* Từ 1001px: hiện menu ngang, ẩn nút mở menu và bỏ xuống dòng header. */
+@media screen and (min-width: 1001px) {
+    body > .home-header > .header-inner {
+        flex-wrap: nowrap;
+        gap: 24px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    body > .home-header .menu-toggle {
+        display: none;
+        align-items: normal;
+        justify-content: normal;
+        margin-left: 0;
+    }
+    body > .home-header .main-navigation {
+        display: flex;
+        flex: 1;
+        order: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 34px;
+        padding: 0;
+    }
+    body > .home-header .nav-link {
+        padding: 0;
+    }
+    body > .home-header .nav-link.active::after {
+        bottom: -12px;
+    }
 }

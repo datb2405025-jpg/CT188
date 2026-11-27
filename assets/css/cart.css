@@ -23,7 +23,7 @@ TÁC GIẢ
     margin: 0;
     background-color: #f2f2f2;
     color: #333;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-family-base);
     font-size: 15px;
     line-height: 1.5;
 }
@@ -50,7 +50,7 @@ TÁC GIẢ
 .cart {
     width: 94%;
     max-width: 1250px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-family-base);
     font-size: 15px;
     line-height: 1.5;
     margin: 12px auto;

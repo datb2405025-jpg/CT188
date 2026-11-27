@@ -40,7 +40,7 @@ TÁC GIẢ
 .contact-heading h1,
 .contact-layout h2 {
     color: #103a29;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: inherit;
     line-height: 1.3;
 }
 
