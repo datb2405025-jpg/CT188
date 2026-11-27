@@ -7,8 +7,8 @@ TÁC GIẢ
         ngày update 1:25/11/2026
 ================================================================
 */
-/* CT188: CSS thuần, Flexbox, Grid và media query.
-   Form co giãn theo màn hình, giới hạn chiều rộng và căn giữa. */
+/* Tham khảo: CT188-BGR phần 1, CSS và RWD.
+   Mobile-first: viết cho điện thoại trước, dùng min-width để chỉnh cho màn hình lớn. */
 
 /* ================= 1. KHUNG TRANG VÀ TIÊU ĐỀ ================= */
 .contact-main {
@@ -56,7 +56,7 @@ TÁC GIẢ
 }
 
 /* ================= 2. KHUNG FORM GÓP Ý ================= */
-/* Khung form giới hạn 800px và căn giữa nhờ margin auto kế thừa từ contact-container. */
+/* Giới hạn form rộng 800px, dùng margin auto ở contact-container để căn giữa. */
 .contact-layout {
     max-width: 800px;
     display: grid;
@@ -128,13 +128,13 @@ TÁC GIẢ
     border-color: #54775a;
 }
 
-/* JS gắn aria-invalid khi phát hiện dữ liệu sai để tô viền ô cần sửa. */
+/* Tô viền ô nhập bị lỗi khi JavaScript thêm aria-invalid. */
 .contact-field [aria-invalid="true"] {
     border-color: #a33737;
 }
 
 /* ================= 4. THÔNG BÁO VÀ NÚT GỬI ================= */
-/* Thông báo mặc định ẩn; khi gửi form, JS cập nhật nội dung và bật display. */
+/* Ẩn thông báo lúc đầu, JavaScript cho hiện khi kiểm tra form. */
 .contact-message {
     display: none;
     margin: 0 0 16px;
@@ -146,7 +146,7 @@ TÁC GIẢ
     line-height: 1.8;
 }
 
-/* Lớp is-success do JS thêm khi các ô nhập đã hợp lệ, đổi thông báo sang màu xanh. */
+/* Đổi thông báo sang màu xanh khi JavaScript thêm lớp is-success. */
 .contact-message.is-success {
     border-left-color: #54775a;
     background-color: #eef5ed;
@@ -183,7 +183,7 @@ TÁC GIẢ
     outline-offset: 4px;
 }
 
-/* ================= 5. RWD: TĂNG KHOẢNG ĐỆM KHI MÀN HÌNH ĐỦ RỘNG. ================= */
+/* ================= 5. RESPONSIVE CHO MÀN HÌNH LỚN ================= */
 @media screen and (min-width: 801px) {
     .contact-heading {
         padding: 60px 0;

@@ -16,25 +16,25 @@ TÁC GIẢ
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <!-- Responsive: cho chiều rộng trang khớp với màn hình thiết bị, dùng cùng media query trong CSS. -->
+    <!-- Cho chiều rộng trang vừa với màn hình thiết bị. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Thông tin liên hệ Bookshelf và biểu mẫu góp ý của người đọc.">
     <title>Liên hệ | Bookshelf</title>
-    <!-- Biểu tượng Bookshelf hiển thị trên tab của trình duyệt. -->
+    <!-- Icon Bookshelf trên tab trình duyệt. -->
     <link rel="icon" href="assets/images/Bookshelf.png">
-    <!-- CSS chung: biến màu, box-sizing và định dạng cơ bản của toàn dự án. -->
+    <!-- Nạp CSS chung của dự án. -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- CSS trang chủ: khai báo màu sắc và các kiểu dùng lại trong dự án. -->
+    <!-- Dùng lại các biến màu từ CSS trang chủ. -->
     <link rel="stylesheet" href="assets/css/home.css">
-    <!-- CSS riêng của liên hệ: tiêu đề, khung form, ô nhập, nút gửi và thông báo kết quả. -->
+    <!-- Nạp CSS riêng cho trang liên hệ. -->
     <link rel="stylesheet" href="assets/css/contact.css">
-    <!-- Remix Icon: thư viện biểu tượng dùng cho tài khoản, giỏ hàng và thông tin liên hệ. -->
+    <!-- Dùng thư viện Remix Icon để hiển thị biểu tượng. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
-    <!-- CSS dùng chung: co giãn header/footer và bố trí menu trên màn hình nhỏ. -->
+    <!-- Header và footer dùng chung file shared.css. -->
     <link rel="stylesheet" href="assets/css/shared.css">
-    <!-- JS dùng chung: mở/đóng menu, hiển thị tài khoản và xử lý đăng xuất; defer đợi HTML được phân tích xong. -->
+    <!-- Nạp JS xử lý menu và tài khoản. Dùng defer để chạy sau khi đọc xong HTML. -->
     <script src="assets/js/home.js" defer></script>
-    <!-- JS riêng của liên hệ: kiểm tra thông tin và hiển thị phản hồi góp ý mô phỏng. -->
+    <!-- JS kiểm tra form và hiện thông báo góp ý. -->
     <script src="assets/js/contact.js" defer></script>
 </head>
 <body class="home-page contact-page">
@@ -74,20 +74,20 @@ TÁC GIẢ
 <section class="contact-feedback" aria-labelledby="contact-form-title">
                 <h2 id="contact-form-title">Góp ý với chúng tôi</h2>
                 <p class="contact-required-note">Các ô có dấu <span aria-hidden="true">*</span> là bắt buộc.</p>
-                <!-- novalidate để JavaScript kiểm tra và hiển thị lỗi ngay dưới form. -->
+                <!-- Dùng novalidate để tự kiểm tra và báo lỗi bằng JavaScript. -->
                 <form id="contact-form" novalidate>
                     <div class="contact-field">
-                        <!-- Ô nhập họ tên: required bắt buộc nhập, maxlength giới hạn độ dài và autocomplete gợi ý tên. -->
+                        <!-- Nhập họ tên, dùng required để bắt buộc nhập và maxlength để giới hạn độ dài. -->
                         <label for="contact-name">Họ và tên <span aria-hidden="true">*</span></label>
                         <input id="contact-name" name="fullname" type="text" maxlength="100" autocomplete="name" placeholder="Nhập họ và tên" required>
                     </div>
                     <div class="contact-field">
-                        <!-- Ô email: type="email" cung cấp quy tắc kiểm tra định dạng cho checkValidity trong contact.js. -->
+                        <!-- Ô email dùng type="email" để kiểm tra định dạng trong contact.js. -->
                         <label for="contact-email">Email <span aria-hidden="true">*</span></label>
                         <input id="contact-email" name="email" type="email" maxlength="254" autocomplete="email" placeholder="Nhập email" required>
                     </div>
                     <div class="contact-field">
-                        <!-- Danh sách chủ đề góp ý; select hiển thị các lựa chọn có sẵn, không cần thư viện bên ngoài. -->
+                        <!-- Dùng select để chọn chủ đề góp ý. -->
                         <label for="contact-subject">Chủ đề</label>
                         <select id="contact-subject" name="subject">
                             <option value="feedback">Phản hồi và góp ý</option>
@@ -97,14 +97,14 @@ TÁC GIẢ
                         </select>
                     </div>
                     <div class="contact-field">
-                        <!-- Ô nhập nội dung nhiều dòng: textarea giới hạn 2000 ký tự và bắt buộc có nội dung. -->
+                        <!-- Dùng textarea để nhập nhiều dòng, tối đa 2000 ký tự. -->
                         <label for="contact-content">Nội dung <span aria-hidden="true">*</span></label>
                         <textarea id="contact-content" name="content" rows="5" maxlength="2000" placeholder="Nhập nội dung bạn muốn chia sẻ" required></textarea>
                     </div>
-                    <!-- Vùng thông báo do JS cập nhật; aria-live="polite" đọc kết quả khi người dùng dùng trình đọc màn hình. -->
+                    <!-- JS hiện thông báo tại đây. aria-live hỗ trợ đọc thông báo bằng trình đọc màn hình. -->
                     <p class="contact-message" id="contact-message" role="status" aria-live="polite"></p>
                     <p class="contact-demo-note" id="contact-demo-note">Biểu mẫu minh họa của website tĩnh, chưa gửi email. Để được hỗ trợ, bạn có thể gọi điện hoặc liên hệ qua email ở cuối trang.</p>
-                    <!-- Nút submit kích hoạt sự kiện gửi form; JS chặn tải lại trang và kiểm tra dữ liệu trước khi báo kết quả. -->
+                    <!-- Nút gửi form, JavaScript kiểm tra dữ liệu trước khi báo thành công. -->
                     <button class="contact-submit" type="submit" aria-describedby="contact-demo-note">Gửi góp ý</button>
                 </form>
                 <noscript><p>Vui lòng bật JavaScript để sử dụng biểu mẫu, hoặc liên hệ trực tiếp qua điện thoại và email.</p></noscript>

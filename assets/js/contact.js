@@ -17,17 +17,17 @@ const contactEmail = document.getElementById('contact-email');
 const contactContent = document.getElementById('contact-content');
 const contactMessage = document.getElementById('contact-message');
 
-// ================= 2. HIỂN THỊ LỖI Ở FORM VÀ ĐƯA CON TRỎ ĐẾN Ô CẦN SỬA =================
+// ================= 2. HÀM HIỂN THỊ LỖI =================
 function showContactError(input, message) {
     contactMessage.textContent = message;
     contactMessage.classList.remove('is-success');
     contactMessage.style.display = 'block';
-    // Đánh dấu ô sai cho CSS tô viền và hỗ trợ trình đọc màn hình.
+    // Thêm aria-invalid để tô viền ô bị lỗi và báo cho trình đọc màn hình.
     input.setAttribute('aria-invalid', 'true');
     input.focus();
 }
 
-// Xóa thông báo và đánh dấu lỗi cũ khi người dùng sửa nội dung.
+// Xóa thông báo và viền lỗi khi người dùng nhập lại.
 function clearContactMessage() {
     contactMessage.textContent = '';
     contactMessage.style.display = 'none';
@@ -37,9 +37,9 @@ function clearContactMessage() {
     contactContent.removeAttribute('aria-invalid');
 }
 
-// ================= 3. KIỂM TRA DỮ LIỆU VÀ HIỂN THỊ PHẢN HỒI MÔ PHỎNG =================
+// ================= 3. KIỂM TRA THÔNG TIN GÓP Ý =================
 function submitContact(event) {
-    // Giữ lại trang hiện tại để báo kết quả bằng DOM.
+    // Dùng preventDefault để không tải lại trang khi bấm gửi.
     event.preventDefault();
     clearContactMessage();
 
@@ -52,8 +52,8 @@ function submitContact(event) {
         return;
     }
 
-    // checkValidity dùng quy tắc của input type="email" và required.
-    // Kiểm tra dựa trên thuộc tính required và type="email" của ô HTML, không dùng API bên ngoài.
+    // Dùng checkValidity để kiểm tra ô email có trống hoặc sai định dạng không.
+    // Quy tắc kiểm tra lấy từ required và type="email" trong HTML.
     if (!contactEmail.checkValidity()) {
         showContactError(contactEmail, 'Vui lòng nhập địa chỉ email hợp lệ.');
         return;
@@ -64,10 +64,10 @@ function submitContact(event) {
         return;
     }
 
-    // Giữ nội dung để người dùng có thể sao chép sang email nếu cần.
-    // Hiện kết quả góp ý mô phỏng sau khi thông tin đã hợp lệ.
+    // Giữ lại nội dung đã nhập sau khi góp ý.
+    // Thông tin hợp lệ thì báo thành công, chưa gửi dữ liệu đi.
     contactMessage.textContent = 'Góp ý thành công!';
-    // Thêm lớp CSS màu xanh rồi hiện thông báo ngay dưới form.
+    // Thêm lớp is-success để đổi màu rồi hiện thông báo.
     contactMessage.classList.add('is-success');
     contactMessage.style.display = 'block';
 }
