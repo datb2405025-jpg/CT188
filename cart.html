@@ -60,17 +60,17 @@ TÁC GIẢ
             <h1>Giỏ hàng</h1>
             <p id="cart-count" aria-live="polite">0 sản phẩm</p>
         </header>
-        <!-- Hiện lỗi dữ liệu cũ và nút bỏ sản phẩm lỗi khi cần. -->
+        <!-- Thông báo khi dữ liệu giỏ hàng bị lỗi. -->
         <p class="cart__data-error" id="cart-data-error" role="alert"></p>
         <button class="cart__repair" id="cart-repair" type="button">Bỏ sản phẩm lỗi để thêm lại</button>
         <div id="cart-content">
-            <!-- Checkbox chung chọn hoặc bỏ chọn toàn bộ sản phẩm; JS đồng bộ với từng dòng. -->
+            <!-- Chọn hoặc bỏ chọn tất cả sản phẩm trong giỏ. -->
             <div class="cart__selection">
                 <div class="cart__selection-actions">
                     <label for="cart-select-all"><input id="cart-select-all" type="checkbox"> Chọn tất cả</label>
                     <span id="cart-selected-count" aria-live="polite">Đã chọn 0 sản phẩm</span>
                 </div>
-                <!-- Nút xóa các sản phẩm đã chọn nằm bên phải thanh công cụ. -->
+                <!-- Nút xóa các sản phẩm đã chọn. -->
                 <button id="cart-remove-selected" class="cart__remove-selected" type="button" disabled>Xóa</button>
             </div>
             <div class="cart__layout">
@@ -92,7 +92,7 @@ TÁC GIẢ
                         <tbody id="cart-body"></tbody>
                     </table>
                 </div>
-                <!-- FORM ĐẶT HÀNG: novalidate tắt thông báo kiểm tra mặc định, dùng JavaScript để hiện lỗi trên trang. -->
+                <!-- FORM ĐẶT HÀNG: dùng novalidate để tự kiểm tra và báo lỗi bằng JavaScript. -->
                 <form class="cart__summary" id="cart-checkout-form" aria-labelledby="cart-summary-title" novalidate>
                     <h2 id="cart-summary-title">Thông tin đặt hàng</h2>
                     <label class="cart__field" for="cart-fullname"> Họ và tên <input id="cart-fullname" type="text" name="fullname" autocomplete="name" placeholder="Nhập họ và tên" required> </label>
@@ -107,7 +107,7 @@ TÁC GIẢ
                 </form>
             </div>
         </div>
-        <!-- GIỎ HÀNG TRỐNG: cart.js ẩn bảng và hiện khối này khi hết sản phẩm. -->
+        <!-- GIỎ HÀNG TRỐNG: hiện khi chưa có sản phẩm hoặc đã xóa hết. -->
         <section class="cart__empty" id="cart-empty">
             <h2>Giỏ hàng của bạn đang trống</h2>
             <p>Hãy thêm sản phẩm để tiếp tục mua sắm.</p>
@@ -161,7 +161,7 @@ TÁC GIẢ
         </div>
         <div class="footer-bottom"><p>© 2026 <img src="assets/images/logo-footer.png" alt="" aria-hidden="true"> Bookshelf · Thực hiện bởi Nhóm 6 – CT188.</p></div>
     </footer>
-    <!-- ================= 4. THÔNG BÁO THANH TOÁN: HIỆN KHI THÔNG TIN ĐẶT HÀNG HỢP LỆ ================= -->
+    <!-- ================= 4. THÔNG BÁO THANH TOÁN THÀNH CÔNG ================= -->
     <div class="cart__success" id="cart-success">
         <div class="cart__success-box" role="dialog" aria-modal="true" aria-labelledby="cart-success-title">
             <span class="cart__success-icon" aria-hidden="true">✓</span>
@@ -169,7 +169,7 @@ TÁC GIẢ
             <button id="cart-success-close" type="button">Đóng</button>
         </div>
     </div>
-    <!-- ================= 5. JAVASCRIPT: HÀM ĐỌC/LƯU DỮ LIỆU ĐƯỢC NẠP TRƯỚC HÀM XỬ LÝ CART ================= -->
+    <!-- ================= 5. NẠP FILE JAVASCRIPT: cart-storage.js TRƯỚC, cart.js SAU ================= -->
     <script src="./assets/js/cart-storage.js"></script>
     <script src="./assets/js/cart.js"></script>
 </body>

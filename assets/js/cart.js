@@ -39,7 +39,7 @@ const removeSelectedButton = document.getElementById('cart-remove-selected');
 const selectedCount = document.getElementById('cart-selected-count');
 
 // ================= 2. DỮ LIỆU GIỎ HÀNG VÀ ẢNH SÁCH =================
-// Ghép bìa sách với sản phẩm theo id có trong productlist.html.
+// Lấy ảnh bìa theo id của sách trong productlist.html.
 const cartBookImages = [
     { "image": "./assets/images/productList_images/goc-nho-co-nang.webp", "id": "1" },
     { "image": "./assets/images/productList_images/nha-gia-kim.jpg", "id": "2" },
@@ -57,12 +57,12 @@ const cartBookImages = [
 
 // Lấy danh sách sản phẩm từ localStorage khi hiển thị giỏ hàng.
 let cartProducts = [];
-// Chỉ giữ trạng thái chọn trên trang, không thay đổi cấu trúc dữ liệu sản phẩm đã lưu.
+// Mảng lưu các sản phẩm đang được chọn, không lưu phần lựa chọn vào localStorage.
 let selectedCartProducts = [];
 
 // ================= 3. KIỂM TRA ĐĂNG NHẬP VÀ CÁC HÀM HỖ TRỢ =================
-// Chỉ mở giỏ hàng khi có tài khoản đăng nhập do login.js lưu.
-// Đây là kiểm tra trạng thái trên trình duyệt của bài web tĩnh.
+// Lấy tài khoản do login.js lưu để kiểm tra đăng nhập.
+// Chỉ kiểm tra đăng nhập trên trình duyệt, chưa có máy chủ.
 function requireCartLogin() {
     let user = null;
     try {
@@ -81,7 +81,7 @@ function requireCartLogin() {
 }
 
 // HÀM HIỂN THỊ LỖI DỮ LIỆU
-// Hiện nút sửa khi có sản phẩm lỗi hoặc dữ liệu giỏ hàng sai định dạng.
+// Nếu dữ liệu giỏ hàng bị lỗi thì hiện thông báo và nút sửa.
 function showStorageMessage() {
     repairButton.style.display = cartHasInvalidProducts ? 'inline-block' : 'none';
     dataError.textContent = cartStorageMessage;
@@ -93,7 +93,7 @@ function showStorageMessage() {
 }
 
 // ĐÓNG THÔNG BÁO THANH TOÁN
-// Cho cuộn trang trở lại; nếu giỏ đã trống thì đưa focus về liên kết mua tiếp.
+// Cho cuộn trang lại và đưa con trỏ về nút thanh toán hoặc liên kết mua tiếp.
 function clearCheckoutMessage() {
     const wasOpen = successMessage.style.display === 'flex';
     successMessage.style.display = 'none';
@@ -112,7 +112,7 @@ function formatPrice(amount) {
     return amount.toLocaleString('vi-VN') + ' đ';
 }
 
-// Tạo ô td, thêm chữ và đưa vào dòng tr; trả về ô để thêm các phần tử con.
+// Tạo ô td và thêm vào dòng tr. Trả về ô vừa tạo để dùng tiếp.
 function createCell(row, text, className) {
     const cell = document.createElement('td');
     cell.textContent = text;
@@ -121,7 +121,7 @@ function createCell(row, text, className) {
     return cell;
 }
 
-// Tạo nút tăng, giảm hoặc xóa; label mô tả nút cho trình đọc màn hình.
+// Tạo nút bấm, dùng label để mô tả nút cho trình đọc màn hình.
 function createButton(parent, text, label) {
     const button = document.createElement('button');
     button.type = 'button';
@@ -138,7 +138,7 @@ function updateTotals() {
     let selectedQuantity = 0;
     let total = 0;
 
-    // Đếm toàn bộ sách, nhưng chỉ tính tiền các sản phẩm đang được chọn.
+    // Đếm số lượng sách trong giỏ và tính tiền những sản phẩm đã chọn.
     for (let i = 0; i < cartProducts.length; i++) {
         quantity += cartProducts[i].quantity;
         if (selectedCartProducts.indexOf(cartProducts[i]) !== -1) {
@@ -147,7 +147,7 @@ function updateTotals() {
         }
     }
 
-    // Checkbox chung có ba trạng thái: chọn hết, chọn một phần hoặc chưa chọn.
+    // Cập nhật ô chọn tất cả. indeterminate hiện dấu gạch khi chỉ chọn một phần.
     selectAllInput.checked = cartProducts.length > 0 && selectedCartProducts.length === cartProducts.length;
     selectAllInput.indeterminate = selectedCartProducts.length > 0 && selectedCartProducts.length < cartProducts.length;
     selectAllInput.disabled = cartProducts.length === 0;
@@ -169,7 +169,7 @@ function updateTotals() {
     }
 }
 
-// Chọn hoặc bỏ chọn tất cả, rồi cập nhật tiền và trạng thái các checkbox từng dòng.
+// Chọn hoặc bỏ chọn toàn bộ sản phẩm, sau đó tính lại tổng tiền.
 function selectAllProducts() {
     selectedCartProducts = [];
     if (selectAllInput.checked) {
@@ -185,7 +185,7 @@ function selectAllProducts() {
     updateTotals();
 }
 
-// Xóa toàn bộ dòng đang được chọn; sách chưa chọn vẫn nằm trong giỏ.
+// Xóa các sản phẩm đã chọn, giữ lại những sản phẩm chưa chọn.
 function removeSelectedProducts() {
     if (!requireCartLogin() || selectedCartProducts.length === 0) {
         return;
@@ -196,7 +196,7 @@ function removeSelectedProducts() {
             remainingProducts.push(cartProducts[i]);
         }
     }
-    // Chỉ đổi giao diện sau khi lưu được giỏ mới; lưu lỗi thì giữ nguyên lựa chọn.
+    // Lưu giỏ hàng trước khi xóa trên giao diện. Nếu lưu lỗi thì giữ nguyên giỏ.
     if (!saveCartProducts(remainingProducts)) {
         showStorageMessage();
         return;
@@ -212,7 +212,7 @@ function removeSelectedProducts() {
     showStorageMessage();
     clearFormError();
     updateTotals();
-    // Đưa con trỏ về checkbox của sách còn lại hoặc liên kết mua tiếp khi giỏ trống.
+    // Xóa xong thì đưa con trỏ về sản phẩm còn lại hoặc liên kết mua tiếp.
     if (cartProducts.length > 0) {
         cartBody.querySelector('.cart__select-item').focus();
     } else {
@@ -224,7 +224,7 @@ function removeSelectedProducts() {
 function addProductRow(product) {
     // Tạo dòng mới trong bảng
     const row = document.createElement('tr');
-    // CỘT CHỌN SẢN PHẨM: mỗi checkbox điều khiển việc tính tiền của một dòng.
+    // CỘT CHỌN: thêm checkbox để chọn sản phẩm cần thanh toán.
     const selectCell = createCell(row, '', 'cart__select-cell');
     const selectInput = document.createElement('input');
     selectInput.type = 'checkbox';
@@ -290,7 +290,7 @@ function addProductRow(product) {
     const remove = createButton(removeCell, 'Xóa', 'Xóa ' + product.name);
     remove.className = 'cart__remove';
 
-    // Cập nhật dòng và tổng tiền; khóa nút giảm khi số lượng bằng 1.
+    // Cập nhật số lượng, thành tiền và tổng tiền sau khi thay đổi.
     function updateRow() {
         quantity.textContent = product.quantity;
         // Thành tiền = đơn giá nhân số lượng
@@ -331,7 +331,7 @@ function addProductRow(product) {
     });
 
     // XÓA SẢN PHẨM
-    // Xóa khỏi mảng, lưu dữ liệu thành công rồi mới xóa dòng trong bảng.
+    // Xóa sản phẩm khỏi mảng rồi lưu lại giỏ hàng.
     remove.addEventListener('click', function () {
         const nextRow = row.nextElementSibling || row.previousElementSibling;
         for (let i = 0; i < cartProducts.length; i++) {
@@ -347,7 +347,7 @@ function addProductRow(product) {
                 break;
             }
         }
-        // Bỏ trạng thái chọn của sản phẩm đã xóa khỏi giỏ.
+        // Bỏ sản phẩm vừa xóa khỏi mảng đang chọn.
         const selectedIndex = selectedCartProducts.indexOf(product);
         if (selectedIndex !== -1) {
             selectedCartProducts.splice(selectedIndex, 1);
@@ -356,7 +356,7 @@ function addProductRow(product) {
         cartBody.removeChild(row);
         updateTotals();
 
-        // Sau khi xóa, đưa focus sang dòng kế bên hoặc liên kết mua tiếp
+        // Xóa xong thì đưa con trỏ sang dòng kế bên hoặc liên kết mua tiếp.
         if (nextRow) {
             nextRow.querySelector('.cart__remove').focus();
         } else {
@@ -370,7 +370,7 @@ function addProductRow(product) {
 }
 
 // HÀM HIỂN THỊ GIỎ HÀNG
-// Đọc dữ liệu mới và xóa các dòng cũ trước khi tạo lại bảng.
+// Đọc lại giỏ hàng từ localStorage rồi hiển thị lên bảng.
 function showCart() {
     if (!requireCartLogin()) {
         return;
@@ -403,7 +403,7 @@ function showFormError(input, message) {
 }
 
 function checkout(event) {
-    // Chặn gửi form để kiểm tra dữ liệu và hiện kết quả ngay trên trang.
+    // Dùng preventDefault để không tải lại trang khi bấm thanh toán.
     event.preventDefault();
     if (!requireCartLogin()) {
         return;
@@ -441,7 +441,7 @@ function checkout(event) {
                 remainingProducts.push(cartProducts[i]);
             }
         }
-        // Lưu thất bại thì giữ nguyên giỏ, lựa chọn và thông tin người nhận.
+        // Nếu lưu lỗi thì giữ nguyên giỏ hàng và thông tin đã nhập.
         if (!saveCartProducts(remainingProducts)) {
             showStorageMessage();
             return;
@@ -452,19 +452,19 @@ function checkout(event) {
         while (cartBody.firstChild) {
             cartBody.removeChild(cartBody.firstChild);
         }
-        // Sách còn lại vẫn chưa được chọn cho lần thanh toán tiếp theo.
+        // Bỏ chọn các sản phẩm còn lại sau khi thanh toán.
         for (let i = 0; i < cartProducts.length; i++) {
             addProductRow(cartProducts[i]);
         }
         showStorageMessage();
         updateTotals();
 
-        // Xóa thông tin người nhận sau khi đã lưu giỏ hàng thành công.
+        // Dùng reset để xóa các ô thông tin người nhận.
         checkoutForm.reset();
         formError.textContent = '';
         formError.style.display = 'none';
-        // Thông tin hợp lệ: hiện hộp thành công và khóa cuộn trang nền.
-        // Đây là thao tác thanh toán mô phỏng của bài thực hành web tĩnh.
+        // Hiện thông báo thành công và tạm dừng cuộn trang.
+        // Chỉ mô phỏng thanh toán, không chuyển tiền thật.
         successMessage.style.display = 'flex';
         document.body.style.overflow = 'hidden';
         closeSuccessButton.focus();
@@ -479,7 +479,7 @@ function clearFormError() {
 }
 
 // ================= 6. XỬ LÝ DỮ LIỆU LỖI VÀ PHÍM TRONG HỘP THÔNG BÁO =================
-// Chỉ lưu lại các sản phẩm hợp lệ khi người dùng chọn sửa dữ liệu.
+// Bấm sửa dữ liệu thì bỏ sản phẩm lỗi và lưu lại giỏ hàng.
 function repairCart() {
     if (saveCartProducts(cartProducts)) {
         showCart();
@@ -488,7 +488,7 @@ function repairCart() {
     }
 }
 
-// Escape đóng hộp, Tab giữ con trỏ ở nút Đóng.
+// Bấm Escape để đóng thông báo, bấm Tab thì giữ con trỏ ở nút Đóng.
 function handleSuccessKeydown(event) {
     if (event.key === 'Escape') {
         clearCheckoutMessage();
@@ -517,7 +517,7 @@ function setupCart() {
     checkoutForm.addEventListener('submit', checkout);
     checkoutForm.addEventListener('input', clearFormError);
 
-    // Đọc lại giỏ khi quay về trang; kiểm tra đăng xuất từ tab khác.
+    // Đọc lại giỏ khi quay về trang và kiểm tra đăng xuất ở tab khác.
     window.addEventListener('pageshow', showCart);
     window.addEventListener('storage', handleLoginChange);
     showCart();

@@ -21,7 +21,7 @@ let cartStorageMessage = '';
 let cartHasInvalidProducts = false;
 
 // ================= 2. HÀM ĐỌC GIỎ HÀNG =================
-// Khóa cartItems dùng chung với trang sản phẩm; chưa có dữ liệu thì trả về [].
+// Đọc giỏ hàng theo khóa cartItems dùng chung với trang sản phẩm.
 function getCartProducts() {
     cartStorageMessage = '';
     cartHasInvalidProducts = false;
@@ -31,10 +31,10 @@ function getCartProducts() {
         if (savedCart === null) {
             return [];
         }
-        // Chuyển chuỗi JSON đã lưu về mảng sản phẩm.
-        // JSON.parse chuyển chuỗi đã lưu thành mảng; các phần tử sẽ được kiểm tra trước khi hiển thị.
+        // Dùng JSON.parse đọc dữ liệu đã lưu.
+        // Dữ liệu đọc được sẽ được kiểm tra ở các bước bên dưới.
         const products = JSON.parse(savedCart);
-        // Chỉ xử lý giỏ hàng dạng mảng, tránh gọi vòng lặp trên dữ liệu lưu sai cấu trúc.
+        // Kiểm tra dữ liệu có phải mảng không trước khi duyệt sản phẩm.
         if (Array.isArray(products)) {
             const validProducts = [];
             // Kiểm tra từng sản phẩm đã lưu
@@ -46,16 +46,16 @@ function getCartProducts() {
                     cartStorageMessage = 'Một số sản phẩm thiếu thông tin. Hãy thêm lại từ danh sách sản phẩm.';
                     continue;
                 }
-                // Đọc được cả phiên bản dùng name lẫn phiên bản dùng title.
+                // Lấy tên sách từ name hoặc title vì dữ liệu cũ dùng hai cách đặt tên.
                 let name = product.name || product.title;
-                // Chuyển về số để tính toán, tránh cộng thành chuỗi.
+                // Đổi số lượng và giá sang kiểu số để tính tiền.
                 const quantity = Number(product.quantity);
                 let price = Number(product.price);
                 if (typeof product.price === 'string' && product.price.indexOf('-') === -1) {
                     // Ví dụ '79.000 đ' được chuyển về 79000.
                     price = Number(product.price.replace(/[^0-9]/g, ''));
                 }
-                // Bỏ sản phẩm thiếu tên/mã, sai giá hoặc số lượng không nguyên dương.
+                // Bỏ qua sản phẩm thiếu tên, mã, giá không hợp lệ hoặc số lượng không phải số nguyên dương.
                 if (typeof name !== 'string' || name.trim() === '' ||
                     product.id === undefined || product.id === null ||
                     !isFinite(quantity) || quantity < 1 || Math.floor(quantity) !== quantity ||
@@ -65,7 +65,7 @@ function getCartProducts() {
                     continue;
                 }
                 name = name.trim();
-                // Thêm sản phẩm hợp lệ vào mảng kết quả, giữ cả name và title cho dữ liệu cũ
+                // Thêm sản phẩm hợp lệ vào mảng, giữ cả name và title để đọc được dữ liệu cũ.
                 validProducts.push({
                     id: String(product.id),
                     name: name,
@@ -80,7 +80,7 @@ function getCartProducts() {
         cartStorageMessage = 'Giỏ hàng đã lưu không đúng định dạng. Hãy thêm lại sản phẩm.';
         cartHasInvalidProducts = true;
     } catch (error) {
-        // Bắt lỗi JSON hoặc lỗi trình duyệt chặn đọc localStorage.
+        // Xử lý khi chuỗi JSON bị lỗi hoặc không đọc được localStorage.
         cartHasInvalidProducts = error.name === 'SyntaxError';
         cartStorageMessage = 'Không đọc được giỏ hàng đã lưu. Hãy kiểm tra quyền lưu trữ của trình duyệt.';
         return [];
@@ -89,7 +89,7 @@ function getCartProducts() {
 }
 
 // ================= 3. HÀM LƯU GIỎ HÀNG =================
-// Trả về true nếu lưu được, false để cart.js khôi phục thao tác vừa thực hiện.
+// Trả về true nếu lưu thành công, false nếu lưu lỗi.
 function saveCartProducts(products) {
     try {
         // Chuyển mảng thành chuỗi JSON vì localStorage lưu dữ liệu dạng chuỗi.
@@ -100,7 +100,7 @@ function saveCartProducts(products) {
         return true;
     } catch (error) {
         cartStorageMessage = 'Chưa lưu được thay đổi. Hãy kiểm tra quyền lưu trữ của trình duyệt và thử lại.';
-        // Báo thất bại để cart.js khôi phục thao tác vừa làm
+        // Báo lưu lỗi để cart.js giữ nguyên giỏ hàng.
         return false;
     }
 }

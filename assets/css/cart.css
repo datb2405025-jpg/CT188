@@ -18,7 +18,7 @@ TÁC GIẢ
 */
 
 /* ================= 1. KHUNG TRANG VÀ ĐỊNH DẠNG CHUNG ================= */
-/* Mobile-first: các quy tắc mặc định dành cho điện thoại. Dùng min-width ở cuối file để mở rộng bố cục khi màn hình đủ rộng. */
+/* Mobile-first: viết cho điện thoại trước, dùng min-width ở cuối file để chỉnh cho màn hình lớn. */
 .cart-page {
     margin: 0;
     background-color: #f2f2f2;
@@ -32,7 +32,7 @@ TÁC GIẢ
     box-sizing: border-box;
 }
 
-/* Ảnh và điều khiển trong trang cart. */
+/* Ảnh, ô nhập và nút bấm trong giỏ hàng. */
 .cart-page img {
     max-width: 100%;
 }
@@ -87,7 +87,7 @@ TÁC GIẢ
 }
 
 /* ================= 3. BỐ CỤC DANH SÁCH VÀ FORM ================= */
-/* Flexbox mặc định xếp dọc; breakpoint 1101px đổi sang hàng để form nằm cạnh bảng. */
+/* Dùng Flexbox xếp bảng và form theo chiều dọc. Từ 1101px thì cho nằm ngang. */
 .cart__layout {
     display: flex;
     flex-direction: column;
@@ -95,7 +95,7 @@ TÁC GIẢ
     gap: 24px;
 }
 
-/* overflow-x cho phép cuộn riêng bảng khi bảng rộng hơn màn hình điện thoại. */
+/* Cho phép cuộn ngang bảng trên điện thoại để không tràn trang. */
 .cart__table-wrapper {
     width: 100%;
     flex: auto;
@@ -126,7 +126,7 @@ TÁC GIẢ
     text-align: left;
 }
 
-/* Checkbox chọn sản phẩm và thanh chọn tất cả; có thể xuống hàng trên điện thoại. */
+/* Thanh chọn tất cả có thể xuống hàng khi màn hình nhỏ. */
 .cart__selection {
     display: flex;
     flex-wrap: wrap;
@@ -227,7 +227,7 @@ TÁC GIẢ
     font-weight: bold;
 }
 
-/* Nhóm nút trừ, số lượng và nút cộng; các thao tác được xử lý trong cart.js. */
+/* Căn nút giảm, số lượng và nút tăng trên cùng một hàng. */
 .cart__quantity-controls {
     display: inline-flex;
     align-items: center;
@@ -391,8 +391,8 @@ TÁC GIẢ
 }
 
 /* ================= 7. THÔNG BÁO THANH TOÁN THÀNH CÔNG ================= */
-/* Phủ nền toàn màn hình; Flexbox căn hộp thông báo ở giữa. */
-/* Mặc định ẩn; JS đổi display thành flex để hiện lớp nền và căn hộp thoại giữa màn hình. */
+/* Lớp nền phủ toàn màn hình, dùng Flexbox căn giữa hộp thông báo. */
+/* Ẩn thông báo lúc đầu, khi thanh toán thành công thì JavaScript cho hiện lên. */
 .cart__success {
     display: none;
     position: fixed;
@@ -490,9 +490,9 @@ TÁC GIẢ
     to { transform: scale(1); }
 }
 
-/* ================= 8. MỞ RỘNG BỐ CỤC TỪ ĐIỆN THOẠI LÊN MÀN HÌNH LỚN ================= */
+/* ================= 8. RESPONSIVE CHO MÀN HÌNH LỚN ================= */
 
-/* Từ 601px: tăng khoảng đệm, dùng kích thước điều khiển cho màn hình rộng. */
+/* Từ 601px: tăng khoảng cách và chỉnh kích thước nút bấm. */
 @media screen and (min-width: 601px) {
     .cart {
         margin: 24px auto;
